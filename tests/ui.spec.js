@@ -16,12 +16,13 @@ test('expanded church and market records show facts and unknowns correctly',asyn
  const curated=JSON.parse(await fs.readFile('config/sources.json','utf8'));
  const expanded={...catalog,events:curated.events.map(e=>({...e,verifiedAt:'2026-10-09T12:00:00Z'}))};
  await page.route('**/data/events.json',r=>r.fulfill({json:expanded}));await page.reload();
- await expect(page.locator('.card')).toHaveCount(12);
- await page.locator('#category').selectOption('church');await expect(page.locator('.card')).toHaveCount(5);
+ await expect(page.locator('.card')).toHaveCount(14);
+ await page.locator('#category').selectOption('church');await expect(page.locator('.card')).toHaveCount(7);
  // Select the named record independently of its editorial ranking.
  const baptist=page.locator('.card').filter({hasText:'Сімейний Fall Fest · Canton First Baptist'});
  await expect(baptist).toHaveCount(1);await baptist.locator('summary').click();
  await expect(baptist).toContainText('18:00–20:00');await expect(baptist).toContainText('Ціну не підтверджено');await expect(baptist.locator('select')).toHaveCount(0);
+ const dinner=page.locator('[data-id="woodstock-first-baptist-dinner-oct14-2026"]');await expect(dinner).toContainText('$20 / сім’я');await expect(dinner).toContainText('16:30–18:30');await expect(page.locator('[data-id="woodstock-first-baptist-pastors-oct25-2026"]')).toContainText('Ціну не підтверджено');
  const homecoming=page.locator('.card').filter({hasText:'Homecoming'});await homecoming.locator('summary').click();await expect(homecoming).toContainText('завершення не вказано');
  const downloaded=page.waitForEvent('download');await homecoming.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();
  const file=await fs.readFile(await (await downloaded).path(),'utf8');expect(file).not.toContain('DTEND;TZID');

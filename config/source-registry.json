@@ -183,6 +183,31 @@
         "event",
         "ticket"
       ]
+    },
+    {
+      "id": "woodstock-first-baptist",
+      "name": "First Baptist Church Woodstock",
+      "url": "https://www.fbcw.org/",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [
+        "fbcwoodstock.churchcenter.com"
+      ],
+      "linkPatterns": [
+        "/registrations/events/",
+        "/events"
+      ]
+    },
+    {
+      "id": "woodstock-first-baptist-events",
+      "name": "First Baptist Church Woodstock · події та реєстрації",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/registrations/events/"
+      ]
     }
   ]
 }
