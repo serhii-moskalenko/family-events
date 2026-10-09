@@ -1,0 +1,151 @@
+{
+  "mode": "curated-official-evidence",
+  "discoveryEnabled": false,
+  "radiusMiles": 20,
+  "timezone": "America/New_York",
+  "familyBasis": "2 adults + 2 children aged 3+",
+  "policy": "Only publish configured events while every official evidence fragment matches; remove expired sessions; quarantine changed, unavailable or cancellation-flagged pages. Maintainer must review changed prices/dates and configure new sources. No automated discovery.",
+  "events": [
+    {
+      "id": "great-pumpkin-fest-2026",
+      "name": "Великий гарбузовий фестиваль",
+      "category": "festival",
+      "icon": "🎃",
+      "venue": "Cherokee Veterans Park",
+      "address": "7345 Cumming Hwy, Canton, GA 30115",
+      "distanceLabel": "≈ 10 миль",
+      "familyPrice": 0,
+      "priceNote": "Вхід безкоштовний. Їжа та покупки оплачуються окремо.",
+      "description": "Осінній день із конкурсом костюмів, творчими заняттями, тваринами та розвагами просто неба.",
+      "comfortNote": "Відкритий майданчик; уточніть доступність і умови для візочків у організатора.",
+      "source": "https://www.bsheepevents.com/events/the-great-pumpkin-fest-1",
+      "sessions": [
+        {
+          "start": "2026-10-10T10:00",
+          "end": "2026-10-10T15:00"
+        }
+      ],
+      "points": {
+        "children": 28,
+        "cost": 25,
+        "comfort": 15,
+        "distance": 12,
+        "uniqueness": 9
+      },
+      "checks": [
+        {
+          "url": "https://www.bsheepevents.com/events/the-great-pumpkin-fest-1",
+          "evidence": [
+            "Oct 10, 2026",
+            "10:00 AM",
+            "3:00 PM",
+            "7345 Cumming Hwy",
+            "free day for the entire family"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cagles-fall-2026",
+      "name": "Осінні вихідні на Cagle’s Farm",
+      "category": "farm",
+      "icon": "🌽",
+      "venue": "Cagle’s Farm · Holly Springs",
+      "address": "362 Stringer Road, Holly Springs, GA 30115",
+      "distanceLabel": "≈ 10 миль",
+      "familyPrice": 60,
+      "priceNote": "$15 за людину віком від 3 років: $60 за 2 дорослих + 2 дітей (3+). Гарбузи окремо; поїздка до озера з багаттям — ще $5 за людину.",
+      "description": "Кукурудзяний лабіринт, мінілабіринт, фермерські тварини, перегони поросят і дворові ігри. Дати відповідають вихідним, зазначеним у програмі ферми; час — офіційному розкладу роботи.",
+      "comfortNote": "Діти до 14 років включно мають бути з дорослим. Відкритий майданчик; домашніх тварин не допускають, службові тварини дозволені.",
+      "source": "https://caglesfarm.com/",
+      "sessions": [
+        {
+          "start": "2026-10-09T17:00",
+          "end": "2026-10-09T22:00"
+        },
+        {
+          "start": "2026-10-10T10:00",
+          "end": "2026-10-10T22:00"
+        },
+        {
+          "start": "2026-10-11T10:00",
+          "end": "2026-10-11T18:00"
+        },
+        {
+          "start": "2026-10-16T17:00",
+          "end": "2026-10-16T22:00"
+        },
+        {
+          "start": "2026-10-17T10:00",
+          "end": "2026-10-17T22:00"
+        },
+        {
+          "start": "2026-10-18T10:00",
+          "end": "2026-10-18T18:00"
+        },
+        {
+          "start": "2026-10-23T17:00",
+          "end": "2026-10-23T22:00"
+        },
+        {
+          "start": "2026-10-24T10:00",
+          "end": "2026-10-24T22:00"
+        },
+        {
+          "start": "2026-10-25T10:00",
+          "end": "2026-10-25T18:00"
+        },
+        {
+          "start": "2026-10-30T17:00",
+          "end": "2026-10-30T22:00"
+        },
+        {
+          "start": "2026-10-31T10:00",
+          "end": "2026-10-31T22:00"
+        },
+        {
+          "start": "2026-11-01T10:00",
+          "end": "2026-11-01T18:00"
+        }
+      ],
+      "points": {
+        "children": 29,
+        "cost": 12,
+        "comfort": 14,
+        "distance": 12,
+        "uniqueness": 8
+      },
+      "checks": [
+        {
+          "url": "https://caglesfarm.com/",
+          "evidence": [
+            "Welcome 2026",
+            "Opening September 25, 2026",
+            "Fridays 5-10pm",
+            "Saturdays 10am-10pm",
+            "Sundays 10am-6pm",
+            "General Admission: $15 (age 3+)",
+            "362 Stringer Road"
+          ]
+        },
+        {
+          "url": "https://caglesfarm.com/entertainment/",
+          "evidence": [
+            "October 9 |",
+            "October 10 |",
+            "October 11 |",
+            "October 16 |",
+            "October 17 |",
+            "October 18 |",
+            "October 23 |",
+            "October 24 |",
+            "October 25 |",
+            "October 30 |",
+            "October 31 |",
+            "November 1 |"
+          ]
+        }
+      ]
+    }
+  ]
+}

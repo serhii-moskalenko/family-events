@@ -1,0 +1,61 @@
+name: Test, refresh and deploy
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * 1'
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Verify official sources and publish this week's catalog
+        if: github.event_name != 'pull_request'
+        run: npm run refresh
+      - run: npm run build
+      - name: Retain verification report
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-catalog
+          path: public/data/events.json
+      - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify live catalog
+        run: |
+          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}' -o /tmp/live.html
+          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/events.json' -o /tmp/catalog.json
+          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==1 || !Array.isArray(d.events))process.exit(1);"
