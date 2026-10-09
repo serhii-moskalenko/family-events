@@ -24,6 +24,9 @@ jobs:
       - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - name: Scan source registry for candidate links
+        if: github.event_name != 'pull_request'
+        run: npm run scan
       - name: Verify official sources and publish this month's catalog
         if: github.event_name != 'pull_request'
         run: npm run refresh
@@ -33,7 +36,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: verified-catalog
-          path: public/data/events.json
+          path: |
+            public/data/events.json
+            reports/source-scan.json
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v4

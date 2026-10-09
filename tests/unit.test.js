@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {calendar,rating,readState,saveState,visibleEvents,monthId,upcomingEvents,validateEvent,foldLine} from '../src/core.js';import {refresh,verify,sourceText} from '../scripts/refresh.mjs';
-const config=JSON.parse(await readFile('config/sources.json','utf8')),e=config.events[0],farm=config.events[1];
+const fullConfig=JSON.parse(await readFile('config/sources.json','utf8'));const config={...fullConfig,events:fullConfig.events.slice(0,2)},e=config.events[0],farm=config.events[1];
 test('ratings follow all five weighted limits',()=>{assert.equal(rating(e),89);config.events.forEach(validateEvent);assert.throws(()=>validateEvent({...e,points:{...e.points,children:31}}));});
 test('month boundary uses New York in summer and winter',()=>{assert.equal(monthId(new Date('2026-10-01T03:59:00Z')),'2026-09');assert.equal(monthId(new Date('2026-10-01T04:00:00Z')),'2026-10');assert.equal(monthId(new Date('2026-12-01T04:59:00Z')),'2026-11');assert.equal(monthId(new Date('2026-12-01T05:00:00Z')),'2026-12');});
 test('selection persists only for the published month, corrupted or unavailable storage is safe',()=>{let value;const storage={getItem:()=>value,setItem:(k,v)=>value=v};const s={period:'2026-10',selections:{a:{status:'added'}}};assert.ok(saveState(storage,s));assert.deepEqual(readState(storage,s.period),s);assert.deepEqual(readState(storage,'2026-11').selections,{});value='{';assert.deepEqual(readState(storage,s.period).selections,{});assert.equal(saveState({setItem:()=>{throw Error();}},s),false);});
@@ -13,3 +13,16 @@ test('unreachable or changed sources are quarantined, never fabricated',async()=
 
 test('legacy weekly selections migrate within the same month',()=>{assert.deepEqual(readState({getItem:()=>JSON.stringify({week:'2026-10-05',selections:{a:{status:'added'}}})},'2026-10'),{period:'2026-10',selections:{a:{status:'added'}}});});
 test('monthly refresh excludes next-month sessions and browser hides expired sessions',async()=>{const mock=async url=>({ok:true,text:async()=>'<body>'+config.events.flatMap(e=>e.checks.filter(c=>c.url===url).flatMap(c=>c.evidence)).join(' ')+'</body>'});const oct=await refresh(config,new Date('2026-10-01T12:00:00Z'),mock);assert.ok(oct.events.flatMap(e=>e.sessions).every(s=>s.start.startsWith('2026-10')));const nov=await refresh(config,new Date('2026-11-01T12:00:00Z'),mock);assert.equal(nov.catalogId,'2026-11');assert.equal(nov.events[0].sessions.length,1);assert.equal(upcomingEvents([e],new Date('2026-10-10T19:00:00Z')).length,0);});
+
+test('all expanded records validate and unknown ending stays unknown in ICS',()=>{fullConfig.events.forEach(validateEvent);const service=fullConfig.events.find(e=>e.sessions.some(s=>s.end===null));const text=calendar(service,service.sessions[0]);assert.ok(!text.includes('DTEND;TZID'));assert.match(text,/DTSTART;TZID=America\/New_York:20261011T104500/);});
+test('official metadata can provide event description without executing scripts',()=>{assert.equal(sourceText('<head><meta name="description" content="Family event 2026"></head><body>Hours<script>canceled</script></body>',true),'Hours Family event 2026');});
+
+test('source scan collects only configured HTTPS hosts and never publishes candidates',async()=>{
+ const {extractCandidates,scanSources}=await import('../scripts/scan-sources.mjs');
+ const source={id:'church',name:'Church',url:'https://example.org/events',allowedLinkedHosts:['example.churchcenter.com'],linkPatterns:['/events/']};
+ const html='<a href="/events/fall#join">Fall &amp; games</a><a href="/events/fall">Fall &amp; games</a><a href="https://example.churchcenter.com/events/123">Registration</a><a href="https://evil.test/events/123">Untrusted</a><a href="javascript:alert(1)">Bad</a><a href="http://example.org/events/123">HTTP</a>';
+ assert.deepEqual(extractCandidates(html,source).map(c=>c.url),['https://example.org/events/fall','https://example.churchcenter.com/events/123']);
+ const report=await scanSources({sources:[source],notes:'Review required'},async()=>({ok:true,text:async()=>html}));
+ assert.equal(report.autoPublishCandidates,false);assert.equal(report.aiApiConnected,false);assert.equal(report.sources[0].candidates[0].status,'requires-editorial-review');
+ const failed=await scanSources({sources:[source]},async()=>({ok:false,status:403}));assert.equal(failed.sources[0].status,'unavailable');assert.deepEqual(failed.sources[0].candidates,[]);
+});

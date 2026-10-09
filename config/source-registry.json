@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "cadence": "monthly",
+  "autoPublishCandidates": false,
+  "notes": "Configured public pages are scanned for candidate links. New websites and event facts require editorial research; link extraction is not complete event discovery.",
+  "sources": [
+    {
+      "id": "canton-tourism",
+      "name": "Explore Canton · міський туристичний календар",
+      "url": "https://explorecantonga.com/events/",
+      "kind": "city-tourism",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/"
+      ]
+    },
+    {
+      "id": "canton-city",
+      "name": "City of Canton · міські події",
+      "url": "https://www.cantonga.gov/government/departments/police/canton-multicultural-festival-304",
+      "kind": "local-government",
+      "reviewStatus": "manual-review",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/",
+        "calendar",
+        "festival"
+      ]
+    },
+    {
+      "id": "canton-eventeny",
+      "name": "City of Canton · Eventeny",
+      "url": "https://www.eventeny.com/events/cantonmulticulturalfestival-33220/",
+      "kind": "organizer-registration",
+      "reviewStatus": "cancelled-event",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/"
+      ]
+    },
+    {
+      "id": "first-baptist",
+      "name": "Canton First Baptist",
+      "url": "https://cantonfirstbaptist.org/",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [
+        "cantonfirstbaptist.churchcenter.com"
+      ],
+      "linkPatterns": [
+        "/events",
+        "/registrations/events/"
+      ]
+    },
+    {
+      "id": "first-baptist-registrations",
+      "name": "Canton First Baptist · реєстрації",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/registrations/events/"
+      ]
+    },
+    {
+      "id": "hickory-flat",
+      "name": "Hickory Flat Church",
+      "url": "https://www.hickoryflat.church/events",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/"
+      ]
+    },
+    {
+      "id": "sutallee",
+      "name": "Sutallee Baptist Church",
+      "url": "https://www.sutalleebaptist.com/sutallee-events.php",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "events"
+      ]
+    },
+    {
+      "id": "canton-bible",
+      "name": "Canton Bible Church",
+      "url": "https://www.cantonbible.org/events",
+      "kind": "church",
+      "reviewStatus": "insufficient-public-details",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events",
+        "calendar"
+      ]
+    },
+    {
+      "id": "woodstock-tourism",
+      "name": "Visit Woodstock",
+      "url": "https://visitwoodstockga.com/events/",
+      "kind": "city-tourism",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/",
+        "ghouls",
+        "festival"
+      ]
+    },
+    {
+      "id": "woodstock-parks",
+      "name": "Woodstock Parks & Recreation",
+      "url": "https://woodstock.recdesk.com/Community/Page?pageId=26354",
+      "kind": "local-government",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/Community/Page",
+        "/Community/Program/Detail"
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Sequoyah Regional Library System",
+      "url": "https://www.sequoyahregionallibrary.org/events",
+      "kind": "public-library",
+      "reviewStatus": "dynamic-calendar-review",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events",
+        "calendar",
+        "libcal"
+      ]
+    },
+    {
+      "id": "black-sheep",
+      "name": "Black Sheep Events",
+      "url": "https://www.bsheepevents.com/events",
+      "kind": "organizer",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/"
+      ]
+    },
+    {
+      "id": "cagle",
+      "name": "Cagle’s Farm",
+      "url": "https://caglesfarm.com/",
+      "kind": "farm",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "entertainment",
+        "ticket",
+        "event"
+      ]
+    },
+    {
+      "id": "berry-patch",
+      "name": "Berry Patch Farms",
+      "url": "https://berrypatchfarms.co/",
+      "kind": "farm",
+      "reviewStatus": "needs-year-price-confirmation",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "pumpkin",
+        "event"
+      ]
+    },
+    {
+      "id": "woodstock-food",
+      "name": "Woodstock International Food Festival",
+      "url": "https://www.woodstockinternationalfoodfestival.com/",
+      "kind": "organizer",
+      "reviewStatus": "outside-october-window",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "event",
+        "ticket"
+      ]
+    }
+  ]
+}

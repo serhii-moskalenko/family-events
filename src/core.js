@@ -10,9 +10,10 @@ export const monthId=(now=new Date())=>localDateTime(now).slice(0,7);
 export function readState(storage,period) {
  try {const data=JSON.parse(storage.getItem('family-events:v1')); const savedPeriod=data?.period||data?.week?.slice(0,7); return savedPeriod===period && data.selections && typeof data.selections==='object' ? {period,selections:data.selections} : {period,selections:{}};} catch {return {period,selections:{}};}
 }
+export const sessionExpiry=s=>s.end||s.start.slice(0,10)+'T23:59';
 export function upcomingEvents(events,now=new Date()) {
  const current=localDateTime(now);
- return events.map(e=>({...e,sessions:e.sessions.filter(s=>s.end>current)})).filter(e=>e.sessions.length);
+ return events.map(e=>({...e,sessions:e.sessions.filter(s=>sessionExpiry(s)>current)})).filter(e=>e.sessions.length);
 }
 export function saveState(storage,state) {try {storage.setItem('family-events:v1',JSON.stringify(state));return true;}catch{return false;}}
 export function visibleEvents(events,selections,tab,category,sort) {
@@ -23,12 +24,12 @@ export function foldLine(line) {let result='',bytes=0;for(const c of line){const
 export function calendar(e,session,now=new Date()) {
  if(!e.sessions.some(s=>s.start===session.start&&s.end===session.end))throw new Error('Invalid session');
  const compact=s=>s.replace(/[-:]/g,'')+'00';
- return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Family Events//UK','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VTIMEZONE','TZID:America/New_York','BEGIN:DAYLIGHT','DTSTART:20070311T020000','RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU','TZOFFSETFROM:-0500','TZOFFSETTO:-0400','TZNAME:EDT','END:DAYLIGHT','BEGIN:STANDARD','DTSTART:20071104T020000','RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU','TZOFFSETFROM:-0400','TZOFFSETTO:-0500','TZNAME:EST','END:STANDARD','END:VTIMEZONE','BEGIN:VEVENT',`UID:${e.id}-${compact(session.start)}@family-events.github.io`,`DTSTAMP:${now.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'')}`,`DTSTART;TZID=America/New_York:${compact(session.start)}`,`DTEND;TZID=America/New_York:${compact(session.end)}`,`SUMMARY:${escapeICS(e.name)}`,`LOCATION:${escapeICS(e.address)}`,`DESCRIPTION:${escapeICS(e.description+'\n'+e.source)}`,`URL:${e.source}`,'END:VEVENT','END:VCALENDAR'].map(foldLine).join('\r\n')+'\r\n';
+ return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Family Events//UK','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VTIMEZONE','TZID:America/New_York','BEGIN:DAYLIGHT','DTSTART:20070311T020000','RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU','TZOFFSETFROM:-0500','TZOFFSETTO:-0400','TZNAME:EDT','END:DAYLIGHT','BEGIN:STANDARD','DTSTART:20071104T020000','RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU','TZOFFSETFROM:-0400','TZOFFSETTO:-0500','TZNAME:EST','END:STANDARD','END:VTIMEZONE','BEGIN:VEVENT',`UID:${e.id}-${compact(session.start)}@family-events.github.io`,`DTSTAMP:${now.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'')}`,`DTSTART;TZID=America/New_York:${compact(session.start)}`,...(session.end?[`DTEND;TZID=America/New_York:${compact(session.end)}`]:[]),`SUMMARY:${escapeICS(e.name)}`,`LOCATION:${escapeICS(e.address)}`,`DESCRIPTION:${escapeICS([e.description,e.priceNote,e.comfortNote,...(session.end?[]:['Час завершення не опубліковано.']),e.source].filter(Boolean).join('\n'))}`,`URL:${e.source}`,'END:VEVENT','END:VCALENDAR'].map(foldLine).join('\r\n')+'\r\n';
 }
 export function validateEvent(e) {
  if(!/^[a-z0-9-]+$/.test(e.id)||!e.name||!e.address||!/^https:\/\//.test(e.source)||!e.sessions?.length)throw Error('Invalid event');
  for(const [k,max] of Object.entries(weights))if(!Number.isFinite(e.points?.[k])||e.points[k]<0||e.points[k]>max)throw Error('Invalid rating');
- for(const s of e.sessions)if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.start)||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.end)||s.end<=s.start||Number.isNaN(Date.parse(s.start)))throw Error('Invalid dates');
+ for(const s of e.sessions)if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.start)||(s.end!==null&&(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.end)||s.end<=s.start))||Number.isNaN(Date.parse(s.start)))throw Error('Invalid dates');
  if(e.familyPrice!==null&&(!Number.isFinite(e.familyPrice)||e.familyPrice<0))throw Error('Invalid price');
  return e;
 }

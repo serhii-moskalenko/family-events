@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
-const catalog=JSON.parse(await fs.readFile('public/data/events.json','utf8'));
+const catalog=JSON.parse(await fs.readFile('tests/fixtures/catalog.json','utf8'));
 test.beforeEach(async({page})=>{await page.route('**/data/events.json',route=>route.fulfill({json:catalog}));await page.clock.setFixedTime(new Date('2026-10-09T12:00:00Z'));await page.goto('/');await expect(page.locator('.card')).toHaveCount(2);});
 test('mobile catalogue, categories, details, calendar and persistent selections',async({page})=>{expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.locator('#category').selectOption('farm');await expect(page.locator('.card')).toHaveCount(1);await page.locator('.card summary').click();await expect(page.getByLabel('Дата події')).toBeVisible();await page.getByLabel('Дата події').selectOption('2026-10-10T10:00');const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const download=await downloadPromise;expect(download.suggestedFilename()).toContain('2026-10-10.ics');const file=await fs.readFile(await download.path(),'utf8');expect(file).toContain('DTSTART;TZID=America/New_York:20261010T100000');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.locator('.card summary').click();await page.getByRole('button',{name:'↩ Повернути до «Усі»'}).click();await page.getByRole('button',{name:/^Усі/}).click();await expect(page.locator('.card')).toHaveCount(2);});
 test('rejection requires confirmation and can be restored; single day has no date selector',async({page})=>{await page.locator('.card').first().locator('summary').click();await expect(page.getByLabel('Дата події')).toHaveCount(1);await expect(page.getByLabel('Дата події')).not.toBeVisible();await page.getByRole('button',{name:'Відхилити',exact:true}).first().click();await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('button',{name:'Залишити'}).click();await expect(page.locator('.card')).toHaveCount(2);await page.getByRole('button',{name:'Відхилити',exact:true}).first().click();await page.getByRole('dialog').getByRole('button',{name:'Відхилити'}).click();await expect(page.locator('.card')).toHaveCount(1);await page.getByRole('button',{name:/Відхилено/}).click();await expect(page.locator('.card.rejected')).toHaveCount(1);await page.locator('.card summary').click();await page.getByRole('button',{name:'↩ Повернути до «Усі»'}).click();await page.getByRole('button',{name:/^Усі/}).click();await expect(page.locator('.card')).toHaveCount(2);});
@@ -11,3 +11,26 @@ test('Escape never confirms a rejection after a previous confirmed dialog',async
 
 test('light and dark theme follow system initially, persist preference and preserve selections',async({page})=>{await page.emulateMedia({colorScheme:'dark'});await expect(page.locator('html')).toHaveAttribute('data-theme','dark');await expect(page.locator('html')).toHaveCSS('background-color','rgb(10, 10, 10)');await page.getByRole('button',{name:'Увімкнути світлу тему'}).click();await expect(page.locator('html')).toHaveAttribute('data-theme','light');await expect(page.locator('html')).toHaveCSS('background-color','rgb(255, 255, 255)');await page.reload();await expect(page.locator('html')).toHaveAttribute('data-theme','light');await page.getByRole('button',{name:'Увімкнути темну тему'}).click();await page.locator('.card').first().locator('summary').click();await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).first().click();await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCSS('background-color','rgb(16, 44, 27)');await page.getByRole('button',{name:'Увімкнути світлу тему'}).click();await expect(page.locator('.card.added')).toHaveCount(1);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();});
 test('past sessions disappear from main catalog without waiting for monthly refresh',async({page})=>{await page.clock.setFixedTime(new Date('2026-10-12T12:00:00Z'));await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.locator('.card summary').click();await expect(page.getByLabel('Дата події')).not.toContainText('9 жовт.');});
+
+test('expanded church and market records show facts and unknowns correctly',async({page})=>{
+ const curated=JSON.parse(await fs.readFile('config/sources.json','utf8'));
+ const expanded={...catalog,events:curated.events.map(e=>({...e,verifiedAt:'2026-10-09T12:00:00Z'}))};
+ await page.route('**/data/events.json',r=>r.fulfill({json:expanded}));await page.reload();
+ await expect(page.locator('.card')).toHaveCount(12);
+ await page.locator('#category').selectOption('church');await expect(page.locator('.card')).toHaveCount(5);
+ // Select the named record independently of its editorial ranking.
+ const baptist=page.locator('.card').filter({hasText:'Сімейний Fall Fest · Canton First Baptist'});
+ await expect(baptist).toHaveCount(1);await baptist.locator('summary').click();
+ await expect(baptist).toContainText('18:00–20:00');await expect(baptist).toContainText('Ціну не підтверджено');await expect(baptist.locator('select')).toHaveCount(0);
+ const homecoming=page.locator('.card').filter({hasText:'Homecoming'});await homecoming.locator('summary').click();await expect(homecoming).toContainText('завершення не вказано');
+ const downloaded=page.waitForEvent('download');await homecoming.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();
+ const file=await fs.readFile(await (await downloaded).path(),'utf8');expect(file).not.toContain('DTEND;TZID');
+ await page.locator('#category').selectOption('market');await expect(page.locator('.card')).toHaveCount(1);await expect(page.locator('.card')).toContainText('Makers Market');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+});
+
+test('calendar uses the displayed upcoming occurrence when only one remains',async({page})=>{
+ await page.clock.setFixedTime(new Date('2026-10-31T12:00:00Z'));await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.locator('.card summary').click();await expect(page.getByLabel('Дата події')).toHaveCount(0);
+ const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const download=await downloading;
+ const file=await fs.readFile(await download.path(),'utf8');expect(file).toContain('DTSTART;TZID=America/New_York:20261031T100000');
+});

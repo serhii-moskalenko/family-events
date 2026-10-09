@@ -146,6 +146,452 @@
           ]
         }
       ]
+    },
+    {
+      "id": "canton-first-baptist-fall-fest-2026",
+      "name": "Сімейний Fall Fest · Canton First Baptist",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Canton First Baptist",
+      "address": "1 Mission Point, Canton, GA 30114",
+      "distanceLabel": "Canton · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Тариф для гостей не опубліковано. Позначка Free на сторінці стосується волонтерських місць; харчування з фудтраків оплачується за їхніми тарифами.",
+      "description": "Сімейний вечір для громади: ігри й солодощі біля прикрашених авто, Touch a Truck, музика та конкурс опудал. Організатор просить уникати страшного оформлення.",
+      "comfortNote": "Місце зустрічі — нижня парковка. Сторінка також приймає заявки волонтерів; уточніть умови участі в конкурсі й доступність для візочків.",
+      "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3882313",
+      "sessions": [
+        {
+          "start": "2026-10-29T18:00",
+          "end": "2026-10-29T20:00"
+        }
+      ],
+      "points": {
+        "children": 28,
+        "cost": 0,
+        "comfort": 17,
+        "distance": 14,
+        "uniqueness": 8
+      },
+      "checks": [
+        {
+          "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3882313",
+          "evidence": [
+            "29 October 2026",
+            "6pm EDT",
+            "8pm EDT",
+            "1 Mission Point Lower Parking Lot",
+            "Family Fall Fest 2026",
+            "Trunks with treats and games"
+          ],
+          "includeMetadata": true
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+    },
+    {
+      "id": "hickory-flat-trunk-or-treat-2026",
+      "name": "Trunk or Treat · Hickory Flat Church",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Hickory Flat Church",
+      "address": "4056 E Cherokee Dr, Canton, GA 30115",
+      "distanceLabel": "Canton · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Організатор підтверджує безкоштовну вечерю з хот-догами та вітає пожертви. Окремий тариф входу не вказано.",
+      "description": "Костюми, солодощі, ігри, розмальовування обличчя й жива музика. Гостей запрошують приходити з друзями.",
+      "comfortNote": "На сторінці є RSVP. Перевірте, чи потрібне попереднє підтвердження участі; умови доступності не описано.",
+      "source": "https://www.hickoryflat.church/events/trunk-or-treat-5",
+      "sessions": [
+        {
+          "start": "2026-10-28T17:30",
+          "end": "2026-10-28T19:30"
+        }
+      ],
+      "points": {
+        "children": 28,
+        "cost": 0,
+        "comfort": 17,
+        "distance": 11,
+        "uniqueness": 7
+      },
+      "checks": [
+        {
+          "url": "https://www.hickoryflat.church/events/trunk-or-treat-5",
+          "evidence": [
+            "Oct 28, 2026",
+            "5:30 PM",
+            "7:30 PM",
+            "4056 E Cherokee Dr",
+            "free hot dog dinner"
+          ]
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+    },
+    {
+      "id": "sutallee-trunk-or-treat-2026",
+      "name": "Trunk or Treat · Sutallee Baptist",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Sutallee Baptist Church · White",
+      "address": "895 Knox Bridge Hwy, White, GA 30184",
+      "distanceLabel": "White · перевірте маршрут",
+      "familyPrice": 0,
+      "priceNote": "Організатор прямо вказує, що захід безкоштовний для громади.",
+      "description": "18:00–19:00 — їжа й поїздки на возі; 19:00–19:30 — конкурс костюмів; 19:30–20:00 — солодощі біля прикрашених автомобілів.",
+      "comfortNote": "Вечірній захід; беріть одяг за погодою. White розташований на захід від Canton — перевірте маршрут перед виїздом.",
+      "source": "https://www.sutalleebaptist.com/sutallee-events.php",
+      "sessions": [
+        {
+          "start": "2026-10-25T18:00",
+          "end": "2026-10-25T20:00"
+        }
+      ],
+      "points": {
+        "children": 29,
+        "cost": 25,
+        "comfort": 16,
+        "distance": 9,
+        "uniqueness": 8
+      },
+      "checks": [
+        {
+          "url": "https://www.sutalleebaptist.com/sutallee-events.php",
+          "evidence": [
+            "Trunk Or Treat 2026",
+            "10-25-2026 - 6:00pm",
+            "7:30- 8:00",
+            "FREE event for the community",
+            "895 Knox Bridge Hwy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sutallee-homecoming-2026",
+      "name": "Homecoming · музика й спільний обід",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Sutallee Baptist Church · White",
+      "address": "895 Knox Bridge Hwy, White, GA 30184",
+      "distanceLabel": "White · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Тариф не опубліковано. Організатор просить принести гарнір або десерт; м’ясні страви забезпечує церква.",
+      "description": "Святкова недільна служба зі спеціальною музикою та обідом після завершення. Це церковне богослужіння зі спільною трапезою.",
+      "comfortNote": "Початок о 10:45; час завершення не опубліковано. Ранньої служби цього дня не буде.",
+      "source": "https://www.sutalleebaptist.com/sutallee-events.php",
+      "sessions": [
+        {
+          "start": "2026-10-11T10:45",
+          "end": null
+        }
+      ],
+      "points": {
+        "children": 15,
+        "cost": 0,
+        "comfort": 16,
+        "distance": 9,
+        "uniqueness": 7
+      },
+      "checks": [
+        {
+          "url": "https://www.sutalleebaptist.com/sutallee-events.php",
+          "evidence": [
+            "Homecoming 2026",
+            "10-11-2026 - 10:45am",
+            "lunch served after the service",
+            "bring a large side dish or dessert",
+            "895 Knox Bridge Hwy"
+          ]
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+    },
+    {
+      "id": "rising-hills-fall-festival-2026",
+      "name": "Безкоштовний фестиваль · Rising Hills Church",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Rising Hills Church",
+      "address": "3693 Hickory Flat Hwy, Canton, GA 30115",
+      "distanceLabel": "Canton · перевірте маршрут",
+      "familyPrice": 0,
+      "priceNote": "Офіційний міський календар указує безкоштовний фестиваль і безкоштовну їжу. Покупки у продавців оплачуються окремо.",
+      "description": "Надувні розваги, поні, контактний зоопарк, поїздки на возі, костюмовані персонажі й Trunk or Treat. Відкритий фестиваль для громади.",
+      "comfortNote": "Заявлено окрему зону зі зниженим сенсорним навантаженням для дітей з особливими потребами. Уточніть її розташування в організатора.",
+      "source": "https://explorecantonga.com/events/free-community-wide-fall-festival/",
+      "sessions": [
+        {
+          "start": "2026-10-24T11:00",
+          "end": "2026-10-24T14:00"
+        }
+      ],
+      "points": {
+        "children": 30,
+        "cost": 25,
+        "comfort": 19,
+        "distance": 13,
+        "uniqueness": 9
+      },
+      "checks": [
+        {
+          "url": "https://explorecantonga.com/events/free-community-wide-fall-festival/",
+          "evidence": [
+            "October 24, 2026",
+            "11am-2pm",
+            "Free community-wide Fall Festival",
+            "Low Sensory",
+            "3693 Hickory Flat Hwy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jack-o-lantern-jamboree-2026",
+      "name": "Jack O’ Lantern Jamboree · The Mill",
+      "category": "festival",
+      "icon": "🎃",
+      "venue": "The Mill on Etowah",
+      "address": "225 Reformation Pkwy, Canton, GA 30114",
+      "distanceLabel": "Canton · перевірте маршрут",
+      "familyPrice": 0,
+      "priceNote": "Вхід безкоштовний для всіх вікових груп. Їжа й покупки окремо.",
+      "description": "Дводенний осінній фестиваль: солодощі, музика, костюмовані персонажі, ярмарок і покази фільмів просто неба.",
+      "comfortNote": "Тема Halloween і персонажі можуть бути чутливими для малюків. Розклад та вікові рейтинги фільмів уточніть окремо; домашні тварини дозволені.",
+      "source": "https://explorecantonga.com/events/3rd-annual-jack-o-lantern-jamboree/",
+      "sessions": [
+        {
+          "start": "2026-10-24T12:00",
+          "end": "2026-10-24T20:00"
+        },
+        {
+          "start": "2026-10-25T12:00",
+          "end": "2026-10-25T19:00"
+        }
+      ],
+      "points": {
+        "children": 28,
+        "cost": 25,
+        "comfort": 15,
+        "distance": 15,
+        "uniqueness": 9
+      },
+      "checks": [
+        {
+          "url": "https://explorecantonga.com/events/3rd-annual-jack-o-lantern-jamboree/",
+          "evidence": [
+            "October 24, 2026 to October 25, 2026",
+            "Saturday, Oct 24 | 12 PM",
+            "8 PM",
+            "Sunday, Oct 25 | 12 PM",
+            "7 PM",
+            "FREE TO ATTEND FOR ALL AGES",
+            "225 Reformation Pkwy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "books-boos-2026",
+      "name": "Books & Boos · книжковий осінній фестиваль",
+      "category": "festival",
+      "icon": "🎃",
+      "venue": "The Mill on Etowah",
+      "address": "225 Reformation Parkway, Canton, GA 30114",
+      "distanceLabel": "Canton · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Тариф входу не опубліковано. Книжки, покупки й окремі послуги можуть оплачуватися додатково.",
+      "description": "Книжковий фестиваль Damsel Bookstore: автори та продавці, осінні ігри, розмальовування обличчя, солодощі й конкурс пирогів.",
+      "comfortNote": "Захід поєднує сімейні розваги та книжковий ярмарок. Умови для візочків і тарифи окремих активностей не вказано.",
+      "source": "https://explorecantonga.com/events/books-boos-fall-festival/",
+      "sessions": [
+        {
+          "start": "2026-10-10T14:00",
+          "end": "2026-10-10T19:00"
+        }
+      ],
+      "points": {
+        "children": 25,
+        "cost": 0,
+        "comfort": 15,
+        "distance": 15,
+        "uniqueness": 9
+      },
+      "checks": [
+        {
+          "url": "https://explorecantonga.com/events/books-boos-fall-festival/",
+          "evidence": [
+            "October 10, 2026",
+            "2:00 PM",
+            "7:00 PM",
+            "face painting",
+            "225 Reformation Parkway"
+          ]
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+    },
+    {
+      "id": "makers-market-october-2026",
+      "name": "Makers Market · ярмарок майстрів",
+      "category": "market",
+      "icon": "🧺",
+      "venue": "Shoppes at The Mill",
+      "address": "225 Reformation Parkway, Canton, GA 30114",
+      "distanceLabel": "Canton · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Вартість входу не опубліковано. Покупки у майстрів оплачуються окремо.",
+      "description": "Щомісячний ярмарок місцевих майстрів усередині Shoppes at The Mill. Підійде для короткої сімейної прогулянки й покупок.",
+      "comfortNote": "Окремої дитячої програми не заявлено; тому оцінка інтересу для дітей нижча, ніж у фестивалів.",
+      "source": "https://explorecantonga.com/events/makers-market/",
+      "sessions": [
+        {
+          "start": "2026-10-10T11:00",
+          "end": "2026-10-10T16:00"
+        }
+      ],
+      "points": {
+        "children": 12,
+        "cost": 0,
+        "comfort": 17,
+        "distance": 15,
+        "uniqueness": 6
+      },
+      "checks": [
+        {
+          "url": "https://explorecantonga.com/events/makers-market/",
+          "evidence": [
+            "October 10, 2026",
+            "11:00 AM",
+            "4:00 PM",
+            "inside the Shoppes at The Mill",
+            "225 Reformation Parkway"
+          ]
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+    },
+    {
+      "id": "woodstock-skelebration-2026",
+      "name": "Halloween Skelebration · Woodstock",
+      "category": "festival",
+      "icon": "🎃",
+      "venue": "Northside Hospital–Cherokee Amphitheater",
+      "address": "101 Arnold Mill Rd, Woodstock, GA 30188",
+      "distanceLabel": "Woodstock · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Міська сторінка не вказує тариф входу для гостей. $75 на сторінці реєстрації — плата за місце продавця, не сімейний квиток.",
+      "description": "Дитяче святкування Halloween: ігри, мінігольф, великі бульбашки, музика, виступи персонажів і солодощі.",
+      "comfortNote": "Міська програма очікує близько 2 000 гостей. Подія відбувається в амфітеатрі, не на старій стежці Rubes Creek.",
+      "source": "https://woodstock.recdesk.com/Community/Page?pageId=26354",
+      "sessions": [
+        {
+          "start": "2026-10-31T16:00",
+          "end": "2026-10-31T20:00"
+        }
+      ],
+      "points": {
+        "children": 29,
+        "cost": 0,
+        "comfort": 14,
+        "distance": 10,
+        "uniqueness": 8
+      },
+      "checks": [
+        {
+          "url": "https://woodstock.recdesk.com/Community/Page?pageId=26354",
+          "evidence": [
+            "Saturday, October 31, 2026",
+            "4 - 8 pm"
+          ]
+        },
+        {
+          "url": "https://woodstock.recdesk.com/Community/Program/Detail?programId=2645",
+          "evidence": [
+            "101 Arnold Mill Rd",
+            "play carnival games",
+            "mini golf",
+            "2,000"
+          ]
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+    },
+    {
+      "id": "woodstock-ghouls-night-2026",
+      "name": "Ghouls Night Out · прогулянка Downtown Woodstock",
+      "category": "festival",
+      "icon": "🎃",
+      "venue": "Downtown Woodstock · Main Street",
+      "address": "Main Street, Woodstock, GA 30188",
+      "distanceLabel": "Woodstock · перевірте маршрут",
+      "familyPrice": null,
+      "priceNote": "Окремий тариф участі не вказано. Покупки та їжа оплачуються за тарифами магазинів і ресторанів.",
+      "description": "Міський вечір із солодощами в магазинах і ресторанах, відкритий для всіх вікових груп.",
+      "comfortNote": "Маршрут проходить центром міста. Остаточний список учасників 2026 ще не опубліковано; список 2025 не використано як підтвердження.",
+      "source": "https://visitwoodstockga.com/ghouls-night-out/",
+      "sessions": [
+        {
+          "start": "2026-10-30T16:00",
+          "end": "2026-10-30T19:00"
+        }
+      ],
+      "points": {
+        "children": 25,
+        "cost": 0,
+        "comfort": 14,
+        "distance": 10,
+        "uniqueness": 7
+      },
+      "checks": [
+        {
+          "url": "https://visitwoodstockga.com/ghouls-night-out/",
+          "evidence": [
+            "Friday, October 30, 2026",
+            "4pm-7pm",
+            "All ages welcome"
+          ]
+        }
+      ],
+      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
     }
-  ]
+  ],
+  "review": {
+    "reviewedAt": "2026-10-09",
+    "method": "AI-assisted manual research and editorial review in Codex; live evidence verification by scripts",
+    "rangeStart": "2026-10-09",
+    "rangeEnd": "2026-10-31",
+    "coverage": "Best-effort public-source search, not an exhaustive listing of every local event",
+    "excluded": [
+      {
+        "source": "https://www.cantonbible.org/events",
+        "reason": "Fall picnic lists a private home and no usable public address or hours."
+      },
+      {
+        "source": "https://www.woodstockinternationalfoodfestival.com/",
+        "reason": "Official 2026 dates are in November; conflicting October listings were not used."
+      },
+      {
+        "source": "https://www.sequoyahregionallibrary.org/events",
+        "reason": "Dynamic calendar needs separate review; no dated entries verified in this search."
+      },
+      {
+        "source": "https://berrypatchfarms.co/",
+        "reason": "Season page needs explicit year and current price confirmation."
+      },
+      {
+        "source": "https://www.eventeny.com/events/cantonmulticulturalfestival-33220/",
+        "reason": "Live organizer page explicitly states: This event has been cancelled. Search cache did not show this notice."
+      },
+      {
+        "source": "https://explorecantonga.com/events/halloween-comedy-magic-dinner-show/",
+        "reason": "Child suitability and admission price not confirmed; not recommended as a family event."
+      },
+      {
+        "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3740746",
+        "reason": "Choir registration spans a season; individual October rehearsal dates and participation terms are not verified."
+      }
+    ]
+  }
 }
