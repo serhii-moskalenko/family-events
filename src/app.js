@@ -30,7 +30,7 @@ $('#events').addEventListener('click',e=>{
    const a=document.createElement('a');a.href=url;a.download=`${id}-${session.start.slice(0,10)}.ics`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
    state.selections[id]={status:'added',start:session.start};const saved=persist();if(saved)announce('Файл .ics завантажено. Відкрийте його та підтвердьте імпорт в Apple Calendar. Подія тепер у «Додано».');render();document.querySelector('[data-tab="added"]').focus();
   }catch{announce('Не вдалося створити файл календаря. Спробуйте ще раз.');}
- }else if(b.dataset.reject){pending=id;$('#reject-name').textContent=event.name;$('#reject-dialog').showModal();}
+ }else if(b.dataset.reject){pending=id;$('#reject-name').textContent=event.name;$('#reject-dialog').returnValue='';$('#reject-dialog').showModal();}
  else{delete state.selections[id];const saved=persist();if(saved)announce('Подію повернуто до «Усі».');render();document.querySelector('[data-tab="all"]').focus();}
 });
 $('#reject-dialog').addEventListener('close',()=>{if($('#reject-dialog').returnValue==='confirm'&&pending){state.selections[pending]={status:'rejected'};const saved=persist();render();if(saved)announce('Подію перенесено до «Відхилено».');document.querySelector('[data-tab="rejected"]').focus();}pending=null;});
