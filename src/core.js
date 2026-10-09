@@ -1,12 +1,18 @@
 export const weights = {children:30,cost:25,comfort:20,distance:15,uniqueness:10};
 export const labels = {children:'Цікавість дітям',cost:'Вартість',comfort:'Комфорт сім’ї',distance:'Відстань',uniqueness:'Унікальність'};
 export function rating(e) { return Object.keys(weights).reduce((n,k)=>n+e.points[k],0); }
-export function weekId(now = new Date()) {
- const day = new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(now);
- const d=new Date(`${day}T12:00:00Z`); d.setUTCDate(d.getUTCDate()-((d.getUTCDay()+6)%7)); return d.toISOString().slice(0,10);
+export function localDateTime(now = new Date()) {
+ const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now);
+ const get=k=>parts.find(p=>p.type===k).value;
+ return `${get('year')}-${get('month')}-${get('day')}T${get('hour')}:${get('minute')}`;
 }
-export function readState(storage,week) {
- try {const data=JSON.parse(storage.getItem('family-events:v1')); return data?.week===week && data.selections && typeof data.selections==='object' ? data : {week,selections:{}};} catch {return {week,selections:{}};}
+export const monthId=(now=new Date())=>localDateTime(now).slice(0,7);
+export function readState(storage,period) {
+ try {const data=JSON.parse(storage.getItem('family-events:v1')); const savedPeriod=data?.period||data?.week?.slice(0,7); return savedPeriod===period && data.selections && typeof data.selections==='object' ? {period,selections:data.selections} : {period,selections:{}};} catch {return {period,selections:{}};}
+}
+export function upcomingEvents(events,now=new Date()) {
+ const current=localDateTime(now);
+ return events.map(e=>({...e,sessions:e.sessions.filter(s=>s.end>current)})).filter(e=>e.sessions.length);
 }
 export function saveState(storage,state) {try {storage.setItem('family-events:v1',JSON.stringify(state));return true;}catch{return false;}}
 export function visibleEvents(events,selections,tab,category,sort) {

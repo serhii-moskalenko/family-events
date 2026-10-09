@@ -1,7 +1,8 @@
 {
-  "schemaVersion": 1,
-  "weekId": "2026-10-05",
-  "publishedAt": "2026-10-09T22:10:47.619Z",
+  "schemaVersion": 2,
+  "catalogId": "2026-10",
+  "cadence": "monthly",
+  "publishedAt": "2026-10-09T22:19:16.731Z",
   "timezone": "America/New_York",
   "discoveryEnabled": false,
   "events": [
@@ -31,7 +32,7 @@
         "distance": 12,
         "uniqueness": 9
       },
-      "verifiedAt": "2026-10-09T22:10:47.619Z",
+      "verifiedAt": "2026-10-09T22:19:16.731Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -91,10 +92,6 @@
         {
           "start": "2026-10-31T10:00",
           "end": "2026-10-31T22:00"
-        },
-        {
-          "start": "2026-11-01T10:00",
-          "end": "2026-11-01T18:00"
         }
       ],
       "points": {
@@ -104,7 +101,7 @@
         "distance": 12,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-09T22:10:47.619Z",
+      "verifiedAt": "2026-10-09T22:19:16.731Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     }
   ],

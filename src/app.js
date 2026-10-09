@@ -1,4 +1,4 @@
-import {rating,weights,labels,readState,saveState,visibleEvents,calendar} from './core.js';
+import {rating,weights,labels,readState,saveState,visibleEvents,calendar,upcomingEvents} from './core.js';
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=s=>new Intl.DateTimeFormat('uk-UA',{day:'numeric',month:'short',timeZone:'America/New_York'}).format(new Date(s.slice(0,10)+'T12:00:00-04:00'));
 const time=s=>s.slice(11,16),full=s=>`${date(s)} · ${time(s)}`;
@@ -7,8 +7,9 @@ let storage;try{storage=window.localStorage;}catch{storage={getItem:()=>null,set
 const announce=s=>{$('#notice').textContent=s;};
 function persist(){const saved=saveState(storage,state);if(!saved)announce('Браузер не дозволяє зберегти вибір. Після перезавантаження він може зникнути.');return saved;}
 function render(){
- const events=visibleEvents(data.events,state.selections,tab,$('#category').value,$('#sort').value);
- document.querySelectorAll('[data-tab]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.tab===tab));b.querySelector('span').textContent=data.events.filter(e=>(state.selections[e.id]?.status||'all')===b.dataset.tab).length;});
+ const available=tab==='all'?upcomingEvents(data.events):data.events;
+ const events=visibleEvents(available,state.selections,tab,$('#category').value,$('#sort').value);
+ document.querySelectorAll('[data-tab]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.tab===tab));b.querySelector('span').textContent=(b.dataset.tab==='all'?upcomingEvents(data.events):data.events).filter(e=>(state.selections[e.id]?.status||'all')===b.dataset.tab).length;});
  $('#count').textContent=`Подій: ${events.length}`;
  $('#events').innerHTML=events.length?events.map(e=>{
  const selected=state.selections[e.id]?.start;
@@ -36,6 +37,6 @@ $('#events').addEventListener('click',e=>{
 $('#reject-dialog').addEventListener('close',()=>{if($('#reject-dialog').returnValue==='confirm'&&pending){state.selections[pending]={status:'rejected'};const saved=persist();render();if(saved)announce('Подію перенесено до «Відхилено».');document.querySelector('[data-tab="rejected"]').focus();}pending=null;});
 try{
  const response=await fetch('./data/events.json',{cache:'no-store'});if(!response.ok)throw Error('Data unavailable');data=await response.json();
- state=readState(storage,data.weekId);persist();$('#edition').textContent=`Тиждень від ${date(data.weekId)}`;$('#verified').textContent=`Оновлено ${date(data.publishedAt)} · Перевірка джерел щопонеділка`;
+ state=readState(storage,data.catalogId);persist();$('#edition').textContent=new Intl.DateTimeFormat('uk-UA',{month:'long',year:'numeric',timeZone:'America/New_York'}).format(new Date(data.catalogId+'-01T12:00:00Z'));$('#verified').textContent=`Оновлено ${date(data.publishedAt)} · Оновлення 1-го числа щомісяця`;
  if(data.issues.length)announce('Частину подій приховано: джерела потребують перевірки.');render();
 }catch{$('#events').innerHTML='<div class="empty"><h2>Каталог тимчасово недоступний</h2><p>Перезавантажте сторінку, щоб спробувати ще раз.</p></div>';}

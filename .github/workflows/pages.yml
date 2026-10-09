@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '17 10 * * 1'
+    - cron: '17 10 1 * *'
 permissions:
   contents: read
 concurrency:
@@ -24,7 +24,7 @@ jobs:
       - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
-      - name: Verify official sources and publish this week's catalog
+      - name: Verify official sources and publish this month's catalog
         if: github.event_name != 'pull_request'
         run: npm run refresh
       - run: npm run build
@@ -57,5 +57,5 @@ jobs:
       - name: Verify live catalog
         run: |
           curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}' -o /tmp/live.html
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/events.json' -o /tmp/catalog.json
-          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==1 || !Array.isArray(d.events))process.exit(1);"
+          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/events.json?revision=${{ github.sha }}' -o /tmp/catalog.json
+          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==2 || !Array.isArray(d.events))process.exit(1);"
