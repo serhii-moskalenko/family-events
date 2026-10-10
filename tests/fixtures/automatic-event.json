@@ -1,0 +1,43 @@
+{
+  "name": "\"Next Steps\" Class (Church & Membership Info)",
+  "description": "Автоматично додано з офіційного джерела. Умови участі та програму перевірте за посиланням організатора.",
+  "address": "1 Mission Point Canton, Georgia 30114",
+  "venue": "Canton First Baptist",
+  "sessions": [
+    {
+      "start": "2026-10-11T09:30",
+      "end": "2026-10-11T12:00"
+    }
+  ],
+  "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904130",
+  "familyPrice": null,
+  "priceNote": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
+  "id": "auto-6969ad63db75ebf80db0",
+  "category": "church",
+  "icon": "⛪",
+  "sourceExcerpt": "We’d love for you to join us for our upcoming Next Steps Class— the assimilation to Canton First Baptist. Our Next Steps Class will…",
+  "comfortNote": "Доступність для візочків, туалети, паркування та вікові умови автоматично не підтверджено. Уточніть їх перед поїздкою.",
+  "distanceLabel": "Canton · відстань не виміряно",
+  "points": {
+    "children": 12,
+    "cost": 0,
+    "comfort": 8,
+    "distance": 0,
+    "uniqueness": 4
+  },
+  "ratingMethod": "rules-v1",
+  "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
+  "verifiedAt": "2026-10-10T00:46:03.266Z",
+  "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and Census distance.",
+  "automation": {
+    "sourceId": "first-baptist-registrations",
+    "adapter": "churchcenter-html",
+    "coordinates": {
+      "provider": "Reviewed Canton venue address",
+      "area": "Canton",
+      "source": "https://cantonfirstbaptist.org/",
+      "reviewedAt": "2026-10-09"
+    },
+    "distanceMiles": null
+  }
+}

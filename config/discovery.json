@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "enabled": true,
+  "radiusMiles": 20,
+  "center": {
+    "lat": 34.2358364,
+    "lon": -84.4921824,
+    "name": "Canton · official tourism office reference point",
+    "source": "https://explorecantonga.com/"
+  },
+  "maxPagesPerSource": 100,
+  "geocoder": {
+    "endpoint": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress",
+    "benchmark": "Public_AR_Current",
+    "approvedVenues": [
+      {
+        "address": "1 Mission Point, Canton, GA 30114",
+        "source": "https://cantonfirstbaptist.org/",
+        "area": "Canton",
+        "reviewedAt": "2026-10-09"
+      },
+      {
+        "address": "225 Reformation Pkwy, Canton, GA 30114",
+        "source": "https://explorecantonga.com/events/books-boos-fall-festival/",
+        "area": "Canton",
+        "reviewedAt": "2026-10-09"
+      }
+    ]
+  },
+  "familyRules": {
+    "include": "family[- ]friendly|families|entire family|whole family|family fall fest|kids|children|all ages|trunk.?or.?treat|trick.?or.?treat|petting zoo|face painting|Wednesday Night Dinner @ Woodstock",
+    "exclude": "volunteer registration|volunteer sign.?up|senior|60\\+|men.s (?:night|ministry)|women.s|ladies|adult bible|leadership|mission trip|retreat|conference",
+    "adultOnly": "adults? only|ages?\\s*21\\+|21\\s*(?:and|&)\\s*(?:over|up)|18\\+",
+    "activities": [
+      "trunk.?or.?treat|trick.?or.?treat",
+      "face painting|crafts?|games",
+      "bounce|inflatables?|petting zoo|pony rides?",
+      "children.s|kids"
+    ]
+  },
+  "sources": [
+    {
+      "id": "canton-tourism",
+      "url": "https://explorecantonga.com/events/",
+      "kind": "city-tourism",
+      "adapter": "canton-jsonld",
+      "detailPath": "^/events/[a-z0-9-]+/?$",
+      "enabled": true
+    },
+    {
+      "id": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations",
+      "kind": "church",
+      "adapter": "churchcenter-html",
+      "detailPath": "^/registrations/events/\\d+/?$",
+      "enabled": true
+    },
+    {
+      "id": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events",
+      "kind": "church",
+      "adapter": "churchcenter-html",
+      "detailPath": "^/registrations/events/\\d+/?$",
+      "enabled": true
+    },
+    {
+      "id": "hickory-flat",
+      "url": "https://www.hickoryflat.church/calendar",
+      "kind": "church",
+      "adapter": "event-jsonld",
+      "detailPath": "^/events/[a-z0-9-]+/?$",
+      "enabled": true
+    }
+  ],
+  "allowedPostalCodes": [
+    "30114",
+    "30115",
+    "30188",
+    "30189",
+    "30142",
+    "30107",
+    "30184"
+  ],
+  "notes": "Automatic publication from these four source adapters only. Radius is 20 straight-line miles plus selected local ZIP codes. Two previously reviewed Canton venues are address allowlist exceptions when Census has no match; no numeric distance is asserted for these venues."
+}

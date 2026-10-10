@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "cadence": "monthly",
   "autoPublishCandidates": false,
-  "notes": "Configured public pages are scanned for candidate links. New websites and event facts require editorial research; link extraction is not complete event discovery.",
+  "notes": "General link scan is a candidate report only. Automatic publication from four configured source adapters is implemented separately in config/discovery.json.",
   "sources": [
     {
       "id": "canton-tourism",
@@ -13,7 +13,8 @@
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/events/"
-      ]
+      ],
+      "automaticImport": "canton-jsonld"
     },
     {
       "id": "canton-city",
@@ -62,18 +63,20 @@
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/registrations/events/"
-      ]
+      ],
+      "automaticImport": "churchcenter-html"
     },
     {
       "id": "hickory-flat",
       "name": "Hickory Flat Church",
-      "url": "https://www.hickoryflat.church/events",
+      "url": "https://www.hickoryflat.church/calendar",
       "kind": "church",
       "reviewStatus": "verified-events",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/events/"
-      ]
+      ],
+      "automaticImport": "event-jsonld"
     },
     {
       "id": "sutallee",
@@ -207,7 +210,8 @@
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/registrations/events/"
-      ]
+      ],
+      "automaticImport": "churchcenter-html"
     }
   ]
 }

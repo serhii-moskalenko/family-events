@@ -35,3 +35,14 @@ test('calendar uses the displayed upcoming occurrence when only one remains',asy
  const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const download=await downloading;
  const file=await fs.readFile(await download.path(),'utf8');expect(file).toContain('DTSTART;TZID=America/New_York:20261031T100000');
 });
+
+test('automatically discovered card displays provenance and safely escapes the source excerpt',async({page})=>{
+ const automatic=JSON.parse(await fs.readFile('tests/fixtures/automatic-event.json','utf8'));
+ automatic.verifiedAt='2026-10-10T00:30:00Z';
+ automatic.sourceExcerpt='<script>window.sourceExecuted=true</script> A family event';
+ await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,publishedAt:'2026-10-10T00:30:00Z',discoveryEnabled:true,events:[automatic]}}));await page.reload();await expect(page.locator('.card')).toHaveCount(1);
+ await page.locator('.card summary').click();await expect(page.getByText('↻ Автоматично імпортовано з офіційного джерела')).toBeVisible();await expect(page.getByText(/Короткий опис організатора/)).toContainText('<script>');
+ await expect(page.locator('.card')).toContainText('Джерело перевірено 9 жовт.');await expect(page.locator('#verified')).toContainText('Оновлено 9 жовт.');
+ expect(await page.evaluate(()=>window.sourceExecuted)).toBeUndefined();await expect(page.getByText('Автоматична оцінка за правилами',{exact:false})).toBeVisible();await expect(page.getByLabel('Дата події')).toHaveCount(0);
+ const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const file=await fs.readFile(await (await downloaded).path(),'utf8');expect(file).toContain('TZID=America/New_York');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);
+});

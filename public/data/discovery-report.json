@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-10T00:50:48.497Z",
+  "aiUsed": false,
+  "period": "2026-10",
+  "sources": [
+    {
+      "id": "canton-tourism",
+      "url": "https://explorecantonga.com/events/",
+      "adapter": "canton-jsonld",
+      "links": 19,
+      "published": 3,
+      "status": "ok"
+    },
+    {
+      "id": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations",
+      "adapter": "churchcenter-html",
+      "links": 14,
+      "published": 2,
+      "status": "ok"
+    },
+    {
+      "id": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events",
+      "adapter": "churchcenter-html",
+      "links": 33,
+      "published": 2,
+      "status": "ok"
+    },
+    {
+      "id": "hickory-flat",
+      "url": "https://www.hickoryflat.church/calendar",
+      "adapter": "event-jsonld",
+      "links": 3,
+      "published": 1,
+      "status": "ok"
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/annual-events/",
+      "status": "quarantined",
+      "code": "shape",
+      "reason": "Expected exactly one structured Event"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/submit-an-event/",
+      "status": "quarantined",
+      "code": "shape",
+      "reason": "Expected exactly one structured Event"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/art-order-artist-operations-system-workshop/",
+      "status": "quarantined",
+      "code": "cancelled",
+      "reason": "Cancellation, closure or sold-out notice"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/books-boos-fall-festival/",
+      "status": "published"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/3rd-annual-jack-o-lantern-jamboree/",
+      "status": "published"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/free-community-wide-fall-festival/",
+      "status": "published"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/framed-crushed-glass-nature-scene-resin-art-workshop/",
+      "status": "quarantined",
+      "code": "cancelled",
+      "reason": "Cancellation, closure or sold-out notice"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/fall-plant-festival/",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/makers-market/",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/stained-glass-halloween-intro-class-10-12-26-no-exp-necessary/",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/stained-glass-beginner-2-week-class-no-exp-necessary/",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Multi-day event has no explicit daily hours"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/free-outdoor-yoga/",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/all-call-dance-class/",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/all-nashville-roadshow/",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/halloween-comedy-magic-dinner-show/",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/crushed-glass-christmas-trees-on-wood-resin-art-workshop/",
+      "status": "quarantined",
+      "code": "cancelled",
+      "reason": "Cancellation, closure or sold-out notice"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/canton-city-limits-open-mic-music-more/",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/christmas-at-the-mill-3/",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Multi-day event has no explicit daily hours"
+    },
+    {
+      "sourceId": "canton-tourism",
+      "url": "https://explorecantonga.com/events/grinchmas-at-the-mill/",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3737569",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3740746",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3157151",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904130",
+      "status": "published"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904279",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3862696",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3882313",
+      "status": "published"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904837",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3585301",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3638268",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Missing exact occurrence times"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3487321",
+      "status": "quarantined",
+      "code": "shape",
+      "reason": "Missing event heading or mapped address"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/2877346",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3944394",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "first-baptist-registrations",
+      "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/2891277",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3782819",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3875803",
+      "status": "outside-area"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3825163",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Missing exact occurrence times"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3076009",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/2278258",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/2901758",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/1431244",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/1431041",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3870091",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3728414",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "No explicit upcoming occurrences"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3846414",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3808699",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3828418",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3926581",
+      "status": "published"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3925224",
+      "status": "outside-area"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3898543",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3234645",
+      "status": "published"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3726638",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3754215",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3890443",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3810883",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3801496",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3749754",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3802730",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3933981",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3857978",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3904191",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3794464",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3817893",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3234770",
+      "status": "outside-month"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3804475",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Continuous multi-day interval needs explicit daily hours"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3804479",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Continuous multi-day interval needs explicit daily hours"
+    },
+    {
+      "sourceId": "woodstock-first-baptist-events",
+      "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3804486",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Missing exact occurrence times"
+    },
+    {
+      "sourceId": "hickory-flat",
+      "url": "https://www.hickoryflat.church/events/pumpkin-patch-fundraiser-1",
+      "status": "quarantined",
+      "code": "dates",
+      "reason": "Multi-day event has no explicit daily hours"
+    },
+    {
+      "sourceId": "hickory-flat",
+      "url": "https://www.hickoryflat.church/events/senior-apple-trip",
+      "status": "excluded-family-rules"
+    },
+    {
+      "sourceId": "hickory-flat",
+      "url": "https://www.hickoryflat.church/events/trunk-or-treat-5",
+      "status": "published"
+    }
+  ]
+}

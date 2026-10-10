@@ -14,6 +14,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,18 +28,19 @@ jobs:
       - name: Scan source registry for candidate links
         if: github.event_name != 'pull_request'
         run: npm run scan
-      - name: Verify official sources and publish this month's catalog
+      - name: Discover, verify and publish this month's catalog
         if: github.event_name != 'pull_request'
         run: npm run refresh
       - run: npm run build
       - name: Retain verification report
-        if: github.event_name != 'pull_request'
+        if: always() && github.event_name != 'pull_request'
         uses: actions/upload-artifact@v4
         with:
           name: verified-catalog
           path: |
             public/data/events.json
             reports/source-scan.json
+            reports/discovery.json
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v4
@@ -63,4 +65,6 @@ jobs:
         run: |
           curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}' -o /tmp/live.html
           curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/events.json?revision=${{ github.sha }}' -o /tmp/catalog.json
-          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==2 || !Array.isArray(d.events))process.exit(1);"
+          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==2 || !Array.isArray(d.events) || d.discoveryEnabled!==true || d.aiApiConnected!==false)process.exit(1);"
+          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/discovery-report.json?revision=${{ github.sha }}' -o /tmp/discovery.json
+          node -e "const d=require('/tmp/discovery.json'),c=require('/tmp/catalog.json'); if(d.period!==c.catalogId || d.aiUsed!==false || !d.sources?.length)process.exit(1);"
