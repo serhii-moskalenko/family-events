@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T01:52:33.572Z",
+  "publishedAt": "2026-10-10T01:54:23.278Z",
   "timezone": "America/New_York",
   "discoveryEnabled": true,
   "review": {
@@ -76,7 +76,7 @@
         "distance": 12,
         "uniqueness": 9
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -148,7 +148,7 @@
         "name": "Cagle’s Farm",
         "source": "https://caglesfarm.com/"
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -176,7 +176,7 @@
         "distance": 9,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -204,7 +204,7 @@
         "distance": 9,
         "uniqueness": 7
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -232,7 +232,7 @@
         "distance": 15,
         "uniqueness": 6
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -260,7 +260,7 @@
         "distance": 10,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -288,7 +288,7 @@
         "distance": 10,
         "uniqueness": 7
       },
-      "verifiedAt": "2026-10-10T01:52:33.572Z",
+      "verifiedAt": "2026-10-10T01:54:23.278Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -319,7 +319,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -365,7 +365,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -407,7 +407,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -449,7 +449,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "first-baptist-registrations",
@@ -491,7 +491,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "first-baptist-registrations",
@@ -533,7 +533,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "woodstock-first-baptist-events",
@@ -575,7 +575,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "woodstock-first-baptist-events",
@@ -617,7 +617,7 @@
       },
       "ratingMethod": "rules-v2-price-independent",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:52:39.797Z",
+      "verifiedAt": "2026-10-10T01:54:28.839Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "hickory-flat",
