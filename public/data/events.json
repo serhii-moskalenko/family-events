@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T19:27:22Z",
+  "publishedAt": "2026-10-10T19:34:18.186Z",
   "timezone": "America/New_York",
   "coverage": {
     "start": "2026-10-10",
@@ -10,7 +10,7 @@
   },
   "provenance": {
     "producer": "migration",
-    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog. Unverified parser-inferred all-day event quarantined; original record remains in content/discovery snapshot."
+    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog. Unverified parser-inferred all-day event quarantined; original record remains in content/discovery snapshot. Preparation timestamp updated for authenticated local publishing test; no new source research or Work-originated publication."
   },
   "discoveryEnabled": false,
   "aiApiConnected": false,
