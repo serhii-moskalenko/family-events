@@ -8,7 +8,7 @@
   },
   "provenance": {
     "producer": "migration",
-    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog. Unverified parser-inferred all-day event quarantined; original record remains in content/discovery snapshot."
+    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog. Unverified parser-inferred all-day event quarantined; original record remains in content/discovery snapshot. Preparation timestamp updated for authenticated local publishing test; no new source research or Work-originated publication."
   },
   "events": [
     {
@@ -31,7 +31,7 @@
         }
       ],
       "points": {
-        "children": 31,
+        "children": 28,
         "comfort": 15,
         "distance": 12,
         "uniqueness": 9
@@ -696,7 +696,7 @@
       "registration": null
     }
   ],
-  "submittedAt": "2026-10-10T19:27:22Z",
+  "submittedAt": "2026-10-10T19:34:18.186Z",
   "issues": [
     {
       "id": "rising-hills-fall-festival-2026",
