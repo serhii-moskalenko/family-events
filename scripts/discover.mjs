@@ -108,10 +108,11 @@ export async function geocode(address,config,fetcher=fetch){
  if(m.addressComponents?.state!=='GA'||m.addressComponents?.zip!==address.match(/(?:GA|Georgia)\s+(\d{5})\b/i)?.[1]||m.matchedAddress?.match(/^\d+/)?.[0]!==address.match(/^\d+/)?.[0]||!Number.isFinite(lat)||!Number.isFinite(lon))fail('geocode','Geocoder address mismatch');
  return {lat,lon,provider:'US Census Public_AR_Current',matchedAddress:m.matchedAddress};
 }
+export function farmForEvent(event,farms=[]){const farm=farms.find(f=>normalizeAddress(f.address)===normalizeAddress(event.address));return farm?{name:farm.name,source:farm.source}:null;}
 function excerpt(text,include){const relevant=text.split(/(?<=[.!?])\s+/).find(s=>new RegExp(include,'i').test(s))||text;const words=relevant.split(/\s+/);return words.slice(0,24).join(' ')+(words.length>24?'…':'');}
 export function automaticPoints(event,miles,rules){
  const signals=rules.activities.filter(pattern=>new RegExp(pattern,'i').test(event.description+' '+event.name)).length;
- return {children:signals>=3?30:signals===2?26:signals===1?22:12,cost:event.familyPrice===null?0:event.familyPrice===0?25:event.familyPrice<=20?20:event.familyPrice<=40?15:event.familyPrice<=80?10:5,comfort:8,distance:miles===null?0:miles<=5?15:miles<=10?12:miles<=15?9:6,uniqueness:signals>=3?8:signals?6:4};
+ return {children:signals>=3?30:signals===2?26:signals===1?22:12,comfort:8,distance:miles===null?0:miles<=5?15:miles<=10?12:miles<=15?9:6,uniqueness:signals>=3?8:signals?6:4};
 }
 export function extractEventLinks(html,source){
  const $=load(html),base=new URL(source.url),found=new Map();
@@ -150,8 +151,9 @@ export async function discover(config,now=new Date(),fetcher=fetch){
     if(config.allowedPostalCodes&&!config.allowedPostalCodes.includes(raw.address.match(/(?:GA|Georgia)\s+(\d{5})\b/i)?.[1]))return {url,status:'outside-area'};
     if(!geoCache.has(raw.address))geoCache.set(raw.address,geocode(raw.address,config.geocoder,fetcher));const coordinates=await geoCache.get(raw.address),distance=Number.isFinite(coordinates.lat)?milesBetween(config.center,coordinates):null;
     if(distance!==null&&distance>config.radiusMiles)return {url,status:'outside-radius'};
-    const category=source.kind==='church'?'church':/festival|jamboree|trunk.?or.?treat/i.test(raw.name)?'festival':/market/i.test(raw.name)?'market':/farm|nature|pumpkin patch/i.test(raw.name)?'farm':'culture';
-    const e={...raw,sessions,id:'auto-'+createHash('sha256').update(canonical(url)).digest('hex').slice(0,20),category,icon:category==='church'?'⛪':category==='festival'?'🎃':'✳',description:'Автоматично додано з офіційного джерела. Умови участі та програму перевірте за посиланням організатора.',sourceExcerpt:excerpt(raw.description,config.familyRules.include),comfortNote:'Доступність для візочків, туалети, паркування та вікові умови автоматично не підтверджено. Уточніть їх перед поїздкою.',distanceLabel:distance===null?`${coordinates.area} · відстань не виміряно`:`≈ ${distance.toFixed(1)} миль по прямій · маршрут у Maps`,points:automaticPoints(raw,distance,config.familyRules),ratingMethod:'rules-v1',ratingNote:'Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.',verifiedAt:now.toISOString(),verification:'Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.',automation:{sourceId:source.id,adapter:source.adapter,coordinates,distanceMiles:distance===null?null:Math.round(distance*10)/10}};
+    const farm=farmForEvent(raw,config.localFarms);
+    const category=farm?'farm':source.kind==='church'?'church':/festival|jamboree|trunk.?or.?treat/i.test(raw.name)?'festival':/market/i.test(raw.name)?'market':/farm|nature|pumpkin patch/i.test(raw.name)?'farm':'culture';
+    const e={...raw,sessions,...(farm?{farm}:{}),id:'auto-'+createHash('sha256').update(canonical(url)).digest('hex').slice(0,20),category,icon:category==='church'?'⛪':category==='festival'?'🎃':'✳',description:'Автоматично додано з офіційного джерела. Умови участі та програму перевірте за посиланням організатора.',sourceExcerpt:excerpt(raw.description,config.familyRules.include),comfortNote:'Доступність для візочків, туалети, паркування та вікові умови автоматично не підтверджено. Уточніть їх перед поїздкою.',distanceLabel:distance===null?`${coordinates.area} · відстань не виміряно`:`≈ ${distance.toFixed(1)} миль по прямій · маршрут у Maps`,points:automaticPoints(raw,distance,config.familyRules),ratingMethod:'rules-v2-price-independent',ratingNote:'Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.',verifiedAt:now.toISOString(),verification:'Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.',automation:{sourceId:source.id,adapter:source.adapter,coordinates,distanceMiles:distance===null?null:Math.round(distance*10)/10}};
     validateEvent(e);return {url,status:'published',event:e};
    }));
    for(let i=0;i<batch.length;i++){const result=batch[i],url=links[offset+i];if(result.status==='fulfilled'){const {event,...item}=result.value;report.items.push({sourceId:source.id,...item});if(event){events.push(event);summary.published++;}}
@@ -167,7 +169,7 @@ export function mergeCatalog(curated,discovery,config){
  const blocked=new Set(discovery.report.items.filter(i=>i.status==='quarantined'&&['cancelled','fetch'].includes(i.code)).map(i=>canonical(i.url)));
  const result=curated.events.filter(e=>!parsed.has(canonical(e.source))&&!blocked.has(canonical(e.source)));
  for(const e of discovery.events){const old=known.get(canonical(e.source)),verified=curated.events.find(x=>canonical(x.source)===canonical(e.source));
-  result.push({...e,id:old?.id||e.id,...(verified?{name:verified.name,description:verified.description,comfortNote:verified.comfortNote}: {})});}
+  result.push({...e,id:old?.id||e.id,...(verified?{name:verified.name,description:verified.description,comfortNote:verified.comfortNote,...(verified.farm&&normalizeAddress(verified.address)===normalizeAddress(e.address)?{farm:verified.farm}: {})}: {})});}
  const replacedIds=new Set(discovery.events.map(e=>known.get(canonical(e.source))?.id));
  const issues=curated.issues.filter(i=>!replacedIds.has(i.id));
  for(const item of discovery.report.items.filter(i=>i.status==='quarantined'&&blocked.has(canonical(i.url)))){const old=known.get(canonical(item.url));if(old&&!issues.some(i=>i.id===old.id))issues.push({id:old.id,reason:item.reason||item.code});}

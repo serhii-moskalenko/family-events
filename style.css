@@ -4,3 +4,5 @@
 
 .header-tools{display:flex;align-items:center;gap:12px}#theme-toggle{border:1px solid var(--border);border-radius:30px;background:var(--surface);color:var(--text);font-size:12px;padding:9px 13px;min-height:38px;white-space:nowrap}dialog{background:var(--surface)}
 @media(max-width:600px){.header-tools{flex-direction:column;align-items:flex-end;gap:6px}#theme-toggle{font-size:11px;padding:6px 10px;min-height:34px}.brand{min-width:0}.edition{white-space:nowrap}}
+
+.toolbar{flex-wrap:wrap}.toolbar .farm-filter{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text);min-height:36px}.farm-filter input{width:17px;height:17px;margin:0;accent-color:var(--text);cursor:pointer}input:focus-visible{outline:3px solid var(--focus);outline-offset:4px}

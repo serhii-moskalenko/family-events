@@ -27,7 +27,6 @@
       ],
       "points": {
         "children": 28,
-        "cost": 25,
         "comfort": 15,
         "distance": 12,
         "uniqueness": 9
@@ -110,7 +109,6 @@
       ],
       "points": {
         "children": 29,
-        "cost": 12,
         "comfort": 14,
         "distance": 12,
         "uniqueness": 8
@@ -145,7 +143,11 @@
             "November 1 |"
           ]
         }
-      ]
+      ],
+      "farm": {
+        "name": "Cagle’s Farm",
+        "source": "https://caglesfarm.com/"
+      }
     },
     {
       "id": "canton-first-baptist-fall-fest-2026",
@@ -168,7 +170,6 @@
       ],
       "points": {
         "children": 28,
-        "cost": 0,
         "comfort": 17,
         "distance": 14,
         "uniqueness": 8
@@ -186,8 +187,7 @@
           ],
           "includeMetadata": true
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "id": "hickory-flat-trunk-or-treat-2026",
@@ -210,7 +210,6 @@
       ],
       "points": {
         "children": 28,
-        "cost": 0,
         "comfort": 17,
         "distance": 11,
         "uniqueness": 7
@@ -226,8 +225,7 @@
             "free hot dog dinner"
           ]
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "id": "sutallee-trunk-or-treat-2026",
@@ -250,7 +248,6 @@
       ],
       "points": {
         "children": 29,
-        "cost": 25,
         "comfort": 16,
         "distance": 9,
         "uniqueness": 8
@@ -289,7 +286,6 @@
       ],
       "points": {
         "children": 15,
-        "cost": 0,
         "comfort": 16,
         "distance": 9,
         "uniqueness": 7
@@ -305,8 +301,7 @@
             "895 Knox Bridge Hwy"
           ]
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "id": "rising-hills-fall-festival-2026",
@@ -329,7 +324,6 @@
       ],
       "points": {
         "children": 30,
-        "cost": 25,
         "comfort": 19,
         "distance": 13,
         "uniqueness": 9
@@ -372,7 +366,6 @@
       ],
       "points": {
         "children": 28,
-        "cost": 25,
         "comfort": 15,
         "distance": 15,
         "uniqueness": 9
@@ -413,7 +406,6 @@
       ],
       "points": {
         "children": 25,
-        "cost": 0,
         "comfort": 15,
         "distance": 15,
         "uniqueness": 9
@@ -429,8 +421,7 @@
             "225 Reformation Parkway"
           ]
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "id": "makers-market-october-2026",
@@ -453,7 +444,6 @@
       ],
       "points": {
         "children": 12,
-        "cost": 0,
         "comfort": 17,
         "distance": 15,
         "uniqueness": 6
@@ -469,8 +459,7 @@
             "225 Reformation Parkway"
           ]
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "id": "woodstock-skelebration-2026",
@@ -493,7 +482,6 @@
       ],
       "points": {
         "children": 29,
-        "cost": 0,
         "comfort": 14,
         "distance": 10,
         "uniqueness": 8
@@ -515,8 +503,7 @@
             "2,000"
           ]
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "id": "woodstock-ghouls-night-2026",
@@ -539,7 +526,6 @@
       ],
       "points": {
         "children": 25,
-        "cost": 0,
         "comfort": 14,
         "distance": 10,
         "uniqueness": 7
@@ -553,8 +539,7 @@
             "All ages welcome"
           ]
         }
-      ],
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід."
+      ]
     },
     {
       "category": "church",
@@ -577,7 +562,6 @@
       ],
       "points": {
         "children": 18,
-        "cost": 19,
         "comfort": 18,
         "distance": 10,
         "uniqueness": 5
@@ -619,12 +603,10 @@
       ],
       "points": {
         "children": 18,
-        "cost": 0,
         "comfort": 17,
         "distance": 10,
         "uniqueness": 6
       },
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
       "checks": [
         {
           "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3234645",

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {parseChurch,parseStructured,englishDate,timeRange,extractEventLinks,familyEligibility,geocode,milesBetween,discover,mergeCatalog} from '../scripts/discover.mjs';
+import {parseChurch,parseStructured,englishDate,timeRange,extractEventLinks,familyEligibility,geocode,milesBetween,discover,mergeCatalog,automaticPoints,farmForEvent} from '../scripts/discover.mjs';
 import {calendar,validateEvent} from '../src/core.js';
 const config=JSON.parse(await readFile('config/discovery.json','utf8'));
 const fixtures=Object.fromEntries(await Promise.all(['church','canton','multi-day','hickory'].map(async n=>[n,await readFile(`tests/fixtures/discovery/${n}.html`,'utf8')])));
@@ -76,4 +76,24 @@ test('listing page limits and measured radius prevent uncontrolled crawling or d
  const url='https://fbcwoodstock.churchcenter.com/registrations/events/1111';
  const far=await discover({...config,sources:[source]},new Date('2026-10-09'),async u=>u===source.url?{ok:true,text:async()=>'<a href="'+url+'">Dinner</a>'}:u===url?{ok:true,text:async()=>fixtures.church}:{ok:true,json:async()=>({result:{addressMatches:[{coordinates:{y:35,x:-84.4884},addressComponents:{state:'GA',zip:'30188'},matchedAddress:'11905 STATE HWY 92, WOODSTOCK, GA, 30188'}]}})});
  assert.equal(far.events.length,0);assert.equal(far.report.items[0].status,'outside-radius');
+});
+
+test('automatic suitability scores and eligibility do not depend on admission price',()=>{
+ const base={name:'Family Festival',description:'Kids crafts, games, petting zoo and trunk or treat'};
+ const expected={children:30,comfort:8,distance:12,uniqueness:8};
+ for(const familyPrice of [null,0,20,100,1000]){
+  const event={...base,familyPrice};assert.equal(familyEligibility(event,config.familyRules),true);
+  assert.deepEqual(automaticPoints(event,8,config.familyRules),expected);
+ }
+ assert.equal(familyEligibility({name:'Private Dinner',description:'Adults only',familyPrice:0},config.familyRules),false);
+});
+test('automatic farm provenance uses reviewed addresses and survives only matching verified merges',()=>{
+ const farm=config.localFarms[0];
+ assert.deepEqual(farmForEvent({address:farm.address},config.localFarms),{name:farm.name,source:farm.source});
+ assert.equal(farmForEvent({name:'Farm pumpkin festival',address:'11905 Highway 92, Woodstock, GA 30188'},config.localFarms),null);
+ const old={id:'existing-farm',source:'https://example.org/events/visit',address:farm.address,farm:{name:farm.name,source:farm.source}};
+ const parsed={...old,id:'automatic'};delete parsed.farm;
+ const report={sources:[],items:[]};
+ const merged=mergeCatalog({events:[old],issues:[]},{events:[parsed],report},{events:[old]});assert.deepEqual(merged.events[0].farm,old.farm);
+ const moved=mergeCatalog({events:[old],issues:[]},{events:[{...parsed,address:'11905 Highway 92, Woodstock, GA 30188'}],report},{events:[old]});assert.equal(moved.events[0].farm,undefined);
 });

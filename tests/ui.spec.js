@@ -46,3 +46,23 @@ test('automatically discovered card displays provenance and safely escapes the s
  expect(await page.evaluate(()=>window.sourceExecuted)).toBeUndefined();await expect(page.getByText('Автоматична оцінка за правилами',{exact:false})).toBeVisible();await expect(page.getByLabel('Дата події')).toHaveCount(0);
  const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const file=await fs.readFile(await (await downloaded).path(),'utf8');expect(file).toContain('TZID=America/New_York');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);
 });
+
+test('independent local farms checkbox excludes nature events and works in Added',async({page})=>{
+ const farm=catalog.events.find(e=>e.farm);
+ const nature={...farm,id:'park-pumpkins',name:'Гарбузи в міському парку',farm:undefined};
+ await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,events:[...catalog.events,nature]}}));await page.reload();await expect(page.locator('.card')).toHaveCount(3);
+ await page.locator('#category').selectOption('farm');await expect(page.locator('.card')).toHaveCount(2);
+ await page.getByLabel('🌾 Місцеві ферми').check();await expect(page.locator('.card')).toHaveCount(1);await expect(page.locator('.card')).toContainText('Cagle');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.locator('.card summary').click();await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);
+ await page.locator('.card summary').click();await page.getByRole('button',{name:'↩ Повернути до «Усі»'}).click();await page.getByRole('button',{name:/^Усі/}).click();await expect(page.locator('.card')).toHaveCount(1);
+ await page.getByLabel('🌾 Місцеві ферми').uncheck();await expect(page.locator('.card')).toHaveCount(2);await page.locator('#category').selectOption('all');await expect(page.locator('.card')).toHaveCount(3);
+});
+test('price remains visible but cannot change the displayed rating or its breakdown',async({page})=>{
+ const event=catalog.events[0];
+ for(const familyPrice of [0,1000,null]){
+  await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,events:[{...event,familyPrice}]}}));await page.reload();await expect(page.locator('.score b')).toHaveText('85');
+  await page.locator('.card summary').click();await expect(page.locator('.breakdown span')).toHaveCount(4);await expect(page.locator('.breakdown')).not.toContainText('Вартість');
+  await expect(page.locator('.meta')).toContainText(familyPrice===null?'Ціну не підтверджено':familyPrice===0?'Безкоштовно':'$1000 / сім’я');
+ }
+});

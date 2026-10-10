@@ -81,5 +81,12 @@
     "30107",
     "30184"
   ],
-  "notes": "Automatic publication from these four source adapters only. Radius is 20 straight-line miles plus selected local ZIP codes. Two previously reviewed Canton venues are address allowlist exceptions when Census has no match; no numeric distance is asserted for these venues."
+  "notes": "Automatic publication from these four source adapters only. Radius is 20 straight-line miles plus selected local ZIP codes. Two previously reviewed Canton venues are address allowlist exceptions when Census has no match; no numeric distance is asserted for these venues.",
+  "localFarms": [
+    {
+      "name": "Cagle’s Farm",
+      "source": "https://caglesfarm.com/",
+      "address": "362 Stringer Road, Holly Springs, GA 30115"
+    }
+  ]
 }

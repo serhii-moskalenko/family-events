@@ -20,13 +20,12 @@
   "distanceLabel": "Canton · відстань не виміряно",
   "points": {
     "children": 12,
-    "cost": 0,
     "comfort": 8,
     "distance": 0,
     "uniqueness": 4
   },
-  "ratingMethod": "rules-v1",
-  "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
+  "ratingMethod": "rules-v2-price-independent",
+  "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
   "verifiedAt": "2026-10-10T00:46:03.266Z",
   "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and Census distance.",
   "automation": {

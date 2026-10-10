@@ -1,6 +1,6 @@
-export const weights = {children:30,cost:25,comfort:20,distance:15,uniqueness:10};
-export const labels = {children:'Цікавість дітям',cost:'Вартість',comfort:'Комфорт сім’ї',distance:'Відстань',uniqueness:'Унікальність'};
-export function rating(e) { return Object.keys(weights).reduce((n,k)=>n+e.points[k],0); }
+export const weights = {children:30,comfort:20,distance:15,uniqueness:10};
+export const labels = {children:'Цікавість дітям',comfort:'Комфорт сім’ї',distance:'Відстань',uniqueness:'Унікальність'};
+export function rating(e) { return Math.round(Object.keys(weights).reduce((n,k)=>n+e.points[k],0)/Object.values(weights).reduce((n,max)=>n+max,0)*100); }
 export function localDateTime(now = new Date()) {
  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(now);
  const get=k=>parts.find(p=>p.type===k).value;
@@ -16,8 +16,8 @@ export function upcomingEvents(events,now=new Date()) {
  return events.map(e=>({...e,sessions:e.sessions.filter(s=>sessionExpiry(s)>current)})).filter(e=>e.sessions.length);
 }
 export function saveState(storage,state) {try {storage.setItem('family-events:v1',JSON.stringify(state));return true;}catch{return false;}}
-export function visibleEvents(events,selections,tab,category,sort) {
- return events.filter(e=>(selections[e.id]?.status||'all')===tab && (category==='all'||e.category===category)).sort((a,b)=>sort==='price'?(a.familyPrice??Infinity)-(b.familyPrice??Infinity):sort==='date'?a.sessions[0].start.localeCompare(b.sessions[0].start):rating(b)-rating(a));
+export function visibleEvents(events,selections,tab,category,sort,farmsOnly=false) {
+ return events.filter(e=>(selections[e.id]?.status||'all')===tab && (category==='all'||e.category===category) && (!farmsOnly||Boolean(e.farm))).sort((a,b)=>sort==='price'?(a.familyPrice??Infinity)-(b.familyPrice??Infinity):sort==='date'?a.sessions[0].start.localeCompare(b.sessions[0].start):rating(b)-rating(a));
 }
 const escapeICS=s=>String(s).replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/;/g,'\\;').replace(/,/g,'\\,');
 export function foldLine(line) {let result='',bytes=0;for(const c of line){const size=new TextEncoder().encode(c).length;if(bytes+size>75){result+='\r\n ';bytes=1;}result+=c;bytes+=size;}return result;}
@@ -28,6 +28,7 @@ export function calendar(e,session,now=new Date()) {
 }
 export function validateEvent(e) {
  if(!/^[a-z0-9-]+$/.test(e.id)||!e.name||!e.address||!/^https:\/\//.test(e.source)||!e.sessions?.length)throw Error('Invalid event');
+ if(e.farm&&(!e.farm.name||!/^https:\/\//.test(e.farm.source)))throw Error('Invalid farm provenance');
  for(const [k,max] of Object.entries(weights))if(!Number.isFinite(e.points?.[k])||e.points[k]<0||e.points[k]>max)throw Error('Invalid rating');
  for(const s of e.sessions)if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.start)||(s.end!==null&&(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.end)||s.end<=s.start))||Number.isNaN(Date.parse(s.start)))throw Error('Invalid dates');
  if(e.familyPrice!==null&&(!Number.isFinite(e.familyPrice)||e.familyPrice<0))throw Error('Invalid price');

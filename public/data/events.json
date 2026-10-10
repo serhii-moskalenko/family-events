@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T00:56:45.639Z",
+  "publishedAt": "2026-10-10T01:52:33.572Z",
   "timezone": "America/New_York",
   "discoveryEnabled": true,
   "review": {
@@ -72,12 +72,11 @@
       ],
       "points": {
         "children": 28,
-        "cost": 25,
         "comfort": 15,
         "distance": 12,
         "uniqueness": 9
       },
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -141,12 +140,15 @@
       ],
       "points": {
         "children": 29,
-        "cost": 12,
         "comfort": 14,
         "distance": 12,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "farm": {
+        "name": "Cagle’s Farm",
+        "source": "https://caglesfarm.com/"
+      },
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -170,12 +172,11 @@
       ],
       "points": {
         "children": 29,
-        "cost": 25,
         "comfort": 16,
         "distance": 9,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -199,13 +200,11 @@
       ],
       "points": {
         "children": 15,
-        "cost": 0,
         "comfort": 16,
         "distance": 9,
         "uniqueness": 7
       },
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -229,13 +228,11 @@
       ],
       "points": {
         "children": 12,
-        "cost": 0,
         "comfort": 17,
         "distance": 15,
         "uniqueness": 6
       },
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -259,13 +256,11 @@
       ],
       "points": {
         "children": 29,
-        "cost": 0,
         "comfort": 14,
         "distance": 10,
         "uniqueness": 8
       },
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -289,13 +284,11 @@
       ],
       "points": {
         "children": 25,
-        "cost": 0,
         "comfort": 14,
         "distance": 10,
         "uniqueness": 7
       },
-      "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:56:45.639Z",
+      "verifiedAt": "2026-10-10T01:52:33.572Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -320,14 +313,13 @@
       "distanceLabel": "Canton · відстань не виміряно",
       "points": {
         "children": 26,
-        "cost": 0,
         "comfort": 8,
         "distance": 0,
         "uniqueness": 6
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -367,14 +359,13 @@
       "distanceLabel": "Canton · відстань не виміряно",
       "points": {
         "children": 26,
-        "cost": 25,
         "comfort": 8,
         "distance": 0,
         "uniqueness": 6
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -410,14 +401,13 @@
       "distanceLabel": "≈ 3.4 миль по прямій · маршрут у Maps",
       "points": {
         "children": 30,
-        "cost": 25,
         "comfort": 8,
         "distance": 15,
         "uniqueness": 8
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -453,14 +443,13 @@
       "distanceLabel": "Canton · відстань не виміряно",
       "points": {
         "children": 12,
-        "cost": 0,
         "comfort": 8,
         "distance": 0,
         "uniqueness": 4
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "first-baptist-registrations",
@@ -496,14 +485,13 @@
       "distanceLabel": "Canton · відстань не виміряно",
       "points": {
         "children": 22,
-        "cost": 0,
         "comfort": 8,
         "distance": 0,
         "uniqueness": 6
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "first-baptist-registrations",
@@ -539,14 +527,13 @@
       "distanceLabel": "≈ 10.2 миль по прямій · маршрут у Maps",
       "points": {
         "children": 12,
-        "cost": 20,
         "comfort": 8,
         "distance": 9,
         "uniqueness": 4
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "woodstock-first-baptist-events",
@@ -582,14 +569,13 @@
       "distanceLabel": "≈ 10.2 миль по прямій · маршрут у Maps",
       "points": {
         "children": 12,
-        "cost": 0,
         "comfort": 8,
         "distance": 9,
         "uniqueness": 4
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "woodstock-first-baptist-events",
@@ -625,14 +611,13 @@
       "distanceLabel": "≈ 5.1 миль по прямій · маршрут у Maps",
       "points": {
         "children": 22,
-        "cost": 0,
         "comfort": 8,
         "distance": 12,
         "uniqueness": 6
       },
-      "ratingMethod": "rules-v1",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:56:51.342Z",
+      "ratingMethod": "rules-v2-price-independent",
+      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
+      "verifiedAt": "2026-10-10T01:52:39.797Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "hickory-flat",

@@ -61,7 +61,7 @@ The published `catalogId` is the year-month in America/New_York. Only upcoming c
 
 Apple Calendar generates an RFC 5545 `.ics` download with CRLF, escaping, UTF-8 folding, stable occurrence UID, UTC DTSTAMP, `TZID=America/New_York`, and DAYLIGHT/STANDARD definitions. Only multi-date events show a selector. Downloading marks the event Added; **the site cannot observe or guarantee import into Apple Calendar**. The user must open the file and confirm import. Added cards are green; restoring returns the event to All. Rejection uses a confirmation dialog.
 
-Rating is the sum of five editorial components: children's interest 0–30, cost 0–25, family comfort 0–20, distance 0–15, uniqueness 0–10. Each card exposes the complete breakdown. Family price assumes 2 adults and 2 children aged 3+, with extras excluded and described. Unknown prices receive 0/25 for cost and an explicitly labeled preliminary score; this does not imply paid or free admission. It is not a visitor-review score.
+Rating uses four components: children's interest 0–30, family comfort 0–20, distance 0–15, uniqueness 0–10. The sum out of 75 is normalized to 0–100 with `Math.round(sum / 75 * 100)`. Price never contributes to the score or rating sort, including unknown or free admission. Each card exposes the four raw components. Family price remains separate information for 2 adults and 2 children aged 3+, with extras excluded and described; unknown prices stay unknown. Explicit sorting by price remains available. It is not a visitor-review score.
 
 ## Tests
 
@@ -73,6 +73,10 @@ White/light and black/dark themes use CSS color tokens, including form controls,
 
 ## No-AI rating rules
 
-Automatically imported cards carry a `rules-v1` label. Children: 12 points for a general family invitation, 22 for one matched activity group, 26 for two, 30 for three or more. Cost: unknown 0, free 25, family cost up to $20 = 20, up to $40 = 15, up to $80 = 10, higher = 5. Comfort is conservatively 8/20 because accessibility, parking and toilets are not automatically verified. Distance: up to 5/10/15/20 straight-line miles = 15/12/9/6 points; unmeasured approved venues = 0. Uniqueness is a simple activity-count proxy: 4/6/8 points. These are transparent heuristics, not visitor reviews or AI assessments. The original editorial weights remain 30/25/20/15/10. Unknown prices are labeled preliminary.
+Automatically imported cards carry a `rules-v2-price-independent` label. Children: 12 points for a general family invitation, 22 for one matched activity group, 26 for two, 30 for three or more. Comfort is conservatively 8/20 because accessibility, parking and toilets are not automatically verified. Distance: up to 5/10/15/20 straight-line miles = 15/12/9/6 points; unmeasured approved venues = 0. Uniqueness is a simple activity-count proxy: 4/6/8 points. These are transparent heuristics, not visitor reviews or AI assessments. The four raw component limits remain 30/20/15/10 and are normalized from 75 to 100. The price parser only supplies displayed facts and never affects family eligibility or rating. There is no minimum rating threshold for publishing an otherwise eligible event.
 
 No AI credentials, translation API or paid event-search API is required. Automatic publication has been tested with live pages from all four enabled sources and with an offline new-November-event test that has no corresponding curated record. The pipeline calls no OpenAI service.
+
+## Local farms filter
+
+The independent «Місцеві ферми» checkbox combines with category, tab and sorting. It selects events with verified `farm` provenance, not any pumpkin-themed festival or any event in the broad farm/nature category. The current verified farm is Cagle’s Farm; its dated program is already curated. `config/discovery.json.localFarms` provides reviewed exact addresses for automatic imports to recognize the same venue. Curated metadata is retained on merge only when the verified event address still matches. A farm listing without confirmed event dates is not turned into an event.

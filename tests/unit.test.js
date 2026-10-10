@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {calendar,rating,readState,saveState,visibleEvents,monthId,upcomingEvents,validateEvent,foldLine} from '../src/core.js';import {refresh,verify,sourceText} from '../scripts/refresh.mjs';
 const fullConfig=JSON.parse(await readFile('config/sources.json','utf8'));const config={...fullConfig,events:fullConfig.events.slice(0,2)},e=config.events[0],farm=config.events[1];
-test('ratings follow all five weighted limits',()=>{assert.equal(rating(e),89);config.events.forEach(validateEvent);assert.throws(()=>validateEvent({...e,points:{...e.points,children:31}}));});
+test('ratings normalize four components and ignore every price',()=>{assert.equal(rating(e),85);for(const familyPrice of [null,0,20,100,1000])assert.equal(rating({...e,familyPrice,points:{...e.points,cost:familyPrice===null?0:25}}),85);assert.equal(rating({...e,points:{children:30,comfort:20,distance:15,uniqueness:10}}),100);assert.equal(rating({...e,points:{children:0,comfort:0,distance:0,uniqueness:0}}),0);config.events.forEach(validateEvent);assert.throws(()=>validateEvent({...e,points:{...e.points,children:31}}));});
 test('month boundary uses New York in summer and winter',()=>{assert.equal(monthId(new Date('2026-10-01T03:59:00Z')),'2026-09');assert.equal(monthId(new Date('2026-10-01T04:00:00Z')),'2026-10');assert.equal(monthId(new Date('2026-12-01T04:59:00Z')),'2026-11');assert.equal(monthId(new Date('2026-12-01T05:00:00Z')),'2026-12');});
 test('selection persists only for the published month, corrupted or unavailable storage is safe',()=>{let value;const storage={getItem:()=>value,setItem:(k,v)=>value=v};const s={period:'2026-10',selections:{a:{status:'added'}}};assert.ok(saveState(storage,s));assert.deepEqual(readState(storage,s.period),s);assert.deepEqual(readState(storage,'2026-11').selections,{});value='{';assert.deepEqual(readState(storage,s.period).selections,{});assert.equal(saveState({setItem:()=>{throw Error();}},s),false);});
 test('tab/category filters and sorts work',()=>{assert.deepEqual(visibleEvents(config.events,{},'all','farm','rating'),[farm]);assert.deepEqual(visibleEvents(config.events,{[e.id]:{status:'rejected'}},'rejected','all','date'),[e]);assert.equal(visibleEvents(config.events,{},'all','all','price')[0].id,e.id);assert.equal(visibleEvents(config.events,{},'all','all','rating')[0].id,e.id);});
@@ -25,4 +25,14 @@ test('source scan collects only configured HTTPS hosts and never publishes candi
  const report=await scanSources({sources:[source],notes:'Review required'},async()=>({ok:true,text:async()=>html}));
  assert.equal(report.autoPublishCandidates,false);assert.equal(report.aiApiConnected,false);assert.equal(report.sources[0].candidates[0].status,'requires-editorial-review');
  const failed=await scanSources({sources:[source]},async()=>({ok:false,status:403}));assert.equal(failed.sources[0].status,'unavailable');assert.deepEqual(failed.sources[0].candidates,[]);
+});
+
+test('local farms filter requires provenance and combines with category, tabs and sorting',()=>{
+ const park={...farm,id:'park-pumpkins',name:'Pumpkin day in a city park',farm:undefined};
+ const festival={...farm,id:'farm-festival',category:'festival'};
+ assert.deepEqual(visibleEvents([park,farm,festival],{},'all','all','rating',true),[farm,festival]);
+ assert.deepEqual(visibleEvents([park,farm,festival],{},'all','farm','rating',true),[farm]);
+ assert.deepEqual(visibleEvents([park,farm],{[farm.id]:{status:'added'}},'added','all','price',true),[farm]);
+ assert.deepEqual(visibleEvents([park],{},'all','farm','rating',true),[]);
+ assert.throws(()=>validateEvent({...farm,farm:{name:'Unknown',source:'javascript:alert(1)'}}));
 });

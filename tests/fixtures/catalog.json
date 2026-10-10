@@ -27,7 +27,6 @@
       ],
       "points": {
         "children": 28,
-        "cost": 25,
         "comfort": 15,
         "distance": 12,
         "uniqueness": 9
@@ -96,13 +95,16 @@
       ],
       "points": {
         "children": 29,
-        "cost": 12,
         "comfort": 14,
         "distance": 12,
         "uniqueness": 8
       },
       "verifiedAt": "2026-10-09T22:29:37.537Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
+      "farm": {
+        "name": "Cagle’s Farm",
+        "source": "https://caglesfarm.com/"
+      }
     }
   ],
   "issues": []
