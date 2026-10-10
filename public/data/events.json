@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T17:27:19.521Z",
+  "publishedAt": "2026-10-10T17:29:13.313Z",
   "timezone": "America/New_York",
   "coverage": {
     "start": "2026-10-10",
@@ -48,7 +48,7 @@
       "admissionPrice": null,
       "additionalCosts": "Вхід безкоштовний. Їжа та покупки оплачуються окремо.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
       ],
       "origin": "legacy-editorial",
       "rating": 85
@@ -125,7 +125,7 @@
       "admissionPrice": null,
       "additionalCosts": "$15 за людину віком від 3 років: $60 за 2 дорослих + 2 дітей (3+). Гарбузи окремо; поїздка до озера з багаттям — ще $5 за людину.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
       ],
       "origin": "legacy-editorial",
       "rating": 84
@@ -162,7 +162,7 @@
       "admissionPrice": null,
       "additionalCosts": "Організатор прямо вказує, що захід безкоштовний для громади.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
       ],
       "origin": "legacy-editorial",
       "rating": 83
@@ -199,9 +199,9 @@
       "admissionPrice": null,
       "additionalCosts": "Тариф не опубліковано. Організатор просить принести гарнір або десерт; м’ясні страви забезпечує церква.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified.",
-        "End time is unverified for one or more sessions."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено.",
+        "Час завершення для однієї або кількох дат не підтверджено."
       ],
       "origin": "legacy-editorial",
       "rating": 63
@@ -238,8 +238,8 @@
       "admissionPrice": null,
       "additionalCosts": "Вартість входу не опубліковано. Покупки у майстрів оплачуються окремо.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-editorial",
       "rating": 67
@@ -276,8 +276,8 @@
       "admissionPrice": null,
       "additionalCosts": "Міська сторінка не вказує тариф входу для гостей. $75 на сторінці реєстрації — плата за місце продавця, не сімейний квиток.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-editorial",
       "rating": 81
@@ -314,8 +314,8 @@
       "admissionPrice": null,
       "additionalCosts": "Окремий тариф участі не вказано. Покупки та їжа оплачуються за тарифами магазинів і ресторанів.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-editorial",
       "rating": 75
@@ -366,8 +366,8 @@
       "admissionPrice": null,
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-discovery",
       "rating": 53
@@ -422,7 +422,7 @@
       "admissionPrice": null,
       "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
       ],
       "origin": "legacy-discovery",
       "rating": 53
@@ -473,7 +473,7 @@
       "admissionPrice": null,
       "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
       ],
       "origin": "legacy-discovery",
       "rating": 81
@@ -524,8 +524,8 @@
       "admissionPrice": null,
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-discovery",
       "rating": 32
@@ -576,8 +576,8 @@
       "admissionPrice": null,
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-discovery",
       "rating": 48
@@ -628,7 +628,7 @@
       "admissionPrice": null,
       "additionalCosts": "Розрахунок за 4 страви Café по $5. Інші варіанти меню, добавки й доступність замовлення перевірте в організатора.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
       ],
       "origin": "legacy-discovery",
       "rating": 44
@@ -679,8 +679,8 @@
       "admissionPrice": null,
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-discovery",
       "rating": 44
@@ -731,8 +731,8 @@
       "admissionPrice": null,
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
-        "Individual admission is not separately structured; consult priceNote and official source.",
-        "Family admission cost is unverified."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вартість входу для сім’ї не підтверджено."
       ],
       "origin": "legacy-discovery",
       "rating": 64
