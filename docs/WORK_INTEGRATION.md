@@ -1,5 +1,7 @@
 # Monthly publishing from ChatGPT Work
 
+Latest implementation results and remaining setup: [integration-results.md](integration-results.md). Historical production evidence below describes earlier commits; the latest catalog has 14 records after quarantining an unverified time.
+
 ## Status and authentication evidence (October 10, 2026)
 
 The app supports validated monthly input and GitHub Pages publication. **Unattended publication from ChatGPT Work is not verified or operational.**

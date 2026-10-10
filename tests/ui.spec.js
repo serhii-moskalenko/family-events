@@ -1,5 +1,6 @@
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
+import {upcomingEvents,visibleEvents} from '../src/core.js';
 const catalog=JSON.parse(await fs.readFile('tests/fixtures/catalog.json','utf8'));
 test.beforeEach(async({page})=>{await page.route('**/data/events.json',route=>route.fulfill({json:catalog}));await page.clock.setFixedTime(new Date('2026-10-09T12:00:00Z'));await page.goto('/');await expect(page.locator('.card')).toHaveCount(2);});
 test('mobile catalogue, categories, details, calendar and persistent selections',async({page})=>{expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.locator('#category').selectOption('farm');await expect(page.locator('.card')).toHaveCount(1);await page.locator('.card summary').click();await expect(page.getByLabel('Дата події')).toBeVisible();await page.getByLabel('Дата події').selectOption('2026-10-10T10:00');const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const download=await downloadPromise;expect(download.suggestedFilename()).toContain('2026-10-10.ics');const file=await fs.readFile(await download.path(),'utf8');expect(file).toContain('DTSTART;TZID=America/New_York:20261010T100000');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.locator('.card summary').click();await page.getByRole('button',{name:'↩ Повернути до «Усі»'}).click();await page.getByRole('button',{name:/^Усі/}).click();await expect(page.locator('.card')).toHaveCount(2);});
@@ -74,11 +75,16 @@ test('malformed new-month response preserves selections and saved month',async({
  await expect(page.getByText('Каталог тимчасово недоступний')).toBeVisible();
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('family-events:v1')))).toEqual(saved);
 });
-test('real generated monthly JSON loads through the existing website endpoint',async({page})=>{
- await page.unroute('**/data/events.json');await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));await page.reload();
- const published=JSON.parse(await fs.readFile('public/data/events.json','utf8'));await expect(page.locator('.card')).toHaveCount(published.events.length);
- await page.locator('#sort').selectOption('price');await expect(page.locator('.card').first()).toContainText('Безкоштовно');
- await page.locator('#sort').selectOption('date');await expect(page.locator('.card').first()).toHaveAttribute('data-start','2026-10-10T10:00');
+test('real generated monthly JSON loads and sorts without assuming a particular month or event list',async({page})=>{
+ const published=JSON.parse(await fs.readFile('public/data/events.json','utf8'));
+ const instant=new Date(published.coverage.start+'T05:00:00Z');
+ const available=upcomingEvents(published.events,instant);
+ await page.unroute('**/data/events.json');await page.clock.setFixedTime(instant);await page.reload();
+ await expect(page.locator('#verified')).toContainText('Щомісячний каталог');
+ await expect(page.locator('.card')).toHaveCount(available.length);
+ if(!available.length){await expect(page.getByText('Подій за цими умовами немає')).toBeVisible();return;}
+ await page.locator('#sort').selectOption('price');await expect(page.locator('.card').first()).toHaveAttribute('data-id',visibleEvents(available,{},'all','all','price')[0].id);
+ await page.locator('#sort').selectOption('date');await expect(page.locator('.card').first()).toHaveAttribute('data-start',visibleEvents(available,{},'all','all','date')[0].sessions[0].start);
 });
 
 test('switching from the superseded weekly app retains same-month selections',async({page})=>{await page.evaluate(id=>localStorage.setItem('family-events:v1',JSON.stringify({period:'week-2026-10-10',selections:{[id]:{status:'added'}}})),catalog.events[0].id);await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('family-events:v1')).period)).toBe('2026-10');});
