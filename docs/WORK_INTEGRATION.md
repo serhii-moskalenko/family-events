@@ -94,3 +94,11 @@ Start a human-initiated Work task using the instruction below. Verify its GitHub
 - [Authenticated GitHub Actions invalid-input test](https://github.com/serhii-moskalenko/family-events/actions/runs/38071883063): a children score of 31 failed validation before build or deployment; valid input was restored afterward.
 - [Authenticated GitHub Actions valid-input test](https://github.com/serhii-moskalenko/family-events/actions/runs/38071932496): schema validation, all 35 unit tests, build and all 14 browser tests passed on the implementation branch; deployment was intentionally skipped for this non-main run.
 - Concurrent weekly changes were reconciled after the user explicitly selected monthly publishing. Weekly runtime commands were retired and their documentation retained under docs/archive. [PR #1](https://github.com/serhii-moskalenko/family-events/pull/1) installs the monthly pipeline. Work cloud publishing success remains unverified.
+
+## Confirmed production publication
+
+The user selected monthly publishing, [PR #1](https://github.com/serhii-moskalenko/family-events/pull/1) was merged, and the monthly production workflow succeeded. Final application commit: `60d3a38468ba8641dde7718866cc3535945fad58`. [Production run 38079188409](https://github.com/serhii-moskalenko/family-events/actions/runs/38079188409) passed validation, **38 unit tests**, build, **15 browser tests**, Pages deployment and exact live-catalog comparison.
+
+An additional browser test on the real Pages URL confirmed October's monthly heading, 15 total events, expired-event filtering (14 available at test time), no overflow at 390px, light/dark switching, same-month weekly-to-monthly selection migration, rejection/restore, persistent Added state and an actual America/New_York calendar download with daylight/standard rules. No browser page errors occurred. Live catalog SHA256: `3e20feb56ef67d8a2658d75ec05b3ab538350547ab64adaee67fd85a6792f99a`, exactly matching the Actions artifact.
+
+This publication used the authenticated local GitHub CLI and GitHub Actions. It confirms the production website pipeline, **not** Work Cloud Browser authentication or unattended Work publication. The connector still failed both write tests with 403. The required real Work test above remains outstanding.
