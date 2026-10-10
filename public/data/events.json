@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T19:14:16.566Z",
+  "publishedAt": "2026-10-10T19:27:22Z",
   "timezone": "America/New_York",
   "coverage": {
     "start": "2026-10-10",
@@ -10,11 +10,16 @@
   },
   "provenance": {
     "producer": "migration",
-    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog."
+    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog. Unverified parser-inferred all-day event quarantined; original record remains in content/discovery snapshot."
   },
   "discoveryEnabled": false,
   "aiApiConnected": false,
-  "issues": [],
+  "issues": [
+    {
+      "id": "rising-hills-fall-festival-2026",
+      "reason": "Архівний парсер підставив 00:00–23:59; точний час не підтверджено. Work має перевірити час перед поверненням події."
+    }
+  ],
   "events": [
     {
       "id": "great-pumpkin-fest-2026",
@@ -48,9 +53,11 @@
       "admissionPrice": null,
       "additionalCosts": "Вхід безкоштовний. Їжа та покупки оплачуються окремо.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 85
     },
     {
@@ -125,9 +132,11 @@
       "admissionPrice": null,
       "additionalCosts": "$15 за людину віком від 3 років: $60 за 2 дорослих + 2 дітей (3+). Гарбузи окремо; поїздка до озера з багаттям — ще $5 за людину.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 84
     },
     {
@@ -162,9 +171,11 @@
       "admissionPrice": null,
       "additionalCosts": "Організатор прямо вказує, що захід безкоштовний для громади.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 83
     },
     {
@@ -201,9 +212,11 @@
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
         "Вартість входу для сім’ї не підтверджено.",
-        "Час завершення для однієї або кількох дат не підтверджено."
+        "Час завершення для однієї або кількох дат не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 63
     },
     {
@@ -239,9 +252,11 @@
       "additionalCosts": "Вартість входу не опубліковано. Покупки у майстрів оплачуються окремо.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 67
     },
     {
@@ -277,9 +292,11 @@
       "additionalCosts": "Міська сторінка не вказує тариф входу для гостей. $75 на сторінці реєстрації — плата за місце продавця, не сімейний квиток.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 81
     },
     {
@@ -315,9 +332,11 @@
       "additionalCosts": "Окремий тариф участі не вказано. Покупки та їжа оплачуються за тарифами магазинів і ресторанів.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-editorial",
+      "registration": null,
       "rating": 75
     },
     {
@@ -367,9 +386,11 @@
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 53
     },
     {
@@ -422,61 +443,12 @@
       "admissionPrice": null,
       "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 53
-    },
-    {
-      "name": "Безкоштовний фестиваль · Rising Hills Church",
-      "description": "Надувні розваги, поні, контактний зоопарк, поїздки на возі, костюмовані персонажі й Trunk or Treat. Відкритий фестиваль для громади.",
-      "venue": "Rising Hills Church",
-      "address": "3693 Hickory Flat Hwy., Canton, GA 30115",
-      "source": "https://explorecantonga.com/events/free-community-wide-fall-festival/",
-      "sessions": [
-        {
-          "start": "2026-10-24T00:00",
-          "end": "2026-10-24T23:59"
-        }
-      ],
-      "familyPrice": 0,
-      "priceNote": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
-      "id": "rising-hills-fall-festival-2026",
-      "category": "festival",
-      "icon": "🎃",
-      "sourceExcerpt": "Free community-wide Fall Festival featuring free food, bounce houses, pony rides, petting zoo, hay rides, costume characters, Trunk-or-Treat, vendors and a Low Sensory festival…",
-      "comfortNote": "Заявлено окрему зону зі зниженим сенсорним навантаженням для дітей з особливими потребами. Уточніть її розташування в організатора.",
-      "distanceLabel": "≈ 3.4 миль по прямій · маршрут у Maps",
-      "points": {
-        "children": 30,
-        "comfort": 8,
-        "distance": 15,
-        "uniqueness": 8
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "canton-tourism",
-        "adapter": "canton-jsonld",
-        "coordinates": {
-          "lat": 34.199106940317,
-          "lon": -84.451297545113,
-          "provider": "US Census Public_AR_Current",
-          "matchedAddress": "3693 HICKORY FLAT HWY, CANTON, GA, 30115"
-        },
-        "distanceMiles": 3.4
-      },
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=3693%20Hickory%20Flat%20Hwy.%2C%20Canton%2C%20GA%2030115",
-      "admissionPrice": null,
-      "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 81
     },
     {
       "name": "\"Next Steps\" Class (Church & Membership Info)",
@@ -525,9 +497,11 @@
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 32
     },
     {
@@ -577,9 +551,11 @@
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 48
     },
     {
@@ -628,9 +604,11 @@
       "admissionPrice": null,
       "additionalCosts": "Розрахунок за 4 страви Café по $5. Інші варіанти меню, добавки й доступність замовлення перевірте в організатора.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
+        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 44
     },
     {
@@ -680,9 +658,11 @@
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 44
     },
     {
@@ -732,9 +712,11 @@
       "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
       "uncertaintyNotes": [
         "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
+        "Вартість входу для сім’ї не підтверджено.",
+        "Вимоги реєстрації не підтверджено."
       ],
       "origin": "legacy-discovery",
+      "registration": null,
       "rating": 64
     }
   ]

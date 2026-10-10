@@ -75,10 +75,10 @@ Example (synthetic; replace with verified facts, do not publish this example):
 4. Use **Commit changes → Create a new branch and start a pull request**, with a descriptive unique branch name. Do not force-push. Wait for the **Validate, test and deploy monthly catalog / build** check. A PR tests and builds but does not deploy. If this workflow is absent on main, finish installation first.
 5. If validation fails, inspect the Actions log, fix the input on the branch, and wait for the check again. Do not bypass checks or change the schema to fit bad facts. Compare against the latest main before merging so another update is not lost.
 6. After green checks and any required user confirmation, merge the PR to `main` through GitHub. This triggers production validation, testing, build and deployment. Direct commits to main also trigger it, but the reviewed PR procedure is preferred. No extra dispatch is required.
-7. Open Actions, find the run for the merge commit, and verify both build and deploy are green, including **Verify exact live catalog**. Then open `https://serhii-moskalenko.github.io/family-events/data/events.json` and confirm `catalogId`, `coverage`, provenance and event IDs; open the website and spot-check cards and downloads. A Git commit alone is not proof of publication.
+7. Open Actions, find the run for the merge commit, and verify both build and deploy are green, including **Verify exact live catalog** and the successful **save-catalog** job. Then open `https://serhii-moskalenko.github.io/family-events/data/events.json` and confirm `catalogId`, `coverage`, provenance and event IDs; open the website and spot-check cards and downloads. A Git commit alone is not proof of publication.
 8. Report the PR, commit, Actions run, active month and website. Only then say published. If a future month's PR is merged early, report **staged**, not active: the generator selects the newest submitted month at or before the current New York month. A first-day schedule activates staged content; if delayed, the owner can run Actions → this workflow → Run workflow on main. GitHub may disable schedules after inactivity; manual dispatch or a push also builds. Missing future catalogs keep the previous edition, whose expired events are hidden.
 
-Build failure never deploys an artifact, so the prior live catalog and browser selections remain. Selections saved by the superseded weekly app migrate to their calendar month. Selections persist for all same-month successful updates and reset only after a valid different-month catalog loads. Deployment or post-deploy verification failure requires checking the live site: post-deploy failure can mean the artifact is live but propagation or verification failed; there is no claim of automatic rollback. The workflow writes no commits and cannot trigger recursive deployments. GitHub Pages publishing source must remain **GitHub Actions**.
+Build failure never deploys an artifact, so the prior live catalog and browser selections remain. Selections saved by the superseded weekly app migrate to their calendar month. Selections persist for all same-month successful updates and reset only after a valid different-month catalog loads. Deployment or post-deploy verification failure requires checking the live site: post-deploy failure can mean the artifact is live but propagation or verification failed; there is no claim of automatic rollback. After build and deploy succeed, the save-catalog job saves only generated public/data/events.json, using the Actions token and [skip ci]. It checks that main has not advanced; failures before successful deployment never save generated output. This does not trigger recursive deployments. GitHub Pages publishing source must remain **GitHub Actions**.
 
 ## Required real Work test
 
@@ -102,3 +102,35 @@ The user selected monthly publishing, [PR #1](https://github.com/serhii-moskalen
 An additional browser test on the real Pages URL confirmed October's monthly heading, 15 total events, expired-event filtering (14 available at test time), no overflow at 390px, light/dark switching, same-month weekly-to-monthly selection migration, rejection/restore, persistent Added state and an actual America/New_York calendar download with daylight/standard rules. No browser page errors occurred. Live catalog SHA256: `3e20feb56ef67d8a2658d75ec05b3ab538350547ab64adaee67fd85a6792f99a`, exactly matching the Actions artifact.
 
 This publication used the authenticated local GitHub CLI and GitHub Actions. It confirms the production website pipeline, **not** Work Cloud Browser authentication or unattended Work publication. The connector still failed both write tests with 403. The required real Work test above remains outstanding.
+
+
+## Validation and publishing additions
+
+The existing schemaVersion 1 input format remains authoritative; generated frontend schemaVersion remains 2. Existing `coverage`, `provenance`, text admissionPrice and per-event `origin` are preserved.
+
+Additional optional input keys in the exact [schema](../content/monthly.schema.json):
+
+- `submittedAt`: actual UTC ISO preparation timestamp. Work should include it in all new submissions. The generator uses it for publishedAt, giving reproducible output for unchanged research. It does not update source verifiedAt or claim sources were rechecked. Legacy input without it uses actual build time.
+- `issues`: array of `{ "id": "stable-id-if-known", "reason": "Ukrainian explanation" }`; id is optional. These quarantined records remain separate from visible events. October's original inferred 00:00–23:59 event is omitted here and remains archived in content/discovery.
+- `emptyReason`: nonempty explanation required when events is empty. A missing month's file retains the previous month, rather than fabricating an empty new edition.
+- Event `registration`: null when unknown, otherwise `{ "required": true, "url": "https://official.example/register", "note": "Verified conditions" }`. The three object fields are required, but each may be null when unknown. Only verified URLs and requirements may be stated. Registration appears separately in expanded cards. Existing additionalCosts remains text or null.
+
+Schema and semantic checks reject unsafe icons/credential-bearing URLs, impossible/future verification timestamps, verification later than submittedAt, duplicate source/place occurrences, repeated available dates, changing an ID for the same canonical source/name/address, an older month, and stale same-month submittedAt. Matching identity is a guard rather than universal event matching: Work must still reuse IDs when translating a name or changing an official source URL. One event may contain up to 31 available dates. Distinct events on the same day need separate IDs. Catalog limit: 250 events and 750 KB. Unknown registration, price, city or ending time needs uncertainty notes.
+
+GitHub's authenticated browser editor is described in [GitHub Docs](https://docs.github.com/en/repositories/working-with-files/managing-files/creating-new-files). A connector write or browser commit must use the exact month file and latest main contents. The browser route remains pending a real Work acceptance test; local keyring authentication is separate.
+
+### Optional authorized CLI fallback
+
+If an eligible Work task has explicitly enabled [Local computer access with Work Cloud](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security), its authorized connected executor may use the local helper. This requires an available computer and a real test in that task. It is not autonomous cloud publishing proof. Alternatively the owner may run the helper manually.
+
+Node 22+, npm ci and GitHub CLI authorized for this repository are required. Keep credentials in GitHub's secure sign-in/OS keyring, never in chat or files.
+
+```sh
+npm run validate
+npm run publish:monthly -- content/monthly/2026-10.json --dry-run
+npm run publish:monthly -- content/monthly/2026-10.json --wait
+```
+
+The helper fixes repository, main and the month-derived content path; requires submittedAt ≤24 hours old and the current NY month; checks published and pending versions; uses the target blob SHA (or no SHA when creating a new month); and waits for the exact push workflow plus matching live hash. A dry run contacts no GitHub service. GitHub UI/connector submissions are validated in Actions without the helper's freshness restriction, so valid legacy input can still be rebuilt. When preparing an updated catalog, read the latest input, preserve unrelated events, update submittedAt truthfully and never move verifiedAt forward without actual checking.
+
+Add to the Work instruction above: include the real submittedAt, supply issues/emptyReason when applicable, and include registration when verified or null with uncertainty notes. Record the mechanism and real commit/run/live result. [Current integration evidence](integration-results.md) separates local results from Work cloud capabilities. No recurring Work task was created or changed here.

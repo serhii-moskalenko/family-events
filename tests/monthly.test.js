@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {readState} from '../src/core.js';
 import {coverageFor,validateCatalog,generateCatalog,publishCatalog,buildMonthly} from '../scripts/catalog.mjs';
-const october=JSON.parse(await readFile('content/monthly/2026-10.json','utf8'));
+const october=JSON.parse(await readFile('tests/fixtures/monthly-input.json','utf8'));
 const copy=()=>structuredClone(october);
 function november(){const c=copy();c.catalogId='2026-11';c.coverage=coverageFor(c.catalogId);c.provenance={producer:'chatgpt-work',notes:'Synthetic test, not a researched publication'};c.events=[{...c.events[0],origin:'chatgpt-work',sessions:[{start:'2026-11-01T10:00',end:null},{start:'2026-11-30T10:00',end:'2026-11-30T12:00'}]}];return c;}
 test('October 10–31 and calendar-variable months including leap year',()=>{validateCatalog(october);assert.deepEqual(october.coverage,{start:'2026-10-10',end:'2026-10-31'});validateCatalog(november());assert.deepEqual(coverageFor('2026-11'),{start:'2026-11-01',end:'2026-11-30'});assert.equal(coverageFor('2026-12').end,'2026-12-31');assert.equal(coverageFor('2027-01').end,'2027-01-31');assert.equal(coverageFor('2028-02').end,'2028-02-29');});
@@ -19,8 +19,8 @@ test('credential-bearing sources, non-Maps links and ambiguous DST folds are rej
  for(const mutate of [c=>c.events[0].source='https://secret:token@example.org/event',c=>c.events[0].mapsUrl='https://example.org/map']){const c=copy();mutate(c);assert.throws(()=>validateCatalog(c));}
  const c=november();c.events[0].sessions=[{start:'2026-11-01T01:30',end:null}];assert.throws(()=>validateCatalog(c));
 });
-test('workflow validates before testing and deploys only main, without discovery or write-back commits',async()=>{
- const workflow=await readFile('.github/workflows/pages.yml','utf8');assert.ok(workflow.indexOf('npm run validate')<workflow.indexOf('npm test'));assert.ok(workflow.indexOf('npm run test:e2e')<workflow.indexOf('actions/upload-pages-artifact'));assert.ok(!workflow.includes('npm run refresh'));assert.ok(!workflow.includes('npm run scan'));assert.ok(!workflow.includes('git push'));assert.match(workflow,/needs: build/);assert.match(workflow,/github.ref == 'refs\/heads\/main'/);
+test('workflow validates before testing and deploys only main, without discovery or recursive publication',async()=>{
+ const workflow=await readFile('.github/workflows/pages.yml','utf8');assert.ok(workflow.indexOf('npm run validate')<workflow.indexOf('npm test'));assert.ok(workflow.indexOf('npm run test:e2e')<workflow.indexOf('actions/upload-pages-artifact'));assert.ok(!workflow.includes('npm run refresh'));assert.ok(!workflow.includes('npm run scan'));assert.match(workflow,/needs: \[build, deploy\]/);assert.match(workflow,/\[skip ci\]/);assert.match(workflow,/needs: build/);assert.match(workflow,/github.ref == 'refs\/heads\/main'/);
 });
 
 test('monthly restoration preserves same-month selections saved by the superseded weekly app',()=>{const selections={a:{status:'added'},b:{status:'rejected'}};const storage={getItem:()=>JSON.stringify({period:'week-2026-10-10',selections})};assert.deepEqual(readState(storage,'2026-10'),{period:'2026-10',selections});assert.deepEqual(readState(storage,'2026-11').selections,{});});

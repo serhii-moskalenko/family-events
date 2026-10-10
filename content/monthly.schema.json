@@ -91,7 +91,8 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "maxLength": 120
           },
           "name": {
             "type": "string",
@@ -122,8 +123,21 @@
             "minLength": 1
           },
           "icon": {
-            "type": "string",
-            "minLength": 1
+            "enum": [
+              "🎃",
+              "🌽",
+              "⛪",
+              "✳",
+              "🌾",
+              "🎭",
+              "📚",
+              "🎨",
+              "🎪",
+              "🛍️",
+              "🌳",
+              "🎵",
+              "🧺"
+            ]
           },
           "category": {
             "enum": [
@@ -244,7 +258,8 @@
                   "minLength": 1
                 }
               }
-            }
+            },
+            "maxItems": 31
           },
           "verification": {
             "type": "string",
@@ -280,6 +295,78 @@
             "additionalProperties": false
           },
           "ratingMethod": {
+            "type": "string",
+            "minLength": 1
+          },
+          "registration": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "required",
+                  "url",
+                  "note"
+                ],
+                "properties": {
+                  "required": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "url": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^https://[^\\s]+$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "note": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "maxItems": 250
+    },
+    "submittedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "emptyReason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issues": {
+      "type": "array",
+      "maxItems": 250,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
             "type": "string",
             "minLength": 1
           }

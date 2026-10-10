@@ -76,9 +76,19 @@ test('malformed new-month response preserves selections and saved month',async({
 });
 test('real generated monthly JSON loads through the existing website endpoint',async({page})=>{
  await page.unroute('**/data/events.json');await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));await page.reload();
- await expect(page.locator('.card')).toHaveCount(15);
+ const published=JSON.parse(await fs.readFile('public/data/events.json','utf8'));await expect(page.locator('.card')).toHaveCount(published.events.length);
  await page.locator('#sort').selectOption('price');await expect(page.locator('.card').first()).toContainText('Безкоштовно');
  await page.locator('#sort').selectOption('date');await expect(page.locator('.card').first()).toHaveAttribute('data-start','2026-10-10T10:00');
 });
 
 test('switching from the superseded weekly app retains same-month selections',async({page})=>{await page.evaluate(id=>localStorage.setItem('family-events:v1',JSON.stringify({period:'week-2026-10-10',selections:{[id]:{status:'added'}}})),catalog.events[0].id);await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('family-events:v1')).period)).toBe('2026-10');});
+
+test('monthly coverage and registration appear safely without changing the existing card layout',async({page})=>{
+ const c={...catalog,coverage:{start:'2026-10-10',end:'2026-10-31'},events:[{...catalog.events[0],admissionPrice:'Безкоштовний вхід',registration:{required:true,url:'https://organizer.test/register',note:'<img src=x onerror=alert(1)>'},mapsUrl:'https://www.google.com/maps/search/?api=1&query=Canton'}]};
+ await page.route('**/data/events.json',r=>r.fulfill({json:c}));await page.reload();await expect(page.locator('#edition')).toContainText('10 жовт.');await expect(page.locator('#edition')).toContainText('31 жовт.');await page.locator('.card summary').click();await expect(page.locator('.body')).toContainText('Реєстрація: потрібна');await expect(page.locator('.body')).toContainText('<img src=x onerror=alert(1)>');await expect(page.locator('.body img')).toHaveCount(0);await expect(page.getByRole('link',{name:'Google Maps ↗'})).toHaveAttribute('href',c.events[0].mapsUrl);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+});
+test('same-month correction preserves both Added and Rejected; new month resets selections independently of theme',async({page})=>{
+ await page.evaluate(ids=>{localStorage.setItem('family-events:v1',JSON.stringify({period:'2026-10',selections:{[ids[0]]:{status:'added'},[ids[1]]:{status:'rejected'}}}));localStorage.setItem('family-events:theme','dark');},catalog.events.map(e=>e.id));
+ await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,publishedAt:'2026-10-10T19:00:00Z'}}));await page.reload();await expect(page.locator('.card')).toHaveCount(0);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.getByRole('button',{name:/Відхилено/}).click();await expect(page.locator('.card.rejected')).toHaveCount(1);
+ await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,catalogId:'2026-11'}}));await page.reload();await expect(page.locator('.card')).toHaveCount(2);await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
+});

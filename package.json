@@ -11,7 +11,8 @@
     "dev": "vite --host 127.0.0.1",
     "scan": "node scripts/scan-sources.mjs",
     "catalog": "node scripts/catalog.mjs",
-    "validate": "node scripts/catalog.mjs --validate"
+    "validate": "node scripts/catalog.mjs --validate",
+    "publish:monthly": "node scripts/publish-monthly.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

@@ -78,3 +78,32 @@ jobs:
           done
           echo 'Live catalog did not match deployed artifact'
           exit 1
+
+  save-catalog:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: [build, deploy]
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: monthly-catalog
+          path: ${{ runner.temp }}/verified-catalog
+      - name: Save only the successfully tested and deployed catalog
+        env:
+          CATALOG_ARTIFACT: ${{ runner.temp }}/verified-catalog
+        run: |
+          remote_head=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$remote_head" != "$GITHUB_SHA" ]; then
+            echo 'Main changed; leaving the newer checkout untouched.'
+            exit 0
+          fi
+          cp "$CATALOG_ARTIFACT/events.json" public/data/events.json
+          git add public/data/events.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Save published monthly catalog [skip ci]'
+          git push origin HEAD:main
