@@ -15,7 +15,7 @@ function wallTime(value) {
  const date=new Date(value+'Z');
  if(!Number.isFinite(date.getTime())||date.toISOString().slice(0,16)!==value)return false;
  // Round-trip all possible NY offsets: rejects nonexistent spring DST times.
- return [4,5].some(offset=>new Intl.DateTimeFormat('sv-SE',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(date.getTime()+offset*3600000)).replace(' ','T')===value);
+ return [4,5].filter(offset=>new Intl.DateTimeFormat('sv-SE',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(date.getTime()+offset*3600000)).replace(' ','T')===value).length===1;
 }
 export function validateCatalog(c,filename=c.catalogId+'.json') {
  if(!check(c))throw Error(`Monthly schema: ${new Ajv().errorsText(check.errors)}`);
@@ -27,6 +27,7 @@ export function validateCatalog(c,filename=c.catalogId+'.json') {
  const ids=new Set();
  for(const e of c.events){
   validateEvent(e);
+  for(const key of ['source','mapsUrl']){const u=new URL(e[key]);if(u.protocol!=='https:'||u.username||u.password)throw Error('Unsafe URL');if(key==='mapsUrl'&&!(['www.google.com','google.com','maps.google.com','maps.app.goo.gl'].includes(u.hostname)))throw Error('Google Maps link required');}
   if(ids.has(e.id))throw Error(`Duplicate ID: ${e.id}`);ids.add(e.id);
   if(!/[А-Яа-яІіЇїЄєҐґ]/u.test(e.description))throw Error(`Ukrainian description required: ${e.id}`);
   if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(e.verifiedAt)||!Number.isFinite(Date.parse(e.verifiedAt)))throw Error('Invalid verification timestamp');
