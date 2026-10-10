@@ -39,6 +39,6 @@ $('#events').addEventListener('click',e=>{
 $('#reject-dialog').addEventListener('close',()=>{if($('#reject-dialog').returnValue==='confirm'&&pending){state.selections[pending]={status:'rejected'};const saved=persist();render();if(saved)announce('Подію перенесено до «Відхилено».');document.querySelector('[data-tab="rejected"]').focus();}pending=null;});
 try{
  const response=await fetch('./data/events.json',{cache:'no-store'});if(!response.ok)throw Error('Data unavailable');data=await response.json();
- state=readState(storage,data.catalogId);persist();$('#edition').textContent=new Intl.DateTimeFormat('uk-UA',{month:'long',year:'numeric',timeZone:'America/New_York'}).format(new Date(data.catalogId+'-01T12:00:00Z'));$('#verified').textContent=`Оновлено ${instantDate(data.publishedAt)} · Оновлення 1-го числа щомісяця`;
+ state=readState(storage,data.catalogId);persist();$('#edition').textContent=data.cadence==='weekly'?`${date(data.rangeStart)} — ${date(data.rangeEnd)} ${data.rangeEnd.slice(0,4)}`:new Intl.DateTimeFormat('uk-UA',{month:'long',year:'numeric',timeZone:'America/New_York'}).format(new Date(data.catalogId+'-01T12:00:00Z'));$('#verified').textContent=`Опубліковано ${instantDate(data.publishedAt)} · Щотижневий каталог`;
  if(data.issues.length)announce('Частину подій приховано: джерела потребують перевірки.');render();
 }catch{$('#events').innerHTML='<div class="empty"><h2>Каталог тимчасово недоступний</h2><p>Перезавантажте сторінку, щоб спробувати ще раз.</p></div>';}

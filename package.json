@@ -9,7 +9,10 @@
     "refresh": "node scripts/refresh.mjs",
     "build": "node scripts/build.mjs",
     "dev": "vite --host 127.0.0.1",
-    "scan": "node scripts/scan-sources.mjs"
+    "scan": "node scripts/scan-sources.mjs",
+    "catalog:check": "node scripts/ingest.mjs --check",
+    "catalog:ingest": "node scripts/ingest.mjs --publish",
+    "publish:weekly": "node scripts/publish-weekly.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

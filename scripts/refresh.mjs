@@ -26,6 +26,8 @@ export async function refresh(config,now=new Date(),fetcher=fetch) {
  return {schemaVersion:2,catalogId:period,cadence:'monthly',publishedAt:now.toISOString(),timezone:config.timezone,discoveryEnabled:false,review:config.review||null,events,issues};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
+ const currentCatalog=JSON.parse(await readFile('public/data/events.json','utf8'));
+ if(currentCatalog.cadence==='weekly')throw Error('Monthly discovery is retired: use publish:weekly for externally researched weekly catalogs.');
  const config=JSON.parse(await readFile('config/sources.json','utf8'));
  let result=await refresh(config);
  const discoveryConfig=JSON.parse(await readFile('config/discovery.json','utf8'));

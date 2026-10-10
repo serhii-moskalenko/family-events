@@ -1,11 +1,11 @@
-name: Test, refresh and deploy
+name: Validate weekly catalog and deploy
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
-  schedule:
-    - cron: '17 10 1 * *'
+# Research and Monday scheduling belong to the user's local ChatGPT task.
+# No scheduled discovery or paid AI calls run in Actions.
 permissions:
   contents: read
 concurrency:
@@ -15,6 +15,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      catalog_hash: ${{ steps.catalog.outputs.hash }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,25 +24,20 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Validate submission and stage candidate atomically
+        run: npm run catalog:ingest -- incoming/weekly-catalog.json
       - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
-      - name: Scan source registry for candidate links
-        if: github.event_name != 'pull_request'
-        run: npm run scan
-      - name: Discover, verify and publish this month's catalog
-        if: github.event_name != 'pull_request'
-        run: npm run refresh
       - run: npm run build
-      - name: Retain verification report
-        if: always() && github.event_name != 'pull_request'
+      - name: Record exact artifact hash
+        id: catalog
+        run: echo "hash=$(sha256sum public/data/events.json | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+      - name: Retain validated catalog
         uses: actions/upload-artifact@v4
         with:
           name: verified-catalog
-          path: |
-            public/data/events.json
-            reports/source-scan.json
-            reports/discovery.json
+          path: public/data/events.json
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v4
@@ -51,6 +48,7 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     permissions:
+      contents: read
       pages: write
       id-token: write
     runs-on: ubuntu-latest
@@ -58,16 +56,26 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reject superseded builds before deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          latest=$(gh api repos/serhii-moskalenko/family-events/git/ref/heads/main --jq '.object.sha')
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo 'A newer submission exists. This run will not publish an older catalog.'
+            exit 1
+          fi
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Verify live catalog
-        run: |
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}' -o /tmp/live.html
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/events.json?revision=${{ github.sha }}' -o /tmp/catalog.json
-          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==2 || !Array.isArray(d.events) || d.discoveryEnabled!==true || d.aiApiConnected!==false)process.exit(1);"
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/discovery-report.json?revision=${{ github.sha }}' -o /tmp/discovery.json
-          node -e "const d=require('/tmp/discovery.json'),c=require('/tmp/catalog.json'); if(d.period!==c.catalogId || d.aiUsed!==false || !d.sources?.length)process.exit(1);"
+      - name: Verify live application and exact catalog
+        env:
+          EXPECTED_HASH: ${{ needs.build.outputs.catalog_hash }}
+        run: node scripts/verify-live.mjs "$EXPECTED_HASH"
   save-catalog:
     if: github.event_name != 'pull_request'
     needs: [build, deploy]
@@ -80,20 +88,19 @@ jobs:
         with:
           name: verified-catalog
           path: ${{ runner.temp }}/verified-catalog
-      - name: Save the successfully published catalog
+      - name: Save only the successfully tested and deployed catalog
         env:
           CATALOG_ARTIFACT: ${{ runner.temp }}/verified-catalog
         run: |
           remote_head=$(git ls-remote origin refs/heads/main | cut -f1)
           if [ "$remote_head" != "$GITHUB_SHA" ]; then
-            echo 'Main changed during this run; leaving the newer checkout untouched.'
+            echo 'Main changed; leaving the newer checkout untouched.'
             exit 0
           fi
-          cp "$CATALOG_ARTIFACT/public/data/events.json" public/data/events.json
-          cp "$CATALOG_ARTIFACT/reports/discovery.json" public/data/discovery-report.json
-          git add public/data/events.json public/data/discovery-report.json
+          cp "$CATALOG_ARTIFACT/events.json" public/data/events.json
+          git add public/data/events.json
           if git diff --cached --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Update verified monthly catalog [skip ci]'
+          git commit -m 'Save published weekly catalog [skip ci]'
           git push origin HEAD:main

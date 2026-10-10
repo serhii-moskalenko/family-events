@@ -8,7 +8,7 @@ export function localDateTime(now = new Date()) {
 }
 export const monthId=(now=new Date())=>localDateTime(now).slice(0,7);
 export function readState(storage,period) {
- try {const data=JSON.parse(storage.getItem('family-events:v1')); const savedPeriod=data?.period||data?.week?.slice(0,7); return savedPeriod===period && data.selections && typeof data.selections==='object' ? {period,selections:data.selections} : {period,selections:{}};} catch {return {period,selections:{}};}
+ try {const data=JSON.parse(storage.getItem('family-events:v1')); const savedPeriod=data?.period||(period.startsWith('week-')&&data?.week?`week-${data.week}`:data?.week?.slice(0,7)); return savedPeriod===period && data.selections && typeof data.selections==='object' && !Array.isArray(data.selections) ? {period,selections:data.selections} : {period,selections:{}};} catch {return {period,selections:{}};}
 }
 export const sessionExpiry=s=>s.end||s.start.slice(0,10)+'T23:59';
 export function upcomingEvents(events,now=new Date()) {
