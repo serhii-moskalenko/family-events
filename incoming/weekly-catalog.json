@@ -4,7 +4,7 @@
   "cadence": "weekly",
   "rangeStart": "2026-10-10",
   "rangeEnd": "2026-10-16",
-  "publishedAt": "2026-10-10T17:17:19.077Z",
+  "publishedAt": "2026-10-10T17:27:10.738Z",
   "timezone": "America/New_York",
   "discoveryEnabled": false,
   "aiApiConnected": false,
@@ -30,7 +30,7 @@
         }
       ],
       "points": {
-        "children": 31,
+        "children": 28,
         "comfort": 15,
         "distance": 12,
         "uniqueness": 9
@@ -78,6 +78,7 @@
         "name": "Cagle’s Farm",
         "source": "https://caglesfarm.com/"
       },
+      "ratingNote": "Ціна не впливає на рейтинг. Оцінку з 75 балів перераховано до шкали 0–100.",
       "rating": 84
     },
     {
