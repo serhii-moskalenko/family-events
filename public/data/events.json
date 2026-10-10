@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T00:50:33.749Z",
+  "publishedAt": "2026-10-10T00:56:45.639Z",
   "timezone": "America/New_York",
   "discoveryEnabled": true,
   "review": {
@@ -77,7 +77,7 @@
         "distance": 12,
         "uniqueness": 9
       },
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -146,7 +146,7 @@
         "distance": 12,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -175,7 +175,7 @@
         "distance": 9,
         "uniqueness": 8
       },
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -205,7 +205,7 @@
         "uniqueness": 7
       },
       "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -235,7 +235,7 @@
         "uniqueness": 6
       },
       "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -265,7 +265,7 @@
         "uniqueness": 8
       },
       "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -295,7 +295,7 @@
         "uniqueness": 7
       },
       "ratingNote": "Попередня оцінка: тариф не підтверджено, тому вартість отримала 0/25 балів. Це не означає платний або безкоштовний вхід.",
-      "verifiedAt": "2026-10-10T00:50:33.749Z",
+      "verifiedAt": "2026-10-10T00:56:45.639Z",
       "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
@@ -327,7 +327,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -374,7 +374,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -417,7 +417,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "canton-tourism",
@@ -460,7 +460,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "first-baptist-registrations",
@@ -503,7 +503,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "first-baptist-registrations",
@@ -546,7 +546,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "woodstock-first-baptist-events",
@@ -589,7 +589,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "woodstock-first-baptist-events",
@@ -632,7 +632,7 @@
       },
       "ratingMethod": "rules-v1",
       "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Непідтверджена ціна — 0/25; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T00:50:48.497Z",
+      "verifiedAt": "2026-10-10T00:56:51.342Z",
       "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
       "automation": {
         "sourceId": "hickory-flat",
