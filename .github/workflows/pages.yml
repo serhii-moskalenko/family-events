@@ -1,11 +1,12 @@
-name: Test, refresh and deploy
+name: Validate, test and deploy monthly catalog
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '17 10 1 * *'
+    # Activate an already submitted catalog on the first day, after midnight NY year-round.
+    - cron: '17 5 1 * *'
 permissions:
   contents: read
 concurrency:
@@ -22,33 +23,23 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - run: npm run validate
       - run: npm test
+      - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
-      - name: Scan source registry for candidate links
-        if: github.event_name != 'pull_request'
-        run: npm run scan
-      - name: Discover, verify and publish this month's catalog
-        if: github.event_name != 'pull_request'
-        run: npm run refresh
-      - run: npm run build
-      - name: Retain verification report
-        if: always() && github.event_name != 'pull_request'
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: verified-catalog
-          path: |
-            public/data/events.json
-            reports/source-scan.json
-            reports/discovery.json
+          name: monthly-catalog
+          path: public/data/events.json
       - uses: actions/configure-pages@v5
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
       - uses: actions/upload-pages-artifact@v4
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
           path: dist
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     permissions:
       pages: write
@@ -58,42 +49,22 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: monthly-catalog
+          path: expected
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Verify live catalog
-        run: |
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}' -o /tmp/live.html
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/events.json?revision=${{ github.sha }}' -o /tmp/catalog.json
-          node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==2 || !Array.isArray(d.events) || d.discoveryEnabled!==true || d.aiApiConnected!==false)process.exit(1);"
-          curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/discovery-report.json?revision=${{ github.sha }}' -o /tmp/discovery.json
-          node -e "const d=require('/tmp/discovery.json'),c=require('/tmp/catalog.json'); if(d.period!==c.catalogId || d.aiUsed!==false || !d.sources?.length)process.exit(1);"
-  save-catalog:
-    if: github.event_name != 'pull_request'
-    needs: [build, deploy]
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          name: verified-catalog
-          path: ${{ runner.temp }}/verified-catalog
-      - name: Save the successfully published catalog
+      - name: Verify exact live catalog
         env:
-          CATALOG_ARTIFACT: ${{ runner.temp }}/verified-catalog
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
-          remote_head=$(git ls-remote origin refs/heads/main | cut -f1)
-          if [ "$remote_head" != "$GITHUB_SHA" ]; then
-            echo 'Main changed during this run; leaving the newer checkout untouched.'
-            exit 0
-          fi
-          cp "$CATALOG_ARTIFACT/public/data/events.json" public/data/events.json
-          cp "$CATALOG_ARTIFACT/reports/discovery.json" public/data/discovery-report.json
-          git add public/data/events.json public/data/discovery-report.json
-          if git diff --cached --quiet; then exit 0; fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Update verified monthly catalog [skip ci]'
-          git push origin HEAD:main
+          for attempt in $(seq 1 12); do
+            if curl --fail --silent --show-error "${PAGE_URL}data/events.json?revision=${GITHUB_SHA}" -o /tmp/catalog.json && cmp expected/events.json /tmp/catalog.json; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo 'Live catalog did not match deployed artifact'
+          exit 1

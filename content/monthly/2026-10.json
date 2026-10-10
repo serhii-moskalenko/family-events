@@ -1,8 +1,6 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "catalogId": "2026-10",
-  "cadence": "monthly",
-  "publishedAt": "2026-10-10T17:27:19.521Z",
   "timezone": "America/New_York",
   "coverage": {
     "start": "2026-10-10",
@@ -12,9 +10,6 @@
     "producer": "migration",
     "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog."
   },
-  "discoveryEnabled": false,
-  "aiApiConnected": false,
-  "issues": [],
   "events": [
     {
       "id": "great-pumpkin-fest-2026",
@@ -50,8 +45,7 @@
       "uncertaintyNotes": [
         "Individual admission is not separately structured; consult priceNote and official source."
       ],
-      "origin": "legacy-editorial",
-      "rating": 85
+      "origin": "legacy-editorial"
     },
     {
       "id": "cagles-fall-2026",
@@ -127,8 +121,7 @@
       "uncertaintyNotes": [
         "Individual admission is not separately structured; consult priceNote and official source."
       ],
-      "origin": "legacy-editorial",
-      "rating": 84
+      "origin": "legacy-editorial"
     },
     {
       "id": "sutallee-trunk-or-treat-2026",
@@ -164,8 +157,7 @@
       "uncertaintyNotes": [
         "Individual admission is not separately structured; consult priceNote and official source."
       ],
-      "origin": "legacy-editorial",
-      "rating": 83
+      "origin": "legacy-editorial"
     },
     {
       "id": "sutallee-homecoming-2026",
@@ -203,8 +195,7 @@
         "Family admission cost is unverified.",
         "End time is unverified for one or more sessions."
       ],
-      "origin": "legacy-editorial",
-      "rating": 63
+      "origin": "legacy-editorial"
     },
     {
       "id": "makers-market-october-2026",
@@ -241,8 +232,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-editorial",
-      "rating": 67
+      "origin": "legacy-editorial"
     },
     {
       "id": "woodstock-skelebration-2026",
@@ -279,8 +269,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-editorial",
-      "rating": 81
+      "origin": "legacy-editorial"
     },
     {
       "id": "woodstock-ghouls-night-2026",
@@ -317,8 +306,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-editorial",
-      "rating": 75
+      "origin": "legacy-editorial"
     },
     {
       "name": "Books & Boos · книжковий осінній фестиваль",
@@ -369,8 +357,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-discovery",
-      "rating": 53
+      "origin": "legacy-discovery"
     },
     {
       "name": "Jack O’ Lantern Jamboree · The Mill",
@@ -424,8 +411,7 @@
       "uncertaintyNotes": [
         "Individual admission is not separately structured; consult priceNote and official source."
       ],
-      "origin": "legacy-discovery",
-      "rating": 53
+      "origin": "legacy-discovery"
     },
     {
       "name": "Безкоштовний фестиваль · Rising Hills Church",
@@ -475,8 +461,7 @@
       "uncertaintyNotes": [
         "Individual admission is not separately structured; consult priceNote and official source."
       ],
-      "origin": "legacy-discovery",
-      "rating": 81
+      "origin": "legacy-discovery"
     },
     {
       "name": "\"Next Steps\" Class (Church & Membership Info)",
@@ -527,8 +512,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-discovery",
-      "rating": 32
+      "origin": "legacy-discovery"
     },
     {
       "name": "Сімейний Fall Fest · Canton First Baptist",
@@ -579,8 +563,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-discovery",
-      "rating": 48
+      "origin": "legacy-discovery"
     },
     {
       "name": "Сімейна вечеря · First Baptist Woodstock",
@@ -630,8 +613,7 @@
       "uncertaintyNotes": [
         "Individual admission is not separately structured; consult priceNote and official source."
       ],
-      "origin": "legacy-discovery",
-      "rating": 44
+      "origin": "legacy-discovery"
     },
     {
       "name": "Party with the Pastors · знайомство з церквою",
@@ -682,8 +664,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-discovery",
-      "rating": 44
+      "origin": "legacy-discovery"
     },
     {
       "name": "Trunk or Treat · Hickory Flat Church",
@@ -734,8 +715,7 @@
         "Individual admission is not separately structured; consult priceNote and official source.",
         "Family admission cost is unverified."
       ],
-      "origin": "legacy-discovery",
-      "rating": 64
+      "origin": "legacy-discovery"
     }
   ]
 }

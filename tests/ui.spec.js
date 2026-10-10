@@ -66,3 +66,17 @@ test('price remains visible but cannot change the displayed rating or its breakd
   await expect(page.locator('.meta')).toContainText(familyPrice===null?'Ціну не підтверджено':familyPrice===0?'Безкоштовно':'$1000 / сім’я');
  }
 });
+
+test('malformed new-month response preserves selections and saved month',async({page})=>{
+ const saved={period:catalog.catalogId,selections:{[catalog.events[0].id]:{status:'added'}}};
+ await page.evaluate(s=>localStorage.setItem('family-events:v1',JSON.stringify(s)),saved);
+ await page.route('**/data/events.json',r=>r.fulfill({json:{catalogId:'2026-11'}}));await page.reload();
+ await expect(page.getByText('Каталог тимчасово недоступний')).toBeVisible();
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('family-events:v1')))).toEqual(saved);
+});
+test('real generated monthly JSON loads through the existing website endpoint',async({page})=>{
+ await page.unroute('**/data/events.json');await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));await page.reload();
+ await expect(page.locator('.card')).toHaveCount(15);
+ await page.locator('#sort').selectOption('price');await expect(page.locator('.card').first()).toContainText('Безкоштовно');
+ await page.locator('#sort').selectOption('date');await expect(page.locator('.card').first()).toHaveAttribute('data-start','2026-10-10T10:00');
+});

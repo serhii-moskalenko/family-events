@@ -1,0 +1,290 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Family Events monthly input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "catalogId",
+    "timezone",
+    "coverage",
+    "provenance",
+    "events"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "catalogId": {
+      "type": "string",
+      "pattern": "^20[0-9]{2}-(0[1-9]|1[0-2])$"
+    },
+    "timezone": {
+      "const": "America/New_York"
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "minLength": 1
+        },
+        "end": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "producer",
+        "notes"
+      ],
+      "properties": {
+        "producer": {
+          "enum": [
+            "chatgpt-work",
+            "migration"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "venue",
+          "address",
+          "priceNote",
+          "comfortNote",
+          "distanceLabel",
+          "icon",
+          "category",
+          "city",
+          "source",
+          "mapsUrl",
+          "familyPrice",
+          "admissionPrice",
+          "additionalCosts",
+          "uncertaintyNotes",
+          "origin",
+          "verifiedAt",
+          "points",
+          "sessions"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "venue": {
+            "type": "string",
+            "minLength": 1
+          },
+          "address": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priceNote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "comfortNote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "distanceLabel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "icon": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "enum": [
+              "farm",
+              "festival",
+              "church",
+              "market",
+              "culture",
+              "library"
+            ]
+          },
+          "city": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^https://[^\\s]+$"
+          },
+          "mapsUrl": {
+            "type": "string",
+            "pattern": "^https://[^\\s]+$"
+          },
+          "familyPrice": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "admissionPrice": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "additionalCosts": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "uncertaintyNotes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "origin": {
+            "enum": [
+              "chatgpt-work",
+              "legacy-editorial",
+              "legacy-discovery"
+            ]
+          },
+          "verifiedAt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "points": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "children",
+              "comfort",
+              "distance",
+              "uniqueness"
+            ],
+            "properties": {
+              "children": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 30
+              },
+              "comfort": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 20
+              },
+              "distance": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 15
+              },
+              "uniqueness": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10
+              }
+            }
+          },
+          "sessions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "start",
+                "end"
+              ],
+              "properties": {
+                "start": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "end": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ratingNote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sourceExcerpt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "automation": {
+            "type": "object"
+          },
+          "farm": {
+            "type": "object",
+            "required": [
+              "name",
+              "source"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^https://[^\\s]+$"
+              }
+            },
+            "additionalProperties": false
+          },
+          "ratingMethod": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

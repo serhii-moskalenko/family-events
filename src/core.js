@@ -34,3 +34,8 @@ export function validateEvent(e) {
  if(e.familyPrice!==null&&(!Number.isFinite(e.familyPrice)||e.familyPrice<0))throw Error('Invalid price');
  return e;
 }
+
+export function validatePublishedCatalog(d) {
+ if(d?.schemaVersion!==2||!/^20\d{2}-(0[1-9]|1[0-2])$/.test(d.catalogId)||d.timezone!=='America/New_York'||!Number.isFinite(Date.parse(d.publishedAt))||!Array.isArray(d.events)||!Array.isArray(d.issues))throw Error('Invalid published catalog');
+ const ids=new Set();for(const e of d.events){validateEvent(e);for(const key of ['name','description','category','icon','venue','address','distanceLabel','priceNote','comfortNote'])if(typeof e[key]!=='string'||!e[key])throw Error('Missing display field');if(!Number.isFinite(Date.parse(e.verifiedAt)))throw Error('Invalid verification timestamp');if(e.mapsUrl&&!/^https:\/\//.test(e.mapsUrl))throw Error('Invalid maps URL');if(ids.has(e.id))throw Error('Duplicate event ID');ids.add(e.id);}return d;
+}
