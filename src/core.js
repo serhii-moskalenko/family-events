@@ -8,7 +8,7 @@ export function localDateTime(now = new Date()) {
 }
 export const monthId=(now=new Date())=>localDateTime(now).slice(0,7);
 export function readState(storage,period) {
- try {const data=JSON.parse(storage.getItem('family-events:v1')); const savedPeriod=data?.period||(period.startsWith('week-')&&data?.week?`week-${data.week}`:data?.week?.slice(0,7)); return savedPeriod===period && data.selections && typeof data.selections==='object' && !Array.isArray(data.selections) ? {period,selections:data.selections} : {period,selections:{}};} catch {return {period,selections:{}};}
+ try {const data=JSON.parse(storage.getItem('family-events:v1')); const savedPeriod=data?.period||data?.week?.slice(0,7); return savedPeriod===period && data.selections && typeof data.selections==='object' && !Array.isArray(data.selections) ? {period,selections:data.selections} : {period,selections:{}};} catch {return {period,selections:{}};}
 }
 export const sessionExpiry=s=>s.end||s.start.slice(0,10)+'T23:59';
 export function upcomingEvents(events,now=new Date()) {
@@ -33,4 +33,9 @@ export function validateEvent(e) {
  for(const s of e.sessions)if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.start)||(s.end!==null&&(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(s.end)||s.end<=s.start))||Number.isNaN(Date.parse(s.start)))throw Error('Invalid dates');
  if(e.familyPrice!==null&&(!Number.isFinite(e.familyPrice)||e.familyPrice<0))throw Error('Invalid price');
  return e;
+}
+
+export function validatePublishedCatalog(d) {
+ if(d?.schemaVersion!==2||!/^20\d{2}-(0[1-9]|1[0-2])$/.test(d.catalogId)||d.timezone!=='America/New_York'||!Number.isFinite(Date.parse(d.publishedAt))||!Array.isArray(d.events)||!Array.isArray(d.issues))throw Error('Invalid published catalog');
+ const ids=new Set();for(const e of d.events){validateEvent(e);for(const key of ['name','description','category','icon','venue','address','distanceLabel','priceNote','comfortNote'])if(typeof e[key]!=='string'||!e[key])throw Error('Missing display field');if(!Number.isFinite(Date.parse(e.verifiedAt)))throw Error('Invalid verification timestamp');if(e.mapsUrl&&!/^https:\/\//.test(e.mapsUrl))throw Error('Invalid maps URL');if(ids.has(e.id))throw Error('Duplicate event ID');ids.add(e.id);}return d;
 }

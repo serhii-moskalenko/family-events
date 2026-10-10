@@ -26,8 +26,6 @@ export async function refresh(config,now=new Date(),fetcher=fetch) {
  return {schemaVersion:2,catalogId:period,cadence:'monthly',publishedAt:now.toISOString(),timezone:config.timezone,discoveryEnabled:false,review:config.review||null,events,issues};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
- const currentCatalog=JSON.parse(await readFile('public/data/events.json','utf8'));
- if(currentCatalog.cadence==='weekly')throw Error('Monthly discovery is retired: use publish:weekly for externally researched weekly catalogs.');
  const config=JSON.parse(await readFile('config/sources.json','utf8'));
  let result=await refresh(config);
  const discoveryConfig=JSON.parse(await readFile('config/discovery.json','utf8'));
@@ -37,12 +35,12 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   await writeFile('reports/discovery.json',JSON.stringify(discovered.report,null,2)+'\n');
   if(discovered.report.sources.every(s=>s.status==='unavailable'))throw Error('All automatic sources unavailable; keeping previous deployment');
   result=mergeCatalog(result,discovered,config);
-  await mkdir('public/data',{recursive:true});
-  await writeFile('public/data/discovery-report.json',JSON.stringify(discovered.report,null,2)+'\n');
+  await mkdir('reports',{recursive:true});
+  await writeFile('reports/discovery-report.json',JSON.stringify(discovered.report,null,2)+'\n');
   console.log(`Automatic import: ${discovered.events.length} events from ${discovered.report.sources.length} configured sources`);
  }
- await mkdir('public/data',{recursive:true});
- await writeFile('public/data/events.json',JSON.stringify(result,null,2)+'\n');
+ await mkdir('reports',{recursive:true});
+ await writeFile('reports/automatic-catalog.json',JSON.stringify(result,null,2)+'\n');
  console.log(`Month ${result.catalogId}: ${result.events.length} verified events, ${result.issues.length} quarantined`);
  for(const issue of result.issues)console.warn(`::warning::${issue.id}: ${issue.reason}`);
  if(process.env.GITHUB_STEP_SUMMARY)await writeFile(process.env.GITHUB_STEP_SUMMARY,`## Source verification\n${result.events.length} published; ${result.issues.length} quarantined.\n\n${result.issues.map(i=>`- ${i.id}: ${i.reason}`).join('\n')}\n\nAutomatic import: ${result.automaticEventCount||0} events from configured parsers. See discovery-report.json for exclusions and source failures.\n`,{flag:'a'});

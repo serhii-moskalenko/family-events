@@ -1,3 +1,5 @@
+> Historical documentation. Superseded by the monthly pipeline; use [WORK_INTEGRATION.md](../WORK_INTEGRATION.md). Weekly publishing commands are retired.
+
 # Integration test evidence
 
 Implementation date: October 10, 2026.

@@ -42,7 +42,7 @@ test('automatically discovered card displays provenance and safely escapes the s
  automatic.sourceExcerpt='<script>window.sourceExecuted=true</script> A family event';
  await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,publishedAt:'2026-10-10T00:30:00Z',discoveryEnabled:true,events:[automatic]}}));await page.reload();await expect(page.locator('.card')).toHaveCount(1);
  await page.locator('.card summary').click();await expect(page.getByText('↻ Автоматично імпортовано з офіційного джерела')).toBeVisible();await expect(page.getByText(/Короткий опис організатора/)).toContainText('<script>');
- await expect(page.locator('.card')).toContainText('Джерело перевірено 9 жовт.');await expect(page.locator('#verified')).toContainText('Опубліковано 9 жовт.');
+ await expect(page.locator('.card')).toContainText('Джерело перевірено 9 жовт.');await expect(page.locator('#verified')).toContainText('Оновлено 9 жовт.');
  expect(await page.evaluate(()=>window.sourceExecuted)).toBeUndefined();await expect(page.getByText('Автоматична оцінка за правилами',{exact:false})).toBeVisible();await expect(page.getByLabel('Дата події')).toHaveCount(0);
  const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const file=await fs.readFile(await (await downloaded).path(),'utf8');expect(file).toContain('TZID=America/New_York');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);
 });
@@ -67,14 +67,16 @@ test('price remains visible but cannot change the displayed rating or its breakd
  }
 });
 
-
-test('weekly edition preserves both selections on correction and resets on next week without changing theme',async({page})=>{
- const weekly=JSON.parse(await fs.readFile('tests/fixtures/weekly-catalog.json','utf8'));
- await page.route('**/data/events.json',r=>r.fulfill({json:weekly}));
- await page.evaluate(period=>{localStorage.setItem('family-events:v1',JSON.stringify({period,selections:{'great-pumpkin-fest-2026':{status:'added'},'cagles-fall-2026':{status:'rejected'}}}));localStorage.setItem('family-events:theme','dark');},weekly.catalogId);
- await page.reload();await expect(page.locator('.card')).toHaveCount(0);await expect(page.locator('#edition')).toContainText('9 жовт.');await expect(page.locator('#edition')).toContainText('15 жовт.');
- await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.getByRole('button',{name:/Відхилено/}).click();await expect(page.locator('.card.rejected')).toHaveCount(1);
- await page.route('**/data/events.json',r=>r.fulfill({json:{...weekly,publishedAt:'2026-10-10T08:00:00Z'}}));await page.reload();await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);
- const next={...weekly,catalogId:'week-2026-10-12',rangeStart:'2026-10-12',rangeEnd:'2026-10-18',events:weekly.events.map(e=>({...e,sessions:e.sessions.map(s=>({...s,start:s.start.replace(/2026-10-\d{2}/,'2026-10-14'),end:s.end?.replace(/2026-10-\d{2}/,'2026-10-14')??null})).slice(0,1)}))};
- await page.route('**/data/events.json',r=>r.fulfill({json:next}));await page.reload();await expect(page.locator('.card')).toHaveCount(2);await expect(page.locator('html')).toHaveAttribute('data-theme','dark');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(0);
+test('malformed new-month response preserves selections and saved month',async({page})=>{
+ const saved={period:catalog.catalogId,selections:{[catalog.events[0].id]:{status:'added'}}};
+ await page.evaluate(s=>localStorage.setItem('family-events:v1',JSON.stringify(s)),saved);
+ await page.route('**/data/events.json',r=>r.fulfill({json:{catalogId:'2026-11'}}));await page.reload();
+ await expect(page.getByText('Каталог тимчасово недоступний')).toBeVisible();
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('family-events:v1')))).toEqual(saved);
+});
+test('real generated monthly JSON loads through the existing website endpoint',async({page})=>{
+ await page.unroute('**/data/events.json');await page.clock.setFixedTime(new Date('2026-10-10T12:00:00Z'));await page.reload();
+ await expect(page.locator('.card')).toHaveCount(15);
+ await page.locator('#sort').selectOption('price');await expect(page.locator('.card').first()).toContainText('Безкоштовно');
+ await page.locator('#sort').selectOption('date');await expect(page.locator('.card').first()).toHaveAttribute('data-start','2026-10-10T10:00');
 });

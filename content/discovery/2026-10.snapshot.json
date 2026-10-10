@@ -2,19 +2,54 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T19:14:16.566Z",
+  "publishedAt": "2026-10-10T01:54:23.278Z",
   "timezone": "America/New_York",
-  "coverage": {
-    "start": "2026-10-10",
-    "end": "2026-10-31"
+  "discoveryEnabled": true,
+  "review": {
+    "reviewedAt": "2026-10-09",
+    "method": "AI-assisted manual research and editorial review in Codex; live evidence verification by scripts",
+    "rangeStart": "2026-10-09",
+    "rangeEnd": "2026-10-31",
+    "coverage": "Best-effort public-source search, not an exhaustive listing of every local event",
+    "excluded": [
+      {
+        "source": "https://www.cantonbible.org/events",
+        "reason": "Fall picnic lists a private home and no usable public address or hours."
+      },
+      {
+        "source": "https://www.woodstockinternationalfoodfestival.com/",
+        "reason": "Official 2026 dates are in November; conflicting October listings were not used."
+      },
+      {
+        "source": "https://www.sequoyahregionallibrary.org/events",
+        "reason": "Dynamic calendar needs separate review; no dated entries verified in this search."
+      },
+      {
+        "source": "https://berrypatchfarms.co/",
+        "reason": "Season page needs explicit year and current price confirmation."
+      },
+      {
+        "source": "https://www.eventeny.com/events/cantonmulticulturalfestival-33220/",
+        "reason": "Live organizer page explicitly states: This event has been cancelled. Search cache did not show this notice."
+      },
+      {
+        "source": "https://explorecantonga.com/events/halloween-comedy-magic-dinner-show/",
+        "reason": "Child suitability and admission price not confirmed; not recommended as a family event."
+      },
+      {
+        "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3740746",
+        "reason": "Choir registration spans a season; individual October rehearsal dates and participation terms are not verified."
+      },
+      {
+        "source": "https://fbcwoodstock.churchcenter.com/registrations/events/3875803",
+        "reason": "Fall Festival at Mission Church is at 774 Roswell St NE in Marietta, outside the selected Canton area."
+      },
+      {
+        "source": "https://fbcwoodstock.churchcenter.com/registrations/events/3825163",
+        "reason": "Crowder concert is confirmed October 30 at 19:00, but child admission terms and current official family cost were not verified in this review."
+      }
+    ]
   },
-  "provenance": {
-    "producer": "migration",
-    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog."
-  },
-  "discoveryEnabled": false,
-  "aiApiConnected": false,
-  "issues": [],
   "events": [
     {
       "id": "great-pumpkin-fest-2026",
@@ -42,16 +77,7 @@
         "uniqueness": 9
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=7345%20Cumming%20Hwy%2C%20Canton%2C%20GA%2030115",
-      "admissionPrice": null,
-      "additionalCosts": "Вхід безкоштовний. Їжа та покупки оплачуються окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 85
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "id": "cagles-fall-2026",
@@ -67,6 +93,10 @@
       "comfortNote": "Діти до 14 років включно мають бути з дорослим. Відкритий майданчик; домашніх тварин не допускають, службові тварини дозволені.",
       "source": "https://caglesfarm.com/",
       "sessions": [
+        {
+          "start": "2026-10-09T17:00",
+          "end": "2026-10-09T22:00"
+        },
         {
           "start": "2026-10-10T10:00",
           "end": "2026-10-10T22:00"
@@ -119,16 +149,7 @@
         "source": "https://caglesfarm.com/"
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Holly Springs",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=362%20Stringer%20Road%2C%20Holly%20Springs%2C%20GA%2030115",
-      "admissionPrice": null,
-      "additionalCosts": "$15 за людину віком від 3 років: $60 за 2 дорослих + 2 дітей (3+). Гарбузи окремо; поїздка до озера з багаттям — ще $5 за людину.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 84
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "id": "sutallee-trunk-or-treat-2026",
@@ -156,16 +177,7 @@
         "uniqueness": 8
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "White",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=895%20Knox%20Bridge%20Hwy%2C%20White%2C%20GA%2030184",
-      "admissionPrice": null,
-      "additionalCosts": "Організатор прямо вказує, що захід безкоштовний для громади.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 83
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "id": "sutallee-homecoming-2026",
@@ -193,18 +205,7 @@
         "uniqueness": 7
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "White",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=895%20Knox%20Bridge%20Hwy%2C%20White%2C%20GA%2030184",
-      "admissionPrice": null,
-      "additionalCosts": "Тариф не опубліковано. Організатор просить принести гарнір або десерт; м’ясні страви забезпечує церква.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Час завершення для однієї або кількох дат не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 63
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "id": "makers-market-october-2026",
@@ -232,17 +233,7 @@
         "uniqueness": 6
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Вартість входу не опубліковано. Покупки у майстрів оплачуються окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 67
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "id": "woodstock-skelebration-2026",
@@ -270,17 +261,7 @@
         "uniqueness": 8
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Woodstock",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=101%20Arnold%20Mill%20Rd%2C%20Woodstock%2C%20GA%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Міська сторінка не вказує тариф входу для гостей. $75 на сторінці реєстрації — плата за місце продавця, не сімейний квиток.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 81
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "id": "woodstock-ghouls-night-2026",
@@ -308,17 +289,7 @@
         "uniqueness": 7
       },
       "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Woodstock",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Main%20Street%2C%20Woodstock%2C%20GA%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Окремий тариф участі не вказано. Покупки та їжа оплачуються за тарифами магазинів і ресторанів.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "rating": 75
+      "verification": "Official page evidence matched; no cancellation notice detected on configured pages."
     },
     {
       "name": "Books & Boos · книжковий осінній фестиваль",
@@ -360,17 +331,7 @@
           "reviewedAt": "2026-10-09"
         },
         "distanceMiles": null
-      },
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 53
+      }
     },
     {
       "name": "Jack O’ Lantern Jamboree · The Mill",
@@ -416,16 +377,7 @@
           "reviewedAt": "2026-10-09"
         },
         "distanceMiles": null
-      },
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Pkwy%2C%20Canton%2C%20GA%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 53
+      }
     },
     {
       "name": "Безкоштовний фестиваль · Rising Hills Church",
@@ -467,16 +419,7 @@
           "matchedAddress": "3693 HICKORY FLAT HWY, CANTON, GA, 30115"
         },
         "distanceMiles": 3.4
-      },
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=3693%20Hickory%20Flat%20Hwy.%2C%20Canton%2C%20GA%2030115",
-      "admissionPrice": null,
-      "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 81
+      }
     },
     {
       "name": "\"Next Steps\" Class (Church & Membership Info)",
@@ -518,17 +461,7 @@
           "reviewedAt": "2026-10-09"
         },
         "distanceMiles": null
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1%20Mission%20Point%20Canton%2C%20Georgia%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 32
+      }
     },
     {
       "name": "Сімейний Fall Fest · Canton First Baptist",
@@ -570,17 +503,7 @@
           "reviewedAt": "2026-10-09"
         },
         "distanceMiles": null
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1%20Mission%20Point%20Canton%2C%20Georgia%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 48
+      }
     },
     {
       "name": "Сімейна вечеря · First Baptist Woodstock",
@@ -622,16 +545,7 @@
           "matchedAddress": "11905 STATE HWY 92, WOODSTOCK, GA, 30188"
         },
         "distanceMiles": 10.2
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=11905%20Highway%2092%20Woodstock%2C%20Ga%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Розрахунок за 4 страви Café по $5. Інші варіанти меню, добавки й доступність замовлення перевірте в організатора.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 44
+      }
     },
     {
       "name": "Party with the Pastors · знайомство з церквою",
@@ -673,17 +587,7 @@
           "matchedAddress": "11905 STATE HWY 92, WOODSTOCK, GA, 30188"
         },
         "distanceMiles": 10.2
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=11905%20Highway%2092%20Woodstock%2C%20Ga%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 44
+      }
     },
     {
       "name": "Trunk or Treat · Hickory Flat Church",
@@ -725,17 +629,49 @@
           "matchedAddress": "4056 E CHEROKEE DR, CANTON, GA, 30115"
         },
         "distanceMiles": 5.1
-      },
-      "city": "GA 30115",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=4056%20E%20Cherokee%20Dr%2C%20Canton%2C%20GA%2030115%2C%20USA",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "rating": 64
+      }
     }
-  ]
+  ],
+  "issues": [],
+  "aiApiConnected": false,
+  "automaticSourceCount": 4,
+  "automaticEventCount": 8,
+  "automation": {
+    "mode": "configured-source-parsers",
+    "report": "./data/discovery-report.json",
+    "sources": [
+      {
+        "id": "canton-tourism",
+        "url": "https://explorecantonga.com/events/",
+        "adapter": "canton-jsonld",
+        "links": 19,
+        "published": 3,
+        "status": "ok"
+      },
+      {
+        "id": "first-baptist-registrations",
+        "url": "https://cantonfirstbaptist.churchcenter.com/registrations",
+        "adapter": "churchcenter-html",
+        "links": 14,
+        "published": 2,
+        "status": "ok"
+      },
+      {
+        "id": "woodstock-first-baptist-events",
+        "url": "https://fbcwoodstock.churchcenter.com/registrations/events",
+        "adapter": "churchcenter-html",
+        "links": 33,
+        "published": 2,
+        "status": "ok"
+      },
+      {
+        "id": "hickory-flat",
+        "url": "https://www.hickoryflat.church/calendar",
+        "adapter": "event-jsonld",
+        "links": 3,
+        "published": 1,
+        "status": "ok"
+      }
+    ]
+  }
 }

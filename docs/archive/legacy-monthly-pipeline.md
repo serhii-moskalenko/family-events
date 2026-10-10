@@ -1,3 +1,5 @@
+> Historical documentation. Superseded by the monthly pipeline; use [WORK_INTEGRATION.md](../WORK_INTEGRATION.md). Weekly publishing commands are retired.
+
 # Historical monthly pipeline — retired October 10, 2026
 
 The following describes the previous implementation. Its scheduled discovery is disabled; use [weekly publishing](weekly-publishing.md) instead. The old adapters and their tests remain for reference and never run in the deployment workflow.

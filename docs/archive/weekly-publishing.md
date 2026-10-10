@@ -1,3 +1,5 @@
+> Historical documentation. Superseded by the monthly pipeline; use [WORK_INTEGRATION.md](../WORK_INTEGRATION.md). Weekly publishing commands are retired.
+
 # Publishing weekly catalogs from the existing local ChatGPT task
 
 Repository: `serhii-moskalenko/family-events` only. Website: https://serhii-moskalenko.github.io/family-events/.
