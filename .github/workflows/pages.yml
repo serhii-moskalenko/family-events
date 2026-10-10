@@ -68,3 +68,32 @@ jobs:
           node -e "const d=require('/tmp/catalog.json'); if(d.schemaVersion!==2 || !Array.isArray(d.events) || d.discoveryEnabled!==true || d.aiApiConnected!==false)process.exit(1);"
           curl --retry 8 --retry-delay 10 --retry-all-errors --fail '${{ steps.deployment.outputs.page_url }}data/discovery-report.json?revision=${{ github.sha }}' -o /tmp/discovery.json
           node -e "const d=require('/tmp/discovery.json'),c=require('/tmp/catalog.json'); if(d.period!==c.catalogId || d.aiUsed!==false || !d.sources?.length)process.exit(1);"
+  save-catalog:
+    if: github.event_name != 'pull_request'
+    needs: [build, deploy]
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: verified-catalog
+          path: ${{ runner.temp }}/verified-catalog
+      - name: Save the successfully published catalog
+        env:
+          CATALOG_ARTIFACT: ${{ runner.temp }}/verified-catalog
+        run: |
+          remote_head=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$remote_head" != "$GITHUB_SHA" ]; then
+            echo 'Main changed during this run; leaving the newer checkout untouched.'
+            exit 0
+          fi
+          cp "$CATALOG_ARTIFACT/public/data/events.json" public/data/events.json
+          cp "$CATALOG_ARTIFACT/reports/discovery.json" public/data/discovery-report.json
+          git add public/data/events.json public/data/discovery-report.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update verified monthly catalog [skip ci]'
+          git push origin HEAD:main
