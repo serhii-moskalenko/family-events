@@ -92,4 +92,5 @@ Start a human-initiated Work task using the instruction below. Verify its GitHub
 
 - Local: 35 unit tests and 14 browser tests passed. November data is synthetic test input, not a researched public catalog.
 - [Authenticated GitHub Actions invalid-input test](https://github.com/serhii-moskalenko/family-events/actions/runs/38071883063): a children score of 31 failed validation before build or deployment; valid input was restored afterward.
+- [Authenticated GitHub Actions valid-input test](https://github.com/serhii-moskalenko/family-events/actions/runs/38071932496): schema validation, all 35 unit tests, build and all 14 browser tests passed on the implementation branch; deployment was intentionally skipped for this non-main run.
 - Concurrent changes replaced main with weekly publishing during this task. The monthly implementation is isolated in [PR #1](https://github.com/serhii-moskalenko/family-events/pull/1), pending resolution of that conflicting direction. No monthly deployment or Work cloud publishing success is claimed.
