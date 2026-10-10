@@ -61,6 +61,21 @@ test('live verification checks exact bytes rather than accepting any JSON or suc
  const good=async url=>({ok:true,text:async()=>url.includes('events.json')?body:'<script src="./src/app.js"></script>'});assert.equal((await verifyLive(catalogHash(c),{fetcher:good,attempts:1})).catalogId,c.catalogId);
  const bad=async()=>({ok:true,text:async()=>JSON.stringify({...c,catalogId:'old'})});await assert.rejects(verifyLive(catalogHash(c),{fetcher:bad,attempts:1}),/does not match/);
 });
+test('publisher refuses to overwrite a newer valid submission still waiting for deployment',async()=>{
+ const pending=copy();pending.rangeStart='2026-10-12';pending.rangeEnd='2026-10-18';pending.catalogId='week-2026-10-12';
+ pending.events=pending.events.map(e=>({...e,sessions:[{start:'2026-10-14T'+e.sessions[0].start.slice(11),end:null}]}));validateCatalog(pending,{now});
+ let calls=0;await assert.rejects(publishWeekly('tests/fixtures/weekly-catalog.json',{now,call:()=>{calls++;return {sha:'lease',content:Buffer.from(JSON.stringify(calls===1?copy():pending)).toString('base64')};}}),/rollback/);assert.equal(calls,2);
+});
+test('identical submission does not create another commit or claim deployment success without verification',async()=>{
+ const c=normalizeCatalog(copy(),{now});let calls=0;
+ const receipt=await publishWeekly('tests/fixtures/weekly-catalog.json',{now,call:()=>{calls++;return {sha:'lease',content:Buffer.from(JSON.stringify(c,null,2)+'\n').toString('base64')};}});
+ assert.equal(calls,2);assert.equal(receipt.unchanged,true);assert.equal(receipt.deploymentVerified,false);
+});
 test('workflow never invokes discovery and tests candidate before any Pages deployment',async()=>{
  const workflow=await readFile('.github/workflows/pages.yml','utf8');assert.ok(!/^\s*schedule:/m.test(workflow));assert.ok(!workflow.includes('npm run refresh'));assert.ok(!workflow.includes('npm run scan'));assert.ok(workflow.indexOf('catalog:ingest')<workflow.indexOf('npm test'));assert.ok(workflow.indexOf('npm run test:e2e')<workflow.indexOf('actions/upload-pages-artifact'));assert.match(workflow,/needs: build/);assert.match(workflow,/needs: \[build, deploy\]/);
+});
+test('retired monthly CLI cannot overwrite an externally published weekly catalog',async()=>{
+ const before=await readFile('public/data/events.json','utf8');
+ const run=spawnSync(process.execPath,['scripts/refresh.mjs'],{encoding:'utf8'});
+ assert.equal(run.status,1);assert.match(run.stderr,/Monthly discovery is retired/);assert.equal(await readFile('public/data/events.json','utf8'),before);
 });

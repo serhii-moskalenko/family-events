@@ -8,7 +8,7 @@ The owner confirmed that the existing Scheduled Task runs locally in the app. Th
 
 Verified during implementation:
 
-- The connected GitHub account has owner/push permissions and the connector can read repository metadata. Creating a branch through that connector returned `403 Resource not accessible by integration`. Account permissions do not establish the integration token's write permissions.
+- The connected GitHub account has owner/push permissions and the connector can read repository metadata. Creating a branch and updating the weekly JSON file through that connector both returned `403 Resource not accessible by integration`. Account permissions do not establish the integration token's write permissions.
 - GitHub CLI is authenticated as `serhii-moskalenko` using the operating system keyring. GitHub Pages already uses GitHub Actions as its source; no branch rulesets were present at inspection.
 - The local script, validation, workflow, UI regression tests and live deployment can be tested independently. See [test results](integration-results.md) for actual run receipts and remaining limitations.
 
@@ -42,7 +42,7 @@ The script validates the submission and rejects old periods, stale publication t
 
 GitHub starts `pages.yml` on the resulting push. It validates and stages the incoming JSON, runs unit/parser/publishing tests and browser tests, builds the site, and uploads Pages only after these steps succeed. A newer main commit prevents an older build from deploying. After deployment, the workflow compares the **exact SHA256** of the public JSON with the tested artifact and checks the site HTML. Only then does it save the valid catalog to `public/data/events.json` in a bot commit with `[skip ci]`.
 
-With `--wait`, the publisher waits up to 15 minutes for the workflow associated with its exact submission commit and verifies the public JSON itself. `submitted: true` means only that GitHub accepted the incoming file. `deploymentVerified: true` means the matching workflow and live catalog checks succeeded. Neither means the source facts have been independently re-researched by scripts or that an unattended Scheduled Task run has been tested.
+With `--wait`, the publisher waits up to 15 minutes for the workflow associated with its exact submission commit and verifies the public JSON itself. `submitted: true` means only that GitHub accepted the incoming file. `deploymentVerified: true` for a new submission means the matching workflow and live catalog checks succeeded. For an identical submission no new commit is created; with `--wait` the existing live catalog is verified directly. Neither means the source facts have been independently re-researched by scripts or that an unattended Scheduled Task run has been tested.
 
 The website remains at the same URL. No separate website server, research workflow or paid AI API is introduced.
 
