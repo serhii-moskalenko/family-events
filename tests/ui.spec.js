@@ -80,3 +80,5 @@ test('real generated monthly JSON loads through the existing website endpoint',a
  await page.locator('#sort').selectOption('price');await expect(page.locator('.card').first()).toContainText('Безкоштовно');
  await page.locator('#sort').selectOption('date');await expect(page.locator('.card').first()).toHaveAttribute('data-start','2026-10-10T10:00');
 });
+
+test('switching from the superseded weekly app retains same-month selections',async({page})=>{await page.evaluate(id=>localStorage.setItem('family-events:v1',JSON.stringify({period:'week-2026-10-10',selections:{[id]:{status:'added'}}})),catalog.events[0].id);await page.reload();await expect(page.locator('.card')).toHaveCount(1);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('family-events:v1')).period)).toBe('2026-10');});
