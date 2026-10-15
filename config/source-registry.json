@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "cadence": "monthly",
   "autoPublishCandidates": false,
-  "notes": "General link scan is a candidate report only. Automatic publication from four configured source adapters is implemented separately in config/discovery.json.",
+  "notes": "Source scan produces candidate reports only. Monthly catalogs require editorial verification; discovery scripts do not publish directly. Farm sources below were reviewed October 15, 2026. Sources without a tested adapter remain editorial-only.",
   "sources": [
     {
       "id": "canton-tourism",
@@ -168,11 +168,11 @@
       "name": "Berry Patch Farms",
       "url": "https://berrypatchfarms.co/",
       "kind": "farm",
-      "reviewStatus": "needs-year-price-confirmation",
+      "reviewStatus": "verified-events",
       "allowedLinkedHosts": [],
       "linkPatterns": [
-        "pumpkin",
-        "event"
+        "/pumpkin-season",
+        "/christmas-market"
       ]
     },
     {
@@ -212,6 +212,53 @@
         "/registrations/events/"
       ],
       "automaticImport": "churchcenter-html"
+    },
+    {
+      "id": "big-springs",
+      "name": "Big Springs Farms",
+      "url": "https://exploregeorgia.org/woodstock/agritourism/farms-ranches/big-springs-farms",
+      "kind": "farm",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/woodstock/agritourism/farms-ranches/big-springs-farms"
+      ]
+    },
+    {
+      "id": "yahoo-farm",
+      "name": "Yahoo Farm",
+      "url": "https://yahoofarm.com/",
+      "kind": "farm",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/activities/"
+      ]
+    },
+    {
+      "id": "scottsdale-farms",
+      "name": "Scottsdale Farms",
+      "url": "https://www.scottsdalefarms.com/pumpkin-patch/",
+      "kind": "farm",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/pumpkin-patch/",
+        "/family-fun/",
+        "/october-in-the-garden-4/"
+      ]
+    },
+    {
+      "id": "pettit-creek",
+      "name": "Pettit Creek Farms",
+      "url": "https://pettitcreekfarms.com/pumpkin-fest/",
+      "kind": "farm",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/pumpkin-fest/",
+        "/seasonal-events/"
+      ]
     }
   ]
 }
