@@ -24,3 +24,8 @@ test('workflow validates before testing and deploys only main, without discovery
 });
 
 test('monthly restoration preserves same-month selections saved by the superseded weekly app',()=>{const selections={a:{status:'added'},b:{status:'rejected'}};const storage={getItem:()=>JSON.stringify({period:'week-2026-10-10',selections})};assert.deepEqual(readState(storage,'2026-10'),{period:'2026-10',selections});assert.deepEqual(readState(storage,'2026-11').selections,{});});
+
+test('Codex research provenance is supported without falsely marking inherited events as newly researched',()=>{
+ const c=copy();c.provenance={producer:'codex',notes:'Partial local Codex review; legacy origins and verification remain.'};c.events[0].origin='codex';assert.doesNotThrow(()=>validateCatalog(c));const output=generateCatalog(c);assert.equal(output.provenance.producer,'codex');assert.equal(output.events[0].origin,'codex');assert.equal(output.events[1].origin,c.events[1].origin);
+ const old=copy();old.provenance.producer='chatgpt-work';assert.throws(()=>validateCatalog(old),/Work provenance/);
+});

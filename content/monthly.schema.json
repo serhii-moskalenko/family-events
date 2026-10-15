@@ -51,7 +51,8 @@
         "producer": {
           "enum": [
             "chatgpt-work",
-            "migration"
+            "migration",
+            "codex"
           ]
         },
         "notes": {
@@ -196,7 +197,8 @@
             "enum": [
               "chatgpt-work",
               "legacy-editorial",
-              "legacy-discovery"
+              "legacy-discovery",
+              "codex"
             ]
           },
           "verifiedAt": {

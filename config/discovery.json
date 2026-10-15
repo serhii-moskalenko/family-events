@@ -81,12 +81,37 @@
     "30107",
     "30184"
   ],
-  "notes": "Automatic publication from these four source adapters only. Radius is 20 straight-line miles plus selected local ZIP codes. Two previously reviewed Canton venues are address allowlist exceptions when Census has no match; no numeric distance is asserted for these venues.",
+  "notes": "Candidate discovery only: configured adapters write reports, not the live catalog. Radius is 20 straight-line miles; existing ZIP restrictions apply to automatic candidates. localFarms is verified venue provenance, not a list of working farm adapters.",
   "localFarms": [
     {
       "name": "Cagle’s Farm",
       "source": "https://caglesfarm.com/",
       "address": "362 Stringer Road, Holly Springs, GA 30115"
+    },
+    {
+      "name": "Berry Patch Farms",
+      "source": "https://berrypatchfarms.co/",
+      "address": "786 Arnold Mill Road, Woodstock, GA 30188"
+    },
+    {
+      "name": "Big Springs Farms",
+      "source": "https://exploregeorgia.org/woodstock/agritourism/farms-ranches/big-springs-farms",
+      "address": "2100 Sugar Pike Road, Woodstock, GA 30188"
+    },
+    {
+      "name": "Yahoo Farm",
+      "source": "https://yahoofarm.com/",
+      "address": "4729 Waleska Hwy, Jasper, GA 30143"
+    },
+    {
+      "name": "Scottsdale Farms",
+      "source": "https://www.scottsdalefarms.com/pumpkin-patch/",
+      "address": "15639 Birmingham Hwy, Milton, GA 30004"
+    },
+    {
+      "name": "Pettit Creek Farms",
+      "source": "https://pettitcreekfarms.com/pumpkin-fest/",
+      "address": "337 Cassville Road, Cartersville, GA 30120"
     }
   ]
 }
