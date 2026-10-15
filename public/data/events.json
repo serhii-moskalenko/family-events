@@ -2,15 +2,15 @@
   "schemaVersion": 2,
   "catalogId": "2026-10",
   "cadence": "monthly",
-  "publishedAt": "2026-10-10T19:48:15.833Z",
+  "publishedAt": "2026-10-15T14:43:22Z",
   "timezone": "America/New_York",
   "coverage": {
     "start": "2026-10-10",
     "end": "2026-10-31"
   },
   "provenance": {
-    "producer": "migration",
-    "notes": "Existing published records imported without fresh research. Verification timestamps and original discovery provenance retained. Work has not published this catalog. Unverified parser-inferred all-day event quarantined; original record remains in content/discovery snapshot. Preparation timestamp updated for authenticated local publishing test; no new source research or Work-originated publication. Тест публікації через ChatGPT Work."
+    "producer": "codex",
+    "notes": "Partial editorial update by local Codex on October 15, 2026: five additional farm programs researched against official pages with dated corroboration where the year is omitted. Cagle’s Farm was also rechecked, including its current online ticket fee and measured distance. Non-farm records retain their previous verification timestamps and provenance; they were not reverified in this farm-only update. Distances measured from configured Canton center using US Census geocoding, not driving routes. Big Springs HTTP-only official site was read; a working official Georgia tourism HTTPS source is shown."
   },
   "discoveryEnabled": false,
   "aiApiConnected": false,
@@ -67,9 +67,9 @@
       "icon": "🌽",
       "venue": "Cagle’s Farm · Holly Springs",
       "address": "362 Stringer Road, Holly Springs, GA 30115",
-      "distanceLabel": "≈ 10 миль",
+      "distanceLabel": "≈ 5.3 милі по прямій",
       "familyPrice": 60,
-      "priceNote": "$15 за людину віком від 3 років: $60 за 2 дорослих + 2 дітей (3+). Гарбузи окремо; поїздка до озера з багаттям — ще $5 за людину.",
+      "priceNote": "$60 базово для 2 дорослих і 2 дітей віком від 3 років. Онлайн: $66.20 із опублікованим збором $1.55 за кожен із 4 квитків, без додаткових опцій.",
       "description": "Кукурудзяний лабіринт, мінілабіринт, фермерські тварини, перегони поросят і дворові ігри. Дати відповідають вихідним, зазначеним у програмі ферми; час — офіційному розкладу роботи.",
       "comfortNote": "Діти до 14 років включно мають бути з дорослим. Відкритий майданчик; домашніх тварин не допускають, службові тварини дозволені.",
       "source": "https://caglesfarm.com/",
@@ -125,18 +125,22 @@
         "name": "Cagle’s Farm",
         "source": "https://caglesfarm.com/"
       },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
+      "verifiedAt": "2026-10-15T14:43:22Z",
+      "verification": "Rechecked official 2026 homepage for Friday/weekend hours, address, $15 age-3+ admission and $5 lake add-on on October 15. Official linked 2026 TicketSpice checkout lists $15 plus $1.55 fee. Census geocoding confirms 5.3 straight-line miles. No cancellation banner on inspected pages; later changes possible.",
       "city": "Holly Springs",
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=362%20Stringer%20Road%2C%20Holly%20Springs%2C%20GA%2030115",
-      "admissionPrice": null,
-      "additionalCosts": "$15 за людину віком від 3 років: $60 за 2 дорослих + 2 дітей (3+). Гарбузи окремо; поїздка до озера з багаттям — ще $5 за людину.",
+      "admissionPrice": "$15 за людину від 3 років; онлайн додається $1.55 за квиток.",
+      "additionalCosts": "Гарбузи окремо; поїздка до озера з багаттям — ще $5/людину. Онлайн-збір та необов’язковий захист покупки оплачуються окремо.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вимоги реєстрації не підтверджено."
+        "Необхідність попередньої покупки та безбар’єрність доріжок не підтверджено.",
+        "Перед поїздкою перевірте можливі зміни графіка."
       ],
-      "origin": "legacy-editorial",
-      "registration": null,
+      "origin": "codex",
+      "registration": {
+        "required": null,
+        "url": "https://caglesfarm.ticketspice.com/fall-fun-at-cagles-farm-2026",
+        "note": "Онлайн-квитки доступні; обов’язковість попередньої покупки не підтверджено."
+      },
       "rating": 84
     },
     {
@@ -718,6 +722,467 @@
       "origin": "legacy-discovery",
       "registration": null,
       "rating": 64
+    },
+    {
+      "category": "farm",
+      "icon": "🎃",
+      "venue": "Berry Patch Farms",
+      "address": "786 Arnold Mill Road, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://berrypatchfarms.co/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=786%20Arnold%20Mill%20Road%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 9.3 милі по прямій",
+      "sessions": [
+        {
+          "start": "2026-10-17T10:00",
+          "end": "2026-10-17T17:00"
+        },
+        {
+          "start": "2026-10-18T10:00",
+          "end": "2026-10-18T17:00"
+        },
+        {
+          "start": "2026-10-24T10:00",
+          "end": "2026-10-24T17:00"
+        },
+        {
+          "start": "2026-10-25T10:00",
+          "end": "2026-10-25T17:00"
+        }
+      ],
+      "verifiedAt": "2026-10-15T14:39:37Z",
+      "origin": "codex",
+      "farm": {
+        "name": "Berry Patch Farms",
+        "source": "https://berrypatchfarms.co/"
+      },
+      "ratingMethod": "editorial-four-components",
+      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
+      "id": "berry-patch-pumpkins-2026",
+      "name": "Гарбузові вихідні на Berry Patch Farms",
+      "familyPrice": 10,
+      "admissionPrice": "$10 за автомобіль; необмежені поїздки трактором включено.",
+      "priceNote": "$10 для сім’ї в одному автомобілі при оплаті готівкою. Картка: додатково 3%. Приватні святкування мають інші тарифи.",
+      "additionalCosts": "Гарбузи, їжа та окремі активності — за тарифами ферми; повний прайс не опубліковано.",
+      "description": "Вибір гарбузів, тракторні прогулянки, тварини, сінний лабіринт і дитячий майданчик. У каталозі залишені вихідні до 25 жовтня.",
+      "comfortNote": "Готівка рекомендована; взуття для ґрунтових доріжок. Домашніх собак не допускають. Доступність для візочків не підтверджено.",
+      "points": {
+        "children": 27,
+        "comfort": 14,
+        "distance": 12,
+        "uniqueness": 7
+      },
+      "uncertaintyNotes": [
+        "Рік сезону звірено з місцевою публікацією Woodstock Post від 11.10.2026; на головній сторінці ферми вказані день і місяць без року.",
+        "Умови попередньої реєстрації та тарифи окремих активностей не підтверджено."
+      ],
+      "registration": null,
+      "verification": "Reviewed official homepage schedule/address and /pumpkin-season admission/activities on October 15. Corroborated 2026 season with Woodstock Post October 11: https://www.woodstockpost.com/fall-festivals-and-pumpkin-patches/. No cancellation banner found on the two inspected official pages; later/weather changes remain possible.",
+      "rating": 80
+    },
+    {
+      "category": "farm",
+      "icon": "🎃",
+      "venue": "Big Springs Farms",
+      "address": "2100 Sugar Pike Road, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://exploregeorgia.org/woodstock/agritourism/farms-ranches/big-springs-farms",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=2100%20Sugar%20Pike%20Road%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 8.3 милі по прямій",
+      "sessions": [
+        {
+          "start": "2026-10-16T12:00",
+          "end": "2026-10-16T18:00"
+        },
+        {
+          "start": "2026-10-17T10:00",
+          "end": "2026-10-17T18:00"
+        },
+        {
+          "start": "2026-10-18T10:00",
+          "end": "2026-10-18T18:00"
+        },
+        {
+          "start": "2026-10-23T12:00",
+          "end": "2026-10-23T18:00"
+        },
+        {
+          "start": "2026-10-24T10:00",
+          "end": "2026-10-24T18:00"
+        },
+        {
+          "start": "2026-10-25T10:00",
+          "end": "2026-10-25T18:00"
+        },
+        {
+          "start": "2026-10-30T12:00",
+          "end": "2026-10-30T18:00"
+        },
+        {
+          "start": "2026-10-31T10:00",
+          "end": "2026-10-31T18:00"
+        }
+      ],
+      "verifiedAt": "2026-10-15T14:39:37Z",
+      "origin": "codex",
+      "farm": {
+        "name": "Big Springs Farms",
+        "source": "https://exploregeorgia.org/woodstock/agritourism/farms-ranches/big-springs-farms"
+      },
+      "ratingMethod": "editorial-four-components",
+      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
+      "id": "big-springs-fall-2026",
+      "name": "Осінні вихідні на Big Springs Farms",
+      "familyPrice": 0,
+      "admissionPrice": "Вхід і паркування безкоштовні.",
+      "priceNote": "Для сім’ї вхід $0. Платні розваги й гарбузи у цю суму не входять.",
+      "additionalCosts": "Тракторна прогулянка або кукурудзяний лабіринт — $5/людину; надувний будиночок і потяг — $3/дитину; стрибкова подушка — $7/дитину; мінерали — $9/пакет.",
+      "description": "Гарбузи, кукурудзяний лабіринт, тракторні поїздки й дитячі розваги. Публічні години лише в п’ятницю, суботу та неділю.",
+      "comfortNote": "Безкоштовне паркування; ферма приймає картки й допускає собак. Доступність доріжок для візочків не підтверджено.",
+      "points": {
+        "children": 28,
+        "comfort": 15,
+        "distance": 12,
+        "uniqueness": 7
+      },
+      "uncertaintyNotes": [
+        "HTTPS-сайт ферми недоступний; кнопка джерела веде на офіційний туристичний портал штату. Розклад 2026 і ціни прочитано на HTTP-сайті самої ферми.",
+        "Вартість гарбузів та можливі зміни через погоду уточнюйте перед поїздкою."
+      ],
+      "registration": {
+        "required": null,
+        "url": "https://app.waiverelectronic.com/render/templateByRefId/66da03c6669be5df2e761002",
+        "note": "Для загального входу попереднє бронювання не підтверджено. Для надувного будиночка та стрибкової подушки потрібна окрема підписана згода."
+      },
+      "verification": "Fetched official http://www.bigspringsfarms.net/ on October 15: explicit October 2026 Friday/Saturday/Sunday hours, free entry/parking and individual activity prices. HTTPS refused connection, so source link uses the Georgia state tourism listing, which independently confirms address and regular hours. No closure banner in inspected farm page.",
+      "rating": 83
+    },
+    {
+      "category": "farm",
+      "icon": "🎃",
+      "venue": "Yahoo Farm",
+      "address": "4729 Waleska Hwy, Jasper, GA 30143",
+      "city": "Jasper",
+      "source": "https://yahoofarm.com/activities/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=4729%20Waleska%20Hwy%2C%20Jasper%2C%20GA%2030143",
+      "distanceLabel": "≈ 10.9 милі по прямій",
+      "sessions": [
+        {
+          "start": "2026-10-15T10:00",
+          "end": "2026-10-15T18:00"
+        },
+        {
+          "start": "2026-10-16T10:00",
+          "end": "2026-10-16T18:00"
+        },
+        {
+          "start": "2026-10-17T10:00",
+          "end": "2026-10-17T18:00"
+        },
+        {
+          "start": "2026-10-18T10:00",
+          "end": "2026-10-18T18:00"
+        },
+        {
+          "start": "2026-10-19T10:00",
+          "end": "2026-10-19T18:00"
+        },
+        {
+          "start": "2026-10-20T10:00",
+          "end": "2026-10-20T18:00"
+        },
+        {
+          "start": "2026-10-21T10:00",
+          "end": "2026-10-21T18:00"
+        },
+        {
+          "start": "2026-10-22T10:00",
+          "end": "2026-10-22T18:00"
+        },
+        {
+          "start": "2026-10-23T10:00",
+          "end": "2026-10-23T18:00"
+        },
+        {
+          "start": "2026-10-24T10:00",
+          "end": "2026-10-24T18:00"
+        },
+        {
+          "start": "2026-10-25T10:00",
+          "end": "2026-10-25T18:00"
+        },
+        {
+          "start": "2026-10-26T10:00",
+          "end": "2026-10-26T18:00"
+        },
+        {
+          "start": "2026-10-27T10:00",
+          "end": "2026-10-27T18:00"
+        },
+        {
+          "start": "2026-10-28T10:00",
+          "end": "2026-10-28T18:00"
+        },
+        {
+          "start": "2026-10-29T10:00",
+          "end": "2026-10-29T18:00"
+        },
+        {
+          "start": "2026-10-30T10:00",
+          "end": "2026-10-30T18:00"
+        },
+        {
+          "start": "2026-10-31T10:00",
+          "end": "2026-10-31T18:00"
+        }
+      ],
+      "verifiedAt": "2026-10-15T14:39:37Z",
+      "origin": "codex",
+      "farm": {
+        "name": "Yahoo Farm",
+        "source": "https://yahoofarm.com/"
+      },
+      "ratingMethod": "editorial-four-components",
+      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
+      "id": "yahoo-farm-daytime-2026",
+      "name": "Денна осіння програма Yahoo Farm",
+      "familyPrice": 0,
+      "admissionPrice": "Вхід і паркування безкоштовні; активності оплачуються окремо.",
+      "priceNote": "Вхід для сім’ї $0. Набір із шести активностей — $24 за людину, для дітей до 2 років включно — $18. Це додатковий вибір, а не плата за вхід.",
+      "additionalCosts": "Тракторна прогулянка й кукурудзяний лабіринт — по $5/людину (до 2 років включно безкоштовно). Поні — $5, лише вихідними, до 60 фунтів; гарбузи та їжа окремо.",
+      "description": "Денні тракторні прогулянки, кукурудзяний лабіринт, тварини й гарбузи. Ця картка охоплює денні години до 18:00; вечірні страшні програми сюди не включені.",
+      "comfortNote": "Є безкоштовні столи для пікніка та банкомат. Активності залежать від погоди; собак не допускають, службові тварини дозволені. Доступність для візочків не підтверджено.",
+      "points": {
+        "children": 29,
+        "comfort": 15,
+        "distance": 12,
+        "uniqueness": 8
+      },
+      "uncertaintyNotes": [
+        "Попередня реєстрація для загального денного відвідування не підтверджена.",
+        "Точну вартість гарбузів і доступність усіх активностей у вибраний день уточнюйте у ферми."
+      ],
+      "registration": null,
+      "verification": "Official home explicitly states final 2026 opening day October 31 and current daily daytime hours. Official /activities/ confirms free entry/parking, daytime prices and weekend-only pony rides. Checked both pages October 15; no cancellation notice on inspected pages, weather changes possible.",
+      "rating": 85
+    },
+    {
+      "category": "farm",
+      "icon": "🎃",
+      "venue": "Scottsdale Farms",
+      "address": "15639 Birmingham Hwy, Milton, GA 30004",
+      "city": "Milton",
+      "source": "https://www.scottsdalefarms.com/pumpkin-patch/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=15639%20Birmingham%20Hwy%2C%20Milton%2C%20GA%2030004",
+      "distanceLabel": "≈ 10.4 милі по прямій",
+      "sessions": [
+        {
+          "start": "2026-10-15T08:00",
+          "end": "2026-10-15T19:00"
+        },
+        {
+          "start": "2026-10-16T08:00",
+          "end": "2026-10-16T19:00"
+        },
+        {
+          "start": "2026-10-17T08:00",
+          "end": "2026-10-17T19:00"
+        },
+        {
+          "start": "2026-10-18T09:00",
+          "end": "2026-10-18T18:00"
+        },
+        {
+          "start": "2026-10-19T08:00",
+          "end": "2026-10-19T19:00"
+        },
+        {
+          "start": "2026-10-20T08:00",
+          "end": "2026-10-20T19:00"
+        },
+        {
+          "start": "2026-10-21T08:00",
+          "end": "2026-10-21T19:00"
+        },
+        {
+          "start": "2026-10-22T08:00",
+          "end": "2026-10-22T19:00"
+        },
+        {
+          "start": "2026-10-23T08:00",
+          "end": "2026-10-23T19:00"
+        },
+        {
+          "start": "2026-10-24T08:00",
+          "end": "2026-10-24T19:00"
+        },
+        {
+          "start": "2026-10-25T09:00",
+          "end": "2026-10-25T18:00"
+        },
+        {
+          "start": "2026-10-26T08:00",
+          "end": "2026-10-26T19:00"
+        },
+        {
+          "start": "2026-10-27T08:00",
+          "end": "2026-10-27T19:00"
+        },
+        {
+          "start": "2026-10-28T08:00",
+          "end": "2026-10-28T19:00"
+        },
+        {
+          "start": "2026-10-29T08:00",
+          "end": "2026-10-29T19:00"
+        },
+        {
+          "start": "2026-10-30T08:00",
+          "end": "2026-10-30T19:00"
+        },
+        {
+          "start": "2026-10-31T08:00",
+          "end": "2026-10-31T19:00"
+        }
+      ],
+      "verifiedAt": "2026-10-15T14:39:37Z",
+      "origin": "codex",
+      "farm": {
+        "name": "Scottsdale Farms",
+        "source": "https://www.scottsdalefarms.com/pumpkin-patch/"
+      },
+      "ratingMethod": "editorial-four-components",
+      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
+      "id": "scottsdale-pumpkin-patch-2026",
+      "name": "Гарбузовий майданчик Scottsdale Farms",
+      "familyPrice": 0,
+      "admissionPrice": "Гарбузовий майданчик — безкоштовний, без квитка.",
+      "priceNote": "Прогулянка сім’єю $0. Family Fun Field — окрема платна зона: $19 + податок/людину; дітям до 3 років включно безкоштовно.",
+      "additionalCosts": "Гарбузи переважно продають на вагу. Їжа в кафе та квитки Family Fun Field оплачуються окремо; ціни гарбузів не наведено.",
+      "description": "Вибір гарбузів і місця для осінніх фотографій на фермі в Milton. Family Fun Field із лабіринтом, гірками й тваринами — окрема програма з власним графіком і квитком.",
+      "comfortNote": "На території є кафе. Для безкоштовного майданчика бронювання не потрібне. Доступність доріжок для візочків не підтверджено.",
+      "points": {
+        "children": 24,
+        "comfort": 14,
+        "distance": 12,
+        "uniqueness": 6
+      },
+      "uncertaintyNotes": [
+        "У картці наведено години безкоштовного гарбузового майданчика, а не платного Family Fun Field.",
+        "Ціни гарбузів та доступність платних активностей на конкретну дату не підтверджено."
+      ],
+      "registration": {
+        "required": false,
+        "url": null,
+        "note": "Для гарбузового майданчика квиток не потрібен. Окремий Family Fun Field вимагає квиток і підписану згоду."
+      },
+      "verification": "Official October 2026 blog confirms current pumpkin patch/fall field; /pumpkin-patch/ confirms free entry, no reservation, address and store-hour access; /family-fun/ separately states $19 plus tax and waiver for paid field. Reviewed October 15; no cancellation notice in inspected pages. Display window is the remainder of October, not an asserted season closing date.",
+      "rating": 75
+    },
+    {
+      "category": "farm",
+      "icon": "🎃",
+      "venue": "Pettit Creek Farms",
+      "address": "337 Cassville Road, Cartersville, GA 30120",
+      "city": "Cartersville",
+      "source": "https://pettitcreekfarms.com/pumpkin-fest/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=337%20Cassville%20Road%2C%20Cartersville%2C%20GA%2030120",
+      "distanceLabel": "≈ 18.9 милі по прямій",
+      "sessions": [
+        {
+          "start": "2026-10-15T14:30",
+          "end": "2026-10-15T18:00"
+        },
+        {
+          "start": "2026-10-16T14:30",
+          "end": "2026-10-16T18:00"
+        },
+        {
+          "start": "2026-10-17T10:00",
+          "end": "2026-10-17T18:00"
+        },
+        {
+          "start": "2026-10-18T10:00",
+          "end": "2026-10-18T18:00"
+        },
+        {
+          "start": "2026-10-20T14:30",
+          "end": "2026-10-20T18:00"
+        },
+        {
+          "start": "2026-10-21T14:30",
+          "end": "2026-10-21T18:00"
+        },
+        {
+          "start": "2026-10-22T14:30",
+          "end": "2026-10-22T18:00"
+        },
+        {
+          "start": "2026-10-23T14:30",
+          "end": "2026-10-23T18:00"
+        },
+        {
+          "start": "2026-10-24T10:00",
+          "end": "2026-10-24T18:00"
+        },
+        {
+          "start": "2026-10-25T10:00",
+          "end": "2026-10-25T18:00"
+        },
+        {
+          "start": "2026-10-27T14:30",
+          "end": "2026-10-27T18:00"
+        },
+        {
+          "start": "2026-10-28T14:30",
+          "end": "2026-10-28T18:00"
+        },
+        {
+          "start": "2026-10-29T14:30",
+          "end": "2026-10-29T18:00"
+        },
+        {
+          "start": "2026-10-30T14:30",
+          "end": "2026-10-30T18:00"
+        },
+        {
+          "start": "2026-10-31T10:00",
+          "end": "2026-10-31T16:00"
+        }
+      ],
+      "verifiedAt": "2026-10-15T14:39:37Z",
+      "origin": "codex",
+      "farm": {
+        "name": "Pettit Creek Farms",
+        "source": "https://pettitcreekfarms.com/pumpkin-fest/"
+      },
+      "ratingMethod": "editorial-four-components",
+      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
+      "id": "pettit-creek-pumpkin-fest-2026",
+      "name": "Pumpkin Fest на Pettit Creek Farms",
+      "familyPrice": 59.8,
+      "admissionPrice": "$14.95 + податок із 3 років; дітям до 2 років включно безкоштовно.",
+      "priceNote": "$59.80 + податок для 2 дорослих і 2 дітей віком від 3 років, готівкою. При оплаті карткою додатково 3%; фактична сума залежить від віку дітей.",
+      "additionalCosts": "Їжа, гарбузи, корм і додаткові атракціони окремо, за готівку. Вартість атракціонів і вікові/вагові обмеження перевірте перед оплатою.",
+      "description": "Кукурудзяний і сінний лабіринти, тракторна прогулянка, контактна зона тварин та ігри. 31 жовтня скорочені години до 16:00; понеділки пропущено.",
+      "comfortNote": "Потрібна підписана згода для кожного гостя. Готівка потрібна для додаткових покупок; на території є банкомат. Собак не допускають. Безбар’єрність не підтверджено.",
+      "points": {
+        "children": 29,
+        "comfort": 13,
+        "distance": 6,
+        "uniqueness": 9
+      },
+      "uncertaintyNotes": [
+        "Відстань близька до межі: 18.9 милі по прямій; автомобільний маршрут довший.",
+        "Календар сезону 2026 звірено з поточною стрічкою офіційної ферми та датованою афішею; окремі атракціони можуть бути недоступні через погоду."
+      ],
+      "registration": {
+        "required": true,
+        "url": "https://kiosk.singenuity.com/checkin/form/0/PETT/false/consent?unassigned=true",
+        "note": "Кожному гостю потрібна підписана згода. Попередня бронь не обов’язкова, квиток можна придбати на вході."
+      },
+      "verification": "Official /pumpkin-fest/ inspected October 15 for hours, Halloween exception, prices, waiver and booking policy; current official seasonal feed refers to 2026. Date range corroborated with https://mommypoppins.com/atlanta-kids/event/events/pumpkin-fest-at-pettit-creek-farms. No cancellation banner in inspected farm page; future weather changes possible.",
+      "rating": 76
     }
   ]
 }
