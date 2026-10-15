@@ -44,7 +44,7 @@ test('automatically discovered card displays provenance and safely escapes the s
  await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,publishedAt:'2026-10-10T00:30:00Z',discoveryEnabled:true,events:[automatic]}}));await page.reload();await expect(page.locator('.card')).toHaveCount(1);
  await page.locator('.card summary').click();await expect(page.getByText('↻ Автоматично імпортовано з офіційного джерела')).toBeVisible();await expect(page.getByText(/Короткий опис організатора/)).toContainText('<script>');
  await expect(page.locator('.card')).toContainText('Джерело перевірено 9 жовт.');await expect(page.locator('#verified')).toContainText('Оновлено 9 жовт.');
- expect(await page.evaluate(()=>window.sourceExecuted)).toBeUndefined();await expect(page.getByText('Автоматична оцінка за правилами',{exact:false})).toBeVisible();await expect(page.getByLabel('Дата події')).toHaveCount(0);
+ expect(await page.evaluate(()=>window.sourceExecuted)).toBeUndefined();await page.getByRole('button',{name:'Про оцінку'}).click();await expect(page.getByText('Автоматична оцінка за правилами',{exact:false})).toBeVisible();await expect(page.getByLabel('Дата події')).toHaveCount(0);
  const downloaded=page.waitForEvent('download');await page.getByRole('button',{name:'↓ Apple Calendar',exact:true}).click();const file=await fs.readFile(await (await downloaded).path(),'utf8');expect(file).toContain('TZID=America/New_York');await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);
 });
 
@@ -97,4 +97,23 @@ test('same-month correction preserves both Added and Rejected; new month resets 
  await page.evaluate(ids=>{localStorage.setItem('family-events:v1',JSON.stringify({period:'2026-10',selections:{[ids[0]]:{status:'added'},[ids[1]]:{status:'rejected'}}}));localStorage.setItem('family-events:theme','dark');},catalog.events.map(e=>e.id));
  await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,publishedAt:'2026-10-10T19:00:00Z'}}));await page.reload();await expect(page.locator('.card')).toHaveCount(0);await page.getByRole('button',{name:/Додано/}).click();await expect(page.locator('.card.added')).toHaveCount(1);await page.getByRole('button',{name:/Відхилено/}).click();await expect(page.locator('.card.rejected')).toHaveCount(1);
  await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,catalogId:'2026-11'}}));await page.reload();await expect(page.locator('.card')).toHaveCount(2);await expect(page.locator('html')).toHaveAttribute('data-theme','dark');
+});
+
+
+test('structured event details prioritize ratings, distinguish notices and keep calendar actions last in both themes',async({page})=>{
+ const published=JSON.parse(await fs.readFile('public/data/events.json','utf8'));
+ const event=published.events.find(e=>e.id==='yahoo-farm-daytime-2026');
+ await page.route('**/data/events.json',r=>r.fulfill({json:{...published,events:[event]}}));await page.clock.setFixedTime(new Date('2026-10-15T14:00:00Z'));await page.reload();
+ const card=page.locator('.card');await card.locator('summary').click();
+ for(const theme of ['light','dark']){
+  if(await page.locator('html').getAttribute('data-theme')!==theme)await page.locator('#theme-toggle').click();
+  await expect(card.locator('.meta')).not.toContainText(event.distanceLabel);
+  const positions=await card.evaluate(el=>['.breakdown','.event-description','.info-grid','.event-links','.session-label','.actions'].map(s=>el.querySelector(s).getBoundingClientRect().top));
+  expect(positions.every((v,i)=>i===0||v>positions[i-1])).toBeTruthy();
+  await expect(card.getByRole('heading',{name:'Вартість',exact:true})).toBeVisible();await expect(card.getByRole('heading',{name:'Перед поїздкою',exact:true})).toBeVisible();
+  await expect(card.locator('.caution .ui-icon')).toBeVisible();await expect(card.locator('.location-panel')).toContainText(event.address);await expect(card.locator('.location-panel .ui-icon')).toBeVisible();
+  await expect(card.getByRole('button',{name:'Відхилити',exact:true})).toHaveCSS('background-color','rgb(184, 50, 41)');await expect(card.getByRole('button',{name:'Відхилити',exact:true})).toHaveCSS('color','rgb(255, 255, 255)');
+  const condition=card.locator('.price-conditions p');await expect(condition).toBeHidden();await card.getByRole('button',{name:'Умови входу',exact:true}).click();await expect(condition).toBeVisible();await expect(condition).toHaveText(event.admissionPrice);await card.getByRole('button',{name:'Умови входу',exact:true}).click();await expect(condition).toBeHidden();await expect(page.getByRole('dialog')).not.toBeVisible();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ }
 });
