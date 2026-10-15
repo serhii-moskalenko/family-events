@@ -47,3 +47,16 @@ The authenticated Cloud Browser GitHub editor is a documented candidate. This lo
 3. Only after the real Work test succeeds, give the ready prompt to the existing monthly recurring Work task and test its run. The monthly schedule here only activates already supplied input; missing input retains the prior edition. Sessions/approvals may still need user interaction. If cloud sign-in is unavailable, use owner upload or a separately authorized/tested connected local executor, and label publication accordingly.
 
 Live website: https://serhii-moskalenko.github.io/family-events/
+
+
+## Farm expansion verified — October 15, 2026
+
+[PR #3](https://github.com/serhii-moskalenko/family-events/pull/3) added five farm programs: Berry Patch Farms, Big Springs Farms, Yahoo Farm, Scottsdale Farms and Pettit Creek Farms. The catalog now contains 19 event records and six distinct verified farm venues including Cagle’s Farm. New farm dates begin October 15 or the next scheduled opening and remain within October coverage. Berry Patch ends October 25; Pettit Creek closes at 16:00 on October 31. Existing unrelated records and stable IDs were preserved.
+
+US Census address geocoding and the configured Canton center give straight-line distances of 9.3, 8.3, 10.9, 10.4 and 18.9 miles for the five additions respectively. Cagle’s Farm was also rechecked: its measured distance is 5.3 miles; the official ticket page discloses $1.55 per-ticket online fees, so four $15 tickets total $66.20 online before optional extras. Its base family price and rating remain unchanged. Prices do not affect ratings.
+
+Primary organizer pages supplied hours/prices and conditions. Where a current page omits the year, dated 2026 reporting or the organizer’s October 2026 article/feed supplied corroboration; this is disclosed in the cards. Big Springs’ HTTP-only official site was read directly, and its card links to the working official Georgia tourism HTTPS listing. The registry and verified farm-address list were expanded without enabling untested adapters. A real source scan fetched 19 of 21 configured pages and found 155 candidate links; two bot-access failures were reported, rather than treated as no events.
+
+[Production run 38754195169](https://github.com/serhii-moskalenko/family-events/actions/runs/38754195169) for merge commit 4cb75c7 passed schema validation, **52 Node tests**, build, **17 browser tests**, deployment and save-catalog. Exact live catalog SHA256: `8f5bdec2d2437834d88adee18faa81bd5699ddb8ef4182bcb11d80def67f5f58`. The generated output was saved by the workflow in 6277177.
+
+A separate Chromium check against the live Pages URL confirmed all six farm cards under the category and local-farms filter, official-source links, separate price/extra-cost text, four-component ratings, no 390px horizontal overflow, and a real Pettit Creek Halloween ICS with 16:00 America/New_York ending time. Added state survived reload. No browser page errors occurred. This was local Codex editorial research and authenticated GitHub publication; no new claim about unattended Work cloud execution is made.
