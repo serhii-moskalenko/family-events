@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "cadence": "monthly",
   "autoPublishCandidates": false,
-  "notes": "Source scan produces candidate reports only. Monthly catalogs require editorial verification; discovery scripts do not publish directly. Farm sources below were reviewed October 15, 2026. Sources without a tested adapter remain editorial-only.",
+  "notes": "Source scan produces candidate reports only. Monthly catalogs require editorial verification; discovery scripts do not publish directly. Farm sources below were reviewed October 15, 2026. Sources without a tested adapter remain editorial-only. November 1, 2026: monthly editorial review added four official research sources; new sources remain manual-only. Automatic adapter configuration is unchanged.",
   "sources": [
     {
       "id": "canton-tourism",
@@ -83,11 +83,12 @@
       "name": "Sutallee Baptist Church",
       "url": "https://www.sutalleebaptist.com/sutallee-events.php",
       "kind": "church",
-      "reviewStatus": "verified-events",
+      "reviewStatus": "conflicting-time-requires-review",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "events"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: Thanksgiving Dinner 18 листопада має конфлікт 18:00 проти Time is TBD."
     },
     {
       "id": "canton-bible",
@@ -132,12 +133,15 @@
       "url": "https://www.sequoyahregionallibrary.org/events",
       "kind": "public-library",
       "reviewStatus": "dynamic-calendar-review",
-      "allowedLinkedHosts": [],
+      "allowedLinkedHosts": [
+        "seqlib.libcal.com"
+      ],
       "linkPatterns": [
         "/events",
         "calendar",
         "libcal"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: офіційний /rtjones прямо посилається на seqlib.libcal.com; прочитано 3 листопадові записи. Не працюючий автоматичний адаптер."
     },
     {
       "id": "black-sheep",
@@ -156,7 +160,9 @@
       "url": "https://caglesfarm.com/",
       "kind": "farm",
       "reviewStatus": "verified-events",
-      "allowedLinkedHosts": [],
+      "allowedLinkedHosts": [
+        "caglesfarm.ticketspice.com"
+      ],
       "linkPatterns": [
         "entertainment",
         "ticket",
@@ -168,24 +174,26 @@
       "name": "Berry Patch Farms",
       "url": "https://berrypatchfarms.co/",
       "kind": "farm",
-      "reviewStatus": "verified-events",
+      "reviewStatus": "november-dates-unconfirmed",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/pumpkin-season",
         "/christmas-market"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: Головну прочитано вебінструментом; локальний scan fetch failed. Christmas Season ще без точних дат; це не доказ відсутності майбутніх подій."
     },
     {
       "id": "woodstock-food",
       "name": "Woodstock International Food Festival",
       "url": "https://www.woodstockinternationalfoodfestival.com/",
       "kind": "organizer",
-      "reviewStatus": "outside-october-window",
+      "reviewStatus": "verified-events",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "event",
         "ticket"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: Підтверджено 6–8 листопада 2026, окремі години, вільний вхід та добровільні $5/дорослого; старе outside-october-window замінено."
     },
     {
       "id": "woodstock-first-baptist",
@@ -229,36 +237,90 @@
       "name": "Yahoo Farm",
       "url": "https://yahoofarm.com/",
       "kind": "farm",
-      "reviewStatus": "verified-events",
+      "reviewStatus": "season-closed",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/activities/"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: Офіційна головна: сезон 2026 завершено 31 жовтня."
     },
     {
       "id": "scottsdale-farms",
       "name": "Scottsdale Farms",
       "url": "https://www.scottsdalefarms.com/pumpkin-patch/",
       "kind": "farm",
-      "reviewStatus": "verified-events",
+      "reviewStatus": "november-dates-unconfirmed",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/pumpkin-patch/",
         "/family-fun/",
         "/october-in-the-garden-4/"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: Family Fun має години, але точні листопадові межі сезону не підтверджені."
     },
     {
       "id": "pettit-creek",
       "name": "Pettit Creek Farms",
       "url": "https://pettitcreekfarms.com/pumpkin-fest/",
       "kind": "farm",
-      "reviewStatus": "verified-events",
+      "reviewStatus": "november-dates-unconfirmed",
       "allowedLinkedHosts": [],
       "linkPatterns": [
         "/pumpkin-fest/",
         "/seasonal-events/"
-      ]
+      ],
+      "reviewNotes": "2026-11-01: Seasonal Events не дає достатнього листопадового датованого розкладу."
+    },
+    {
+      "id": "sequoyah-libcal",
+      "name": "Sequoyah Regional Library · офіційний LibCal",
+      "url": "https://seqlib.libcal.com/calendar/events",
+      "kind": "public-library",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/event/"
+      ],
+      "reviewNotes": "2026-11-01: офіційний зв’язок підтверджено через /rtjones; 3, 10, 17 листопада прочитано окремо. Ручна редакційна перевірка, адаптер не ввімкнено."
+    },
+    {
+      "id": "woodstock-arts",
+      "name": "Woodstock Arts · події організатора",
+      "url": "https://woodstockarts.org/events/holiday-family-fun-day/",
+      "kind": "arts-organization",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [
+        "tickets.woodstockarts.org"
+      ],
+      "linkPatterns": [
+        "/events/",
+        "/book-online/"
+      ],
+      "reviewNotes": "2026-11-01: перевірено Holiday Family Fun Day і Finding Nemo Jr.; офіційна Book Online сторінка посилається на tickets.woodstockarts.org. Ручна перевірка, адаптера немає."
+    },
+    {
+      "id": "woodstock-city-church",
+      "name": "Woodstock City Church · сімейні події",
+      "url": "https://woodstockcity.org/events/playhouse-family-show-2026-11-07",
+      "kind": "church",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/"
+      ],
+      "reviewNotes": "2026-11-01: Playhouse Family Show має точну дату/час і адресу. Ручна перевірка, адаптера немає."
+    },
+    {
+      "id": "holly-springs-fall-into-fun",
+      "name": "Fall Into Fun · офіційна туристична сторінка Georgia",
+      "url": "https://exploregeorgia.org/holly-springs/events/fairs-festivals/fall-into-fun-festival",
+      "kind": "official-tourism",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/holly-springs/events/"
+      ],
+      "reviewNotes": "2026-11-01: підтверджено 14 листопада 2026 12:00–16:00, адресу, $10/учасник та безкоштовних супроводжуючих. Ручна перевірка."
     }
   ]
 }
