@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "catalogId": "2026-10",
+  "cadence": "monthly",
+  "publishedAt": "2026-10-15T14:43:22Z",
+  "timezone": "America/New_York",
+  "coverage": {
+    "start": "2026-10-10",
+    "end": "2026-10-31"
+  },
+  "provenance": {
+    "producer": "codex",
+    "notes": "Partial editorial update by local Codex on October 15, 2026: five additional farm programs researched against official pages with dated corroboration where the year is omitted. Cagle’s Farm was also rechecked, including its current online ticket fee and measured distance. Non-farm records retain their previous verification timestamps and provenance; they were not reverified in this farm-only update. Distances measured from configured Canton center using US Census geocoding, not driving routes. Big Springs HTTP-only official site was read; a working official Georgia tourism HTTPS source is shown."
+  },
+  "discoveryEnabled": false,
+  "aiApiConnected": false,
+  "issues": [
+    {
+      "id": "rising-hills-fall-festival-2026",
+      "reason": "Архівний парсер підставив 00:00–23:59; точний час не підтверджено. Work має перевірити час перед поверненням події."
+    }
+  ],
+  "events": [
+    {
+      "category": "farm",
+      "icon": "🎃",
+      "venue": "Yahoo Farm",
+      "address": "4729 Waleska Hwy, Jasper, GA 30143",
+      "city": "Jasper",
+      "source": "https://yahoofarm.com/activities/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=4729%20Waleska%20Hwy%2C%20Jasper%2C%20GA%2030143",
+      "distanceLabel": "≈ 10.9 милі по прямій",
+      "sessions": [
+        {
+          "start": "2026-10-15T10:00",
+          "end": "2026-10-15T18:00"
+        },
+        {
+          "start": "2026-10-16T10:00",
+          "end": "2026-10-16T18:00"
+        },
+        {
+          "start": "2026-10-17T10:00",
+          "end": "2026-10-17T18:00"
+        },
+        {
+          "start": "2026-10-18T10:00",
+          "end": "2026-10-18T18:00"
+        },
+        {
+          "start": "2026-10-19T10:00",
+          "end": "2026-10-19T18:00"
+        },
+        {
+          "start": "2026-10-20T10:00",
+          "end": "2026-10-20T18:00"
+        },
+        {
+          "start": "2026-10-21T10:00",
+          "end": "2026-10-21T18:00"
+        },
+        {
+          "start": "2026-10-22T10:00",
+          "end": "2026-10-22T18:00"
+        },
+        {
+          "start": "2026-10-23T10:00",
+          "end": "2026-10-23T18:00"
+        },
+        {
+          "start": "2026-10-24T10:00",
+          "end": "2026-10-24T18:00"
+        },
+        {
+          "start": "2026-10-25T10:00",
+          "end": "2026-10-25T18:00"
+        },
+        {
+          "start": "2026-10-26T10:00",
+          "end": "2026-10-26T18:00"
+        },
+        {
+          "start": "2026-10-27T10:00",
+          "end": "2026-10-27T18:00"
+        },
+        {
+          "start": "2026-10-28T10:00",
+          "end": "2026-10-28T18:00"
+        },
+        {
+          "start": "2026-10-29T10:00",
+          "end": "2026-10-29T18:00"
+        },
+        {
+          "start": "2026-10-30T10:00",
+          "end": "2026-10-30T18:00"
+        },
+        {
+          "start": "2026-10-31T10:00",
+          "end": "2026-10-31T18:00"
+        }
+      ],
+      "verifiedAt": "2026-10-15T14:39:37Z",
+      "origin": "codex",
+      "farm": {
+        "name": "Yahoo Farm",
+        "source": "https://yahoofarm.com/"
+      },
+      "ratingMethod": "editorial-four-components",
+      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
+      "id": "yahoo-farm-daytime-2026",
+      "name": "Денна осіння програма Yahoo Farm",
+      "familyPrice": 0,
+      "admissionPrice": "Вхід і паркування безкоштовні; активності оплачуються окремо.",
+      "priceNote": "Вхід для сім’ї $0. Набір із шести активностей — $24 за людину, для дітей до 2 років включно — $18. Це додатковий вибір, а не плата за вхід.",
+      "additionalCosts": "Тракторна прогулянка й кукурудзяний лабіринт — по $5/людину (до 2 років включно безкоштовно). Поні — $5, лише вихідними, до 60 фунтів; гарбузи та їжа окремо.",
+      "description": "Денні тракторні прогулянки, кукурудзяний лабіринт, тварини й гарбузи. Ця картка охоплює денні години до 18:00; вечірні страшні програми сюди не включені.",
+      "comfortNote": "Є безкоштовні столи для пікніка та банкомат. Активності залежать від погоди; собак не допускають, службові тварини дозволені. Доступність для візочків не підтверджено.",
+      "points": {
+        "children": 29,
+        "comfort": 15,
+        "distance": 12,
+        "uniqueness": 8
+      },
+      "uncertaintyNotes": [
+        "Попередня реєстрація для загального денного відвідування не підтверджена.",
+        "Точну вартість гарбузів і доступність усіх активностей у вибраний день уточнюйте у ферми."
+      ],
+      "registration": null,
+      "verification": "Official home explicitly states final 2026 opening day October 31 and current daily daytime hours. Official /activities/ confirms free entry/parking, daytime prices and weekend-only pony rides. Checked both pages October 15; no cancellation notice on inspected pages, weather changes possible.",
+      "rating": 85
+    }
+  ]
+}
