@@ -117,3 +117,9 @@ test('structured event details prioritize ratings, distinguish notices and keep 
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  }
 });
+
+
+test('editorial exclusions do not imply that visible verified events need review',async({page})=>{
+ await page.route('**/data/events.json',r=>r.fulfill({json:{...catalog,issues:[{id:'closed-season',reason:'Official source checked: season ended.'},{id:'unknown-time',reason:'Official source still has conflicting times.'}]}}));await page.reload();
+ await expect(page.locator('.card')).toHaveCount(catalog.events.length);await expect(page.locator('#notice')).toBeHidden();
+});

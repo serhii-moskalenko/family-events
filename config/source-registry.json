@@ -125,7 +125,8 @@
       "linkPatterns": [
         "/Community/Page",
         "/Community/Program/Detail"
-      ]
+      ],
+      "reviewNotes": "2026-11-02: Program Detail 2833 resolves Veterans Day location as Woodstock City Church, 18:00–19:00, free; host website confirms street address."
     },
     {
       "id": "library",
@@ -321,6 +322,18 @@
         "/holly-springs/events/"
       ],
       "reviewNotes": "2026-11-01: підтверджено 14 листопада 2026 12:00–16:00, адресу, $10/учасник та безкоштовних супроводжуючих. Ручна перевірка."
+    },
+    {
+      "id": "cherokee-warrior-winter-fest",
+      "name": "Cherokee High School C-Club · Warrior Winter Fest",
+      "url": "https://www.eventeny.com/events/warrior-winter-fest-2026-31098/",
+      "kind": "organizer-registration",
+      "reviewStatus": "verified-events",
+      "allowedLinkedHosts": [],
+      "linkPatterns": [
+        "/events/warrior-winter-fest-2026-31098/"
+      ],
+      "reviewNotes": "2026-11-02: direct HTML verified date, 10:00–16:00, new campus address, family activities and onsite parking. No automatic adapter enabled."
     }
   ]
 }
