@@ -101,8 +101,8 @@ test('same-month correction preserves both Added and Rejected; new month resets 
 
 
 test('structured event details prioritize ratings, distinguish notices and keep calendar actions last in both themes',async({page})=>{
- const published=JSON.parse(await fs.readFile('public/data/events.json','utf8'));
- const event=published.events.find(e=>e.id==='yahoo-farm-daytime-2026');
+ const published=JSON.parse(await fs.readFile('tests/fixtures/structured-card.json','utf8'));
+ const event=published.events[0];
  await page.route('**/data/events.json',r=>r.fulfill({json:{...published,events:[event]}}));await page.clock.setFixedTime(new Date('2026-10-15T14:00:00Z'));await page.reload();
  const card=page.locator('.card');await card.locator('summary').click();
  for(const theme of ['light','dark']){
