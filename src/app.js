@@ -70,5 +70,6 @@ $('#reject-dialog').addEventListener('close',()=>{if($('#reject-dialog').returnV
 try{
  const response=await fetch('./data/events.json',{cache:'no-store'});if(!response.ok)throw Error('Data unavailable');data=validatePublishedCatalog(await response.json());
  state=readState(storage,data.catalogId);persist();$('#edition').textContent=data.coverage?`${date(data.coverage.start)} — ${date(data.coverage.end)} ${data.coverage.end.slice(0,4)}`:new Intl.DateTimeFormat('uk-UA',{month:'long',year:'numeric',timeZone:'America/New_York'}).format(new Date(data.catalogId+'-01T12:00:00Z'));$('#verified').textContent=`Оновлено ${instantDate(data.publishedAt)} · Щомісячний каталог`;
- if(data.issues.length)announce('Частину подій приховано: джерела потребують перевірки.','warning');render();
+ // Editorial exclusions are research history, not a visitor-facing loading error.
+ render();
 }catch{$('#events').innerHTML='<div class="empty"><h2>Каталог тимчасово недоступний</h2><p>Перезавантажте сторінку, щоб спробувати ще раз.</p></div>';}
