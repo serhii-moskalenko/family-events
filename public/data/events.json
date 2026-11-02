@@ -1,1188 +1,818 @@
 {
   "schemaVersion": 2,
-  "catalogId": "2026-10",
+  "catalogId": "2026-11",
   "cadence": "monthly",
-  "publishedAt": "2026-10-15T14:43:22Z",
+  "publishedAt": "2026-11-01T09:06:36.922Z",
   "timezone": "America/New_York",
   "coverage": {
-    "start": "2026-10-10",
-    "end": "2026-10-31"
+    "start": "2026-11-01",
+    "end": "2026-11-30"
   },
   "provenance": {
     "producer": "codex",
-    "notes": "Partial editorial update by local Codex on October 15, 2026: five additional farm programs researched against official pages with dated corroboration where the year is omitted. Cagle’s Farm was also rechecked, including its current online ticket fee and measured distance. Non-farm records retain their previous verification timestamps and provenance; they were not reverified in this farm-only update. Distances measured from configured Canton center using US Census geocoding, not driving routes. Big Springs HTTP-only official site was read; a working official Georgia tourism HTTPS source is shown."
+    "notes": "Щомісячний запланований цикл Codex family-events за листопад 2026. Виконано npm run scan (18/21 сторінок, 151 посилання-кандидат) і npm run refresh (9 кандидатів), потім власну редакційну перевірку офіційних сторінок через вебпошук/читання; додано бібліотеку, мистецькі та церковні першоджерела. Автоматичні рейтинги та непідтверджені 00:00–23:59 не прийнято. Відстані — Census від налаштованого центру Canton, де адреса збігається; невідомі не вигадано. Публікація через авторизований локальний Git/GitHub CLI та PR/Actions; не Cloud Browser і не дослідження ChatGPT Work. Це найкраще доступне, але не повне охоплення джерел; доступність, деякі ціни/реєстрації та пізні сезонні анонси лишаються прогалинами. Історію жовтня збережено. Запуск відбувся 1 листопада о 09:00 UTC (04:00 America/New_York), раніше бажаних 09:00 місцевого часу; це зафіксовано як проблема часового поясу планувальника. Повторний scan після розширення реєстру: 22/25 сторінок, 156 кандидатних посилань; HTTP 403 у локального сканера не прирівнюється до відсутності заходів."
   },
   "discoveryEnabled": false,
   "aiApiConnected": false,
   "issues": [
     {
-      "id": "rising-hills-fall-festival-2026",
-      "reason": "Архівний парсер підставив 00:00–23:59; точний час не підтверджено. Work має перевірити час перед поверненням події."
+      "id": "sutallee-thanksgiving-2026",
+      "reason": "https://www.sutalleebaptist.com/sutallee-events.php: 18 листопада, заголовок каже 18:00, але опис прямо каже Time is TBD. Не публікуємо суперечливий початок."
+    },
+    {
+      "id": "woodstock-gathering-2026",
+      "reason": "https://fbcwoodstock.churchcenter.com/registrations/events/3857978: жіноче служіння, Not on sale; не підтверджено загальносімейний формат."
+    },
+    {
+      "id": "canton-next-steps-2026",
+      "reason": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904130: дорослий вступний курс до церкви з окремою недільною школою; не спільна сімейна подія. Жовтневий архів не змінено."
+    },
+    {
+      "id": "woodstock-discover-2026",
+      "reason": "https://fbcwoodstock.churchcenter.com/registrations/events/3726638: вступний курс про членство, дитячий догляд окремо; не загальна сімейна розвага."
+    },
+    {
+      "id": "woodstock-living-on-mission-2026",
+      "reason": "https://fbcwoodstock.churchcenter.com/registrations/events/3754215: навчання євангелізації не підтверджене як спільна сімейна програма; автоматичний кандидат не публікується."
+    },
+    {
+      "id": "berry-patch-christmas-2026",
+      "reason": "https://berrypatchfarms.co/: перевірена головна сторінка повідомляє завершення гарбузового сезону 25 жовтня і лише плани Christmas Season без точних листопадових дат/годин."
+    },
+    {
+      "id": "yahoo-farm-daytime-2026",
+      "reason": "https://yahoofarm.com/: офіційно CLOSED FOR THE 2026 SEASON, останній день 31 жовтня. На листопад не переносимо."
+    },
+    {
+      "id": "scottsdale-fall-november-2026",
+      "reason": "https://www.scottsdalefarms.com/family-fun/: є регулярні години, але межі листопадового сезону та конкретні дати 2026 не підтверджені."
+    },
+    {
+      "id": "pettit-creek-november-2026",
+      "reason": "https://pettitcreekfarms.com/seasonal-events/: доступна стрічка осінніх дописів без достатніх конкретних листопадових дат/годин. Не переносимо жовтневі сесії."
+    },
+    {
+      "id": "hickory-flat-november-2026",
+      "reason": "https://www.hickoryflat.church/calendar: Angel Tree — багатотижнева благодійна кампанія, не підтверджені щоденні години сімейного візиту; інші записи — служби, волонтерство або вікові групи. Не генеруємо щоденні сесії."
+    },
+    {
+      "id": "warrior-winter-fest-2026",
+      "reason": "https://www.eventeny.com/events/warrior-winter-fest-2026-31098/: знайдено анонс, але повну адресу нового шкільного кампусу в успішно відкритому першоджерелі не звірено; не вгадуємо місце."
+    },
+    {
+      "id": "woodstock-veterans-2026",
+      "reason": "https://woodstock.recdesk.com/Community/Page?pageId=26355 підтверджує 11 листопада 18:00, але текст не дає однозначного місця заходу; адресу офісу Parks не підставляємо."
     }
   ],
   "events": [
     {
-      "id": "great-pumpkin-fest-2026",
-      "name": "Великий гарбузовий фестиваль",
-      "category": "festival",
-      "icon": "🎃",
-      "venue": "Cherokee Veterans Park",
-      "address": "7345 Cumming Hwy, Canton, GA 30115",
-      "distanceLabel": "≈ 10 миль",
-      "familyPrice": 0,
-      "priceNote": "Вхід безкоштовний. Їжа та покупки оплачуються окремо.",
-      "description": "Осінній день із конкурсом костюмів, творчими заняттями, тваринами та розвагами просто неба.",
-      "comfortNote": "Відкритий майданчик; уточніть доступність і умови для візочків у організатора.",
-      "source": "https://www.bsheepevents.com/events/the-great-pumpkin-fest-1",
-      "sessions": [
-        {
-          "start": "2026-10-10T10:00",
-          "end": "2026-10-10T15:00"
-        }
-      ],
-      "points": {
-        "children": 28,
-        "comfort": 15,
-        "distance": 12,
-        "uniqueness": 9
-      },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=7345%20Cumming%20Hwy%2C%20Canton%2C%20GA%2030115",
-      "admissionPrice": null,
-      "additionalCosts": "Вхід безкоштовний. Їжа та покупки оплачуються окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "registration": null,
-      "rating": 85
-    },
-    {
       "id": "cagles-fall-2026",
       "name": "Осінні вихідні на Cagle’s Farm",
+      "description": "Лабіринти, фермерські тварини, перегони поросят і дворові ігри. На 1 листопада офіційна сторінка музичної програми підтверджує виступи 10:00–13:00 та 14:00–17:00; недільні години ферми — 10:00–18:00. Інші листопадові дні не додано.",
       "category": "farm",
       "icon": "🌽",
       "venue": "Cagle’s Farm · Holly Springs",
       "address": "362 Stringer Road, Holly Springs, GA 30115",
-      "distanceLabel": "≈ 5.3 милі по прямій",
-      "familyPrice": 60,
-      "priceNote": "$60 базово для 2 дорослих і 2 дітей віком від 3 років. Онлайн: $66.20 із опублікованим збором $1.55 за кожен із 4 квитків, без додаткових опцій.",
-      "description": "Кукурудзяний лабіринт, мінілабіринт, фермерські тварини, перегони поросят і дворові ігри. Дати відповідають вихідним, зазначеним у програмі ферми; час — офіційному розкладу роботи.",
-      "comfortNote": "Діти до 14 років включно мають бути з дорослим. Відкритий майданчик; домашніх тварин не допускають, службові тварини дозволені.",
+      "city": "Holly Springs",
       "source": "https://caglesfarm.com/",
-      "sessions": [
-        {
-          "start": "2026-10-10T10:00",
-          "end": "2026-10-10T22:00"
-        },
-        {
-          "start": "2026-10-11T10:00",
-          "end": "2026-10-11T18:00"
-        },
-        {
-          "start": "2026-10-16T17:00",
-          "end": "2026-10-16T22:00"
-        },
-        {
-          "start": "2026-10-17T10:00",
-          "end": "2026-10-17T22:00"
-        },
-        {
-          "start": "2026-10-18T10:00",
-          "end": "2026-10-18T18:00"
-        },
-        {
-          "start": "2026-10-23T17:00",
-          "end": "2026-10-23T22:00"
-        },
-        {
-          "start": "2026-10-24T10:00",
-          "end": "2026-10-24T22:00"
-        },
-        {
-          "start": "2026-10-25T10:00",
-          "end": "2026-10-25T18:00"
-        },
-        {
-          "start": "2026-10-30T17:00",
-          "end": "2026-10-30T22:00"
-        },
-        {
-          "start": "2026-10-31T10:00",
-          "end": "2026-10-31T22:00"
-        }
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=362%20Stringer%20Road%2C%20Holly%20Springs%2C%20GA%2030115",
+      "distanceLabel": "≈ 5.3 миль по прямій · не довжина маршруту",
+      "admissionPrice": "$15 за людину від 3 років; онлайн $16.55 із опублікованим збором.",
+      "familyPrice": 60,
+      "priceNote": "Для прикладу 2 дорослих і 2 дітей від 3 років: $60 базово або $66.20 онлайн за 4 квитки. Це умовний склад сім’ї; вік ваших дітей не припускається.",
+      "additionalCosts": "Гарбузи окремо; озеро з багаттям +$5/людину; необов’язковий захист покупки окремо.",
+      "comfortNote": "Діти до 14 років включно мають бути з дорослим. Відкритий майданчик; домашніх тварин не допускають, службові тварини дозволені.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
       ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
       "points": {
         "children": 29,
         "comfort": 14,
         "distance": 12,
         "uniqueness": 8
       },
-      "farm": {
-        "name": "Cagle’s Farm",
-        "source": "https://caglesfarm.com/"
-      },
-      "verifiedAt": "2026-10-15T14:43:22Z",
-      "verification": "Rechecked official 2026 homepage for Friday/weekend hours, address, $15 age-3+ admission and $5 lake add-on on October 15. Official linked 2026 TicketSpice checkout lists $15 plus $1.55 fee. Census geocoding confirms 5.3 straight-line miles. No cancellation banner on inspected pages; later changes possible.",
-      "city": "Holly Springs",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=362%20Stringer%20Road%2C%20Holly%20Springs%2C%20GA%2030115",
-      "admissionPrice": "$15 за людину від 3 років; онлайн додається $1.55 за квиток.",
-      "additionalCosts": "Гарбузи окремо; поїздка до озера з багаттям — ще $5/людину. Онлайн-збір та необов’язковий захист покупки оплачуються окремо.",
-      "uncertaintyNotes": [
-        "Необхідність попередньої покупки та безбар’єрність доріжок не підтверджено.",
-        "Перед поїздкою перевірте можливі зміни графіка."
+      "sessions": [
+        {
+          "start": "2026-11-01T10:00",
+          "end": "2026-11-01T18:00"
+        }
       ],
-      "origin": "codex",
       "registration": {
         "required": null,
         "url": "https://caglesfarm.ticketspice.com/fall-fun-at-cagles-farm-2026",
         "note": "Онлайн-квитки доступні; обов’язковість попередньої покупки не підтверджено."
       },
+      "verification": "Перечитано https://caglesfarm.com/, https://caglesfarm.com/entertainment/ та офіційний checkout https://caglesfarm.ticketspice.com/fall-fun-at-cagles-farm-2026. Перевірено недільні години, програму саме 1 листопада, адресу, вік 3+, ціну і збір. Census: 5.3 милі по прямій.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "farm": {
+        "name": "Cagle’s Farm",
+        "source": "https://caglesfarm.com/"
+      },
       "rating": 84
     },
     {
-      "id": "sutallee-trunk-or-treat-2026",
-      "name": "Trunk or Treat · Sutallee Baptist",
-      "category": "church",
-      "icon": "⛪",
-      "venue": "Sutallee Baptist Church · White",
-      "address": "895 Knox Bridge Hwy, White, GA 30184",
-      "distanceLabel": "White · перевірте маршрут",
+      "id": "dia-de-muertos-canton-2026",
+      "name": "Día de Muertos · сімейний фестиваль",
+      "description": "Музика, ремісничі стенди та культурна програма для всіх вікових груп. О 17:30 заявлено показ «Коко» (PG). Дегустації алкоголю — окрема платна зона лише 21+.",
+      "category": "festival",
+      "icon": "🎪",
+      "venue": "The Mill on Etowah",
+      "address": "225 Reformation Parkway, Canton, GA 30114",
+      "city": "Canton",
+      "source": "https://explorecantonga.com/events/2nd-annual-dia-de-muertos-festival-2026/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "Відстань не підтверджено · маршрут у Maps",
+      "admissionPrice": "Безкоштовний вхід для всіх вікових груп.",
       "familyPrice": 0,
-      "priceNote": "Організатор прямо вказує, що захід безкоштовний для громади.",
-      "description": "18:00–19:00 — їжа й поїздки на возі; 19:00–19:30 — конкурс костюмів; 19:30–20:00 — солодощі біля прикрашених автомобілів.",
-      "comfortNote": "Вечірній захід; беріть одяг за погодою. White розташований на захід від Canton — перевірте маршрут перед виїздом.",
-      "source": "https://www.sutalleebaptist.com/sutallee-events.php",
+      "priceNote": "Вхід для сім’ї безкоштовний; покупки не включено.",
+      "additionalCosts": "Їжа, напої та покупки окремо; алкогольні дегустації платні й лише для 21+.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Точна відстань від центру Canton не підтверджена.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 28,
+        "comfort": 11,
+        "distance": 0,
+        "uniqueness": 9
+      },
       "sessions": [
         {
-          "start": "2026-10-25T18:00",
-          "end": "2026-10-25T20:00"
+          "start": "2026-11-01T12:00",
+          "end": "2026-11-01T19:00"
         }
       ],
-      "points": {
-        "children": 29,
-        "comfort": 16,
-        "distance": 9,
-        "uniqueness": 8
-      },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "White",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=895%20Knox%20Bridge%20Hwy%2C%20White%2C%20GA%2030184",
-      "admissionPrice": null,
-      "additionalCosts": "Організатор прямо вказує, що захід безкоштовний для громади.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-editorial",
       "registration": null,
-      "rating": 83
+      "verification": "Офіційний туристичний календар прямо підтверджує 1 листопада 2026, 12:00–19:00, безкоштовний сімейний вхід і адресу. Виправлено помилкові 00:00–23:59 зі звіту автоматичного кандидата.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 64
     },
     {
-      "id": "sutallee-homecoming-2026",
-      "name": "Homecoming · музика й спільний обід",
-      "category": "church",
-      "icon": "⛪",
-      "venue": "Sutallee Baptist Church · White",
-      "address": "895 Knox Bridge Hwy, White, GA 30184",
-      "distanceLabel": "White · перевірте маршрут",
+      "id": "fall-plant-festival-2026",
+      "name": "Осінній фестиваль рослин · Flannel & Ferns",
+      "description": "Прогулянка ярмарком рослин і виробів місцевих майстрів. Окрема дитяча програма не заявлена; це насамперед спокійна сімейна прогулянка між стендами.",
+      "category": "market",
+      "icon": "🌾",
+      "venue": "The Mill on Etowah",
+      "address": "225 Reformation Parkway, Canton, GA 30114",
+      "city": "Canton",
+      "source": "https://explorecantonga.com/events/fall-plant-festival/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "Відстань не підтверджено · маршрут у Maps",
+      "admissionPrice": null,
       "familyPrice": null,
-      "priceNote": "Тариф не опубліковано. Організатор просить принести гарнір або десерт; м’ясні страви забезпечує церква.",
-      "description": "Святкова недільна служба зі спеціальною музикою та обідом після завершення. Це церковне богослужіння зі спільною трапезою.",
-      "comfortNote": "Початок о 10:45; час завершення не опубліковано. Ранньої служби цього дня не буде.",
-      "source": "https://www.sutalleebaptist.com/sutallee-events.php",
+      "priceNote": "Вартість входу та сімейний тариф не підтверджено; уточніть в організатора.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Точна відстань від центру Canton не підтверджена.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 13,
+        "comfort": 11,
+        "distance": 0,
+        "uniqueness": 6
+      },
       "sessions": [
         {
-          "start": "2026-10-11T10:45",
-          "end": null
+          "start": "2026-11-07T11:00",
+          "end": "2026-11-07T17:00"
         }
       ],
-      "points": {
-        "children": 15,
-        "comfort": 16,
-        "distance": 9,
-        "uniqueness": 7
-      },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "White",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=895%20Knox%20Bridge%20Hwy%2C%20White%2C%20GA%2030184",
-      "admissionPrice": null,
-      "additionalCosts": "Тариф не опубліковано. Організатор просить принести гарнір або десерт; м’ясні страви забезпечує церква.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Час завершення для однієї або кількох дат не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-editorial",
       "registration": null,
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 40
+    },
+    {
+      "id": "canton-tree-lighting-2026",
+      "name": "Запалення ялинки Canton і шоу дронів",
+      "description": "Міське відкриття святкового сезону з ялинкою, дронами над Main Street та виступами шкільних хорів. Вечірня подія для родини; вдягніться відповідно до погоди.",
+      "category": "festival",
+      "icon": "🎪",
+      "venue": "Cannon Park",
+      "address": "130 E Main St, Canton, GA 30114",
+      "city": "Canton",
+      "source": "https://explorecantonga.com/events/city-of-canton-tree-lighting-and-drone-show/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=130%20E%20Main%20St%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "≈ 0.1 миль по прямій · не довжина маршруту",
+      "admissionPrice": null,
+      "familyPrice": null,
+      "priceNote": "Вартість входу та сімейний тариф не підтверджено; уточніть в організатора.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 28,
+        "comfort": 11,
+        "distance": 15,
+        "uniqueness": 9
+      },
+      "sessions": [
+        {
+          "start": "2026-11-18T18:30",
+          "end": "2026-11-18T20:30"
+        }
+      ],
+      "registration": null,
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 84
+    },
+    {
+      "id": "christmas-at-the-mill-2026",
+      "name": "Різдвяні дні на The Mill",
+      "description": "Дводенна святкова програма: ковзанка, Санта, музика та запалення ялинки. Точний розклад окремих активностей і час церемонії всередині цих годин не підтверджено.",
+      "category": "festival",
+      "icon": "🎪",
+      "venue": "The Mill on Etowah",
+      "address": "225 Reformation Parkway, Canton, GA 30114",
+      "city": "Canton",
+      "source": "https://explorecantonga.com/events/christmas-at-the-mill-3/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "Відстань не підтверджено · маршрут у Maps",
+      "admissionPrice": null,
+      "familyPrice": null,
+      "priceNote": "Вартість входу та сімейний тариф не підтверджено; уточніть в організатора.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Вартість ковзанки, зустрічі із Сантою та інших активностей не оприлюднена на перевіреній сторінці.",
+        "Точна відстань від центру Canton не підтверджена.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 28,
+        "comfort": 11,
+        "distance": 0,
+        "uniqueness": 8
+      },
+      "sessions": [
+        {
+          "start": "2026-11-27T10:00",
+          "end": "2026-11-27T19:00"
+        },
+        {
+          "start": "2026-11-28T10:00",
+          "end": "2026-11-28T19:00"
+        }
+      ],
+      "registration": null,
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
       "rating": 63
     },
     {
       "id": "makers-market-october-2026",
       "name": "Makers Market · ярмарок майстрів",
+      "description": "Щомісячний ярмарок місцевих майстрів усередині Shoppes at The Mill, біля Sweety’s і Suds & Bottles. Можна роздивитися подарунки й ручну роботу; дитячі заняття не підтверджено.",
       "category": "market",
       "icon": "🧺",
       "venue": "Shoppes at The Mill",
       "address": "225 Reformation Parkway, Canton, GA 30114",
-      "distanceLabel": "Canton · перевірте маршрут",
-      "familyPrice": null,
-      "priceNote": "Вартість входу не опубліковано. Покупки у майстрів оплачуються окремо.",
-      "description": "Щомісячний ярмарок місцевих майстрів усередині Shoppes at The Mill. Підійде для короткої сімейної прогулянки й покупок.",
-      "comfortNote": "Окремої дитячої програми не заявлено; тому оцінка інтересу для дітей нижча, ніж у фестивалів.",
+      "city": "Canton",
       "source": "https://explorecantonga.com/events/makers-market/",
-      "sessions": [
-        {
-          "start": "2026-10-10T11:00",
-          "end": "2026-10-10T16:00"
-        }
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "Відстань не підтверджено · маршрут у Maps",
+      "admissionPrice": null,
+      "familyPrice": null,
+      "priceNote": "Вартість входу та сімейний тариф не підтверджено; уточніть в організатора.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Точна відстань від центру Canton не підтверджена.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
       ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
       "points": {
         "children": 12,
-        "comfort": 17,
-        "distance": 15,
+        "comfort": 14,
+        "distance": 0,
         "uniqueness": 6
       },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Вартість входу не опубліковано. Покупки у майстрів оплачуються окремо.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "registration": null,
-      "rating": 67
-    },
-    {
-      "id": "woodstock-skelebration-2026",
-      "name": "Halloween Skelebration · Woodstock",
-      "category": "festival",
-      "icon": "🎃",
-      "venue": "Northside Hospital–Cherokee Amphitheater",
-      "address": "101 Arnold Mill Rd, Woodstock, GA 30188",
-      "distanceLabel": "Woodstock · перевірте маршрут",
-      "familyPrice": null,
-      "priceNote": "Міська сторінка не вказує тариф входу для гостей. $75 на сторінці реєстрації — плата за місце продавця, не сімейний квиток.",
-      "description": "Дитяче святкування Halloween: ігри, мінігольф, великі бульбашки, музика, виступи персонажів і солодощі.",
-      "comfortNote": "Міська програма очікує близько 2 000 гостей. Подія відбувається в амфітеатрі, не на старій стежці Rubes Creek.",
-      "source": "https://woodstock.recdesk.com/Community/Page?pageId=26354",
       "sessions": [
         {
-          "start": "2026-10-31T16:00",
-          "end": "2026-10-31T20:00"
+          "start": "2026-11-14T11:00",
+          "end": "2026-11-14T16:00"
         }
       ],
+      "registration": null,
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 43
+    },
+    {
+      "id": "fall-family-fun-day-canton-2026",
+      "name": "Безкоштовний Fall Family Fun Day",
+      "description": "Громадський сімейний день Moss Family Chiropractic: надувний атракціон, аквагрим, дитячі ігри, призи й розіграші. Їжа доступна для покупки.",
+      "category": "festival",
+      "icon": "🎪",
+      "venue": "Woodmont Village Shopping Center",
+      "address": "8012 Cumming Hwy, Canton, GA 30115",
+      "city": "Canton",
+      "source": "https://explorecantonga.com/events/fall-family-fun-day/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=8012%20Cumming%20Hwy%2C%20Canton%2C%20GA%2030115",
+      "distanceLabel": "≈ 7.6 миль по прямій · не довжина маршруту",
+      "admissionPrice": "Безкоштовна громадська подія.",
+      "familyPrice": 0,
+      "priceNote": "Оголошення організатора в офіційному календарі прямо називає захід безкоштовним.",
+      "additionalCosts": "Їжа продається окремо; умови й можливі платежі за окремі активності не деталізовано.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
       "points": {
         "children": 29,
-        "comfort": 14,
-        "distance": 10,
-        "uniqueness": 8
-      },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Woodstock",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=101%20Arnold%20Mill%20Rd%2C%20Woodstock%2C%20GA%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Міська сторінка не вказує тариф входу для гостей. $75 на сторінці реєстрації — плата за місце продавця, не сімейний квиток.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "registration": null,
-      "rating": 81
-    },
-    {
-      "id": "woodstock-ghouls-night-2026",
-      "name": "Ghouls Night Out · прогулянка Downtown Woodstock",
-      "category": "festival",
-      "icon": "🎃",
-      "venue": "Downtown Woodstock · Main Street",
-      "address": "Main Street, Woodstock, GA 30188",
-      "distanceLabel": "Woodstock · перевірте маршрут",
-      "familyPrice": null,
-      "priceNote": "Окремий тариф участі не вказано. Покупки та їжа оплачуються за тарифами магазинів і ресторанів.",
-      "description": "Міський вечір із солодощами в магазинах і ресторанах, відкритий для всіх вікових груп.",
-      "comfortNote": "Маршрут проходить центром міста. Остаточний список учасників 2026 ще не опубліковано; список 2025 не використано як підтвердження.",
-      "source": "https://visitwoodstockga.com/ghouls-night-out/",
-      "sessions": [
-        {
-          "start": "2026-10-30T16:00",
-          "end": "2026-10-30T19:00"
-        }
-      ],
-      "points": {
-        "children": 25,
-        "comfort": 14,
-        "distance": 10,
+        "comfort": 11,
+        "distance": 12,
         "uniqueness": 7
       },
-      "verifiedAt": "2026-10-10T01:54:23.278Z",
-      "verification": "Official page evidence matched; no cancellation notice detected on configured pages.",
-      "city": "Woodstock",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Main%20Street%2C%20Woodstock%2C%20GA%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Окремий тариф участі не вказано. Покупки та їжа оплачуються за тарифами магазинів і ресторанів.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-editorial",
-      "registration": null,
-      "rating": 75
-    },
-    {
-      "name": "Books & Boos · книжковий осінній фестиваль",
-      "description": "Книжковий фестиваль Damsel Bookstore: автори та продавці, осінні ігри, розмальовування обличчя, солодощі й конкурс пирогів.",
-      "venue": "The Mill on Etowah",
-      "address": "225 Reformation Parkway, Canton, GA 30114",
-      "source": "https://explorecantonga.com/events/books-boos-fall-festival/",
       "sessions": [
         {
-          "start": "2026-10-10T14:00",
-          "end": "2026-10-10T19:00"
+          "start": "2026-11-14T13:00",
+          "end": "2026-11-14T16:00"
         }
       ],
-      "familyPrice": null,
-      "priceNote": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "id": "books-boos-2026",
+      "registration": null,
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 79
+    },
+    {
+      "id": "woodstock-international-food-festival-2026",
+      "name": "Міжнародний гастрономічний фестиваль Woodstock",
+      "description": "Кухні різних країн, культурні виступи, дитячі активності, ремісничі товари та екскурсії храмом. Сімейний фестиваль Saint Elizabeth Orthodox Church.",
       "category": "festival",
-      "icon": "🎃",
-      "sourceExcerpt": "We’ll have authors, bookish vendors, fall festival games, face painting, trick-or-treating, a Best Pie Contest, and so much more.",
-      "comfortNote": "Захід поєднує сімейні розваги та книжковий ярмарок. Умови для візочків і тарифи окремих активностей не вказано.",
-      "distanceLabel": "Canton · відстань не виміряно",
-      "points": {
-        "children": 26,
-        "comfort": 8,
-        "distance": 0,
-        "uniqueness": 6
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "canton-tourism",
-        "adapter": "canton-jsonld",
-        "coordinates": {
-          "provider": "Reviewed Canton venue address",
-          "area": "Canton",
-          "source": "https://explorecantonga.com/events/books-boos-fall-festival/",
-          "reviewedAt": "2026-10-09"
-        },
-        "distanceMiles": null
-      },
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Parkway%2C%20Canton%2C%20GA%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 53
-    },
-    {
-      "name": "Jack O’ Lantern Jamboree · The Mill",
-      "description": "Дводенний осінній фестиваль: солодощі, музика, костюмовані персонажі, ярмарок і покази фільмів просто неба.",
-      "venue": "The Mill on Etowah",
-      "address": "225 Reformation Pkwy, Canton, GA 30114",
-      "source": "https://explorecantonga.com/events/3rd-annual-jack-o-lantern-jamboree/",
-      "sessions": [
-        {
-          "start": "2026-10-24T12:00",
-          "end": "2026-10-24T20:00"
-        },
-        {
-          "start": "2026-10-25T12:00",
-          "end": "2026-10-25T19:00"
-        }
-      ],
+      "icon": "🎪",
+      "venue": "Saint Elizabeth Orthodox Church",
+      "address": "2265 E Cherokee Dr, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://www.woodstockinternationalfoodfestival.com/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=2265%20E%20Cherokee%20Dr%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 6.9 миль по прямій · не довжина маршруту",
+      "admissionPrice": "Вхід вільний; рекомендована добровільна пожертва $5 за дорослого.",
       "familyPrice": 0,
-      "priceNote": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
-      "id": "jack-o-lantern-jamboree-2026",
-      "category": "festival",
-      "icon": "🎃",
-      "sourceExcerpt": "Get ready for a weekend full of Halloween fun, fall memories, and family friendly chaos at The Mill on Etowah.",
-      "comfortNote": "Тема Halloween і персонажі можуть бути чутливими для малюків. Розклад та вікові рейтинги фільмів уточніть окремо; домашні тварини дозволені.",
-      "distanceLabel": "Canton · відстань не виміряно",
-      "points": {
-        "children": 26,
-        "comfort": 8,
-        "distance": 0,
-        "uniqueness": 6
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "canton-tourism",
-        "adapter": "canton-jsonld",
-        "coordinates": {
-          "provider": "Reviewed Canton venue address",
-          "area": "Canton",
-          "source": "https://explorecantonga.com/events/books-boos-fall-festival/",
-          "reviewedAt": "2026-10-09"
-        },
-        "distanceMiles": null
-      },
-      "city": "Canton",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=225%20Reformation%20Pkwy%2C%20Canton%2C%20GA%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Організатор підтверджує безкоштовний вхід. Покупки та додаткові послуги окремо.",
+      "priceNote": "Обов’язкової плати за сімейний вхід немає. Для 2 дорослих рекомендована добровільна пожертва разом $10; їжа окремо.",
+      "additionalCosts": "Страви, напої, сувеніри та пожертви окремо; ціни меню уточнюйте.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
       "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вимоги реєстрації не підтверджено."
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
       ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 53
-    },
-    {
-      "name": "\"Next Steps\" Class (Church & Membership Info)",
-      "description": "Автоматично додано з офіційного джерела. Умови участі та програму перевірте за посиланням організатора.",
-      "address": "1 Mission Point Canton, Georgia 30114",
-      "venue": "Canton First Baptist",
-      "sessions": [
-        {
-          "start": "2026-10-11T09:30",
-          "end": "2026-10-11T12:00"
-        }
-      ],
-      "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904130",
-      "familyPrice": null,
-      "priceNote": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "id": "auto-6969ad63db75ebf80db0",
-      "category": "church",
-      "icon": "⛪",
-      "sourceExcerpt": "We offer Sunday school classes for all ages.",
-      "comfortNote": "Доступність для візочків, туалети, паркування та вікові умови автоматично не підтверджено. Уточніть їх перед поїздкою.",
-      "distanceLabel": "Canton · відстань не виміряно",
-      "points": {
-        "children": 12,
-        "comfort": 8,
-        "distance": 0,
-        "uniqueness": 4
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "first-baptist-registrations",
-        "adapter": "churchcenter-html",
-        "coordinates": {
-          "provider": "Reviewed Canton venue address",
-          "area": "Canton",
-          "source": "https://cantonfirstbaptist.org/",
-          "reviewedAt": "2026-10-09"
-        },
-        "distanceMiles": null
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1%20Mission%20Point%20Canton%2C%20Georgia%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 32
-    },
-    {
-      "name": "Сімейний Fall Fest · Canton First Baptist",
-      "description": "Сімейний вечір для громади: ігри й солодощі біля прикрашених авто, Touch a Truck, музика та конкурс опудал. Організатор просить уникати страшного оформлення.",
-      "address": "1 Mission Point Canton, Georgia 30114",
-      "venue": "Canton First Baptist",
-      "sessions": [
-        {
-          "start": "2026-10-29T18:00",
-          "end": "2026-10-29T20:00"
-        }
-      ],
-      "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3882313",
-      "familyPrice": null,
-      "priceNote": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "id": "canton-first-baptist-fall-fest-2026",
-      "category": "church",
-      "icon": "⛪",
-      "sourceExcerpt": "Come join Canton First Baptist at our Family Fall Fest 2026!!",
-      "comfortNote": "Місце зустрічі — нижня парковка. Сторінка також приймає заявки волонтерів; уточніть умови участі в конкурсі й доступність для візочків.",
-      "distanceLabel": "Canton · відстань не виміряно",
-      "points": {
-        "children": 22,
-        "comfort": 8,
-        "distance": 0,
-        "uniqueness": 6
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "first-baptist-registrations",
-        "adapter": "churchcenter-html",
-        "coordinates": {
-          "provider": "Reviewed Canton venue address",
-          "area": "Canton",
-          "source": "https://cantonfirstbaptist.org/",
-          "reviewedAt": "2026-10-09"
-        },
-        "distanceMiles": null
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1%20Mission%20Point%20Canton%2C%20Georgia%2030114",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 48
-    },
-    {
-      "name": "Сімейна вечеря · First Baptist Woodstock",
-      "description": "Спільна вечеря у середу. Café пропонує бургери, хот-доги або курячі тендери; Homestyle цього тижня — шинка, батат, овочі й булочка. Окремих дитячих розваг у програмі вечері не заявлено.",
-      "address": "11905 Highway 92 Woodstock, Ga 30188",
-      "venue": "First Baptist Woodstock",
-      "sessions": [
-        {
-          "start": "2026-10-14T16:30",
-          "end": "2026-10-14T18:30"
-        }
-      ],
-      "source": "https://fbcwoodstock.churchcenter.com/registrations/events/3926581",
-      "familyPrice": 20,
-      "priceNote": "Розрахунок за 4 страви Café по $5. Інші варіанти меню, добавки й доступність замовлення перевірте в організатора.",
-      "id": "woodstock-first-baptist-dinner-oct14-2026",
-      "category": "church",
-      "icon": "⛪",
-      "sourceExcerpt": "Welcome back to Wednesdays! We are excited that this semester, in addition to our quick Café options (Burgers, Hot Dogs, Tenders, Fries, and Side…",
-      "comfortNote": "Забирайте замовлення в B-Building Cafe; їсти можна у Fellowship Hall. Homestyle має обмежену кількість порцій. На сторінці є позначка «Not on sale»: перед поїздкою уточніть доступність замовлення й умови реєстрації.",
-      "distanceLabel": "≈ 10.2 миль по прямій · маршрут у Maps",
-      "points": {
-        "children": 12,
-        "comfort": 8,
-        "distance": 9,
-        "uniqueness": 4
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "woodstock-first-baptist-events",
-        "adapter": "churchcenter-html",
-        "coordinates": {
-          "lat": 34.088200915069,
-          "lon": -84.488431747975,
-          "provider": "US Census Public_AR_Current",
-          "matchedAddress": "11905 STATE HWY 92, WOODSTOCK, GA, 30188"
-        },
-        "distanceMiles": 10.2
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=11905%20Highway%2092%20Woodstock%2C%20Ga%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Розрахунок за 4 страви Café по $5. Інші варіанти меню, добавки й доступність замовлення перевірте в організатора.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 44
-    },
-    {
-      "name": "Party with the Pastors · знайомство з церквою",
-      "description": "Неформальна зустріч для нових гостей First Baptist Woodstock: знайомство з пасторами й громадою за легким обідом. Організатор прямо запрошує всю родину.",
-      "address": "11905 Highway 92 Woodstock, Ga 30188",
-      "venue": "First Baptist Woodstock",
-      "sessions": [
-        {
-          "start": "2026-10-25T12:15",
-          "end": "2026-10-25T13:30"
-        }
-      ],
-      "source": "https://fbcwoodstock.churchcenter.com/registrations/events/3234645",
-      "familyPrice": null,
-      "priceNote": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "id": "woodstock-first-baptist-pastors-oct25-2026",
-      "category": "church",
-      "icon": "⛪",
-      "sourceExcerpt": "Your entire family is welcome.",
-      "comfortNote": "Місце — Grand Foyer Loft. Окрема дитяча програма й доступність для візочків не описані; уточніть умови реєстрації та доступу до приміщення.",
-      "distanceLabel": "≈ 10.2 миль по прямій · маршрут у Maps",
-      "points": {
-        "children": 12,
-        "comfort": 8,
-        "distance": 9,
-        "uniqueness": 4
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "woodstock-first-baptist-events",
-        "adapter": "churchcenter-html",
-        "coordinates": {
-          "lat": 34.088200915069,
-          "lon": -84.488431747975,
-          "provider": "US Census Public_AR_Current",
-          "matchedAddress": "11905 STATE HWY 92, WOODSTOCK, GA, 30188"
-        },
-        "distanceMiles": 10.2
-      },
-      "city": null,
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=11905%20Highway%2092%20Woodstock%2C%20Ga%2030188",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 44
-    },
-    {
-      "name": "Trunk or Treat · Hickory Flat Church",
-      "description": "Костюми, солодощі, ігри, розмальовування обличчя й жива музика. Гостей запрошують приходити з друзями.",
-      "venue": "Hickory Flat Church",
-      "address": "4056 E Cherokee Dr, Canton, GA 30115, USA",
-      "source": "https://www.hickoryflat.church/events/trunk-or-treat-5",
-      "sessions": [
-        {
-          "start": "2026-10-28T17:30",
-          "end": "2026-10-28T19:30"
-        }
-      ],
-      "familyPrice": null,
-      "priceNote": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "id": "hickory-flat-trunk-or-treat-2026",
-      "category": "church",
-      "icon": "⛪",
-      "sourceExcerpt": "TRUNK OR TREAT || October 28th || 5:30-7:30 PM",
-      "comfortNote": "На сторінці є RSVP. Перевірте, чи потрібне попереднє підтвердження участі; умови доступності не описано.",
-      "distanceLabel": "≈ 5.1 миль по прямій · маршрут у Maps",
-      "points": {
-        "children": 22,
-        "comfort": 8,
-        "distance": 12,
-        "uniqueness": 6
-      },
-      "ratingMethod": "rules-v2-price-independent",
-      "ratingNote": "Автоматична оцінка за правилами, не відгуки відвідувачів. Ціна не впливає на рейтинг. Суму балів із 75 перераховано до шкали 0–100; комфорт без перевірених умов — 8/20.",
-      "verifiedAt": "2026-10-10T01:54:28.839Z",
-      "verification": "Parsed current official event page; checked occurrence, address, family rules, cancellation notices and configured locality; Census distance where available.",
-      "automation": {
-        "sourceId": "hickory-flat",
-        "adapter": "event-jsonld",
-        "coordinates": {
-          "lat": 34.19019982284,
-          "lon": -84.422853462622,
-          "provider": "US Census Public_AR_Current",
-          "matchedAddress": "4056 E CHEROKEE DR, CANTON, GA, 30115"
-        },
-        "distanceMiles": 5.1
-      },
-      "city": "GA 30115",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=4056%20E%20Cherokee%20Dr%2C%20Canton%2C%20GA%2030115%2C%20USA",
-      "admissionPrice": null,
-      "additionalCosts": "Сімейну ціну не підтверджено. Безкоштовні окремі активності або волонтерська реєстрація не означають безкоштовний вхід.",
-      "uncertaintyNotes": [
-        "Вартість входу на одну особу не подана окремо; дивіться примітку про ціну та офіційне джерело.",
-        "Вартість входу для сім’ї не підтверджено.",
-        "Вимоги реєстрації не підтверджено."
-      ],
-      "origin": "legacy-discovery",
-      "registration": null,
-      "rating": 64
-    },
-    {
-      "category": "farm",
-      "icon": "🎃",
-      "venue": "Berry Patch Farms",
-      "address": "786 Arnold Mill Road, Woodstock, GA 30188",
-      "city": "Woodstock",
-      "source": "https://berrypatchfarms.co/",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=786%20Arnold%20Mill%20Road%2C%20Woodstock%2C%20GA%2030188",
-      "distanceLabel": "≈ 9.3 милі по прямій",
-      "sessions": [
-        {
-          "start": "2026-10-17T10:00",
-          "end": "2026-10-17T17:00"
-        },
-        {
-          "start": "2026-10-18T10:00",
-          "end": "2026-10-18T17:00"
-        },
-        {
-          "start": "2026-10-24T10:00",
-          "end": "2026-10-24T17:00"
-        },
-        {
-          "start": "2026-10-25T10:00",
-          "end": "2026-10-25T17:00"
-        }
-      ],
-      "verifiedAt": "2026-10-15T14:39:37Z",
       "origin": "codex",
-      "farm": {
-        "name": "Berry Patch Farms",
-        "source": "https://berrypatchfarms.co/"
-      },
-      "ratingMethod": "editorial-four-components",
-      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
-      "id": "berry-patch-pumpkins-2026",
-      "name": "Гарбузові вихідні на Berry Patch Farms",
-      "familyPrice": 10,
-      "admissionPrice": "$10 за автомобіль; необмежені поїздки трактором включено.",
-      "priceNote": "$10 для сім’ї в одному автомобілі при оплаті готівкою. Картка: додатково 3%. Приватні святкування мають інші тарифи.",
-      "additionalCosts": "Гарбузи, їжа та окремі активності — за тарифами ферми; повний прайс не опубліковано.",
-      "description": "Вибір гарбузів, тракторні прогулянки, тварини, сінний лабіринт і дитячий майданчик. У каталозі залишені вихідні до 25 жовтня.",
-      "comfortNote": "Готівка рекомендована; взуття для ґрунтових доріжок. Домашніх собак не допускають. Доступність для візочків не підтверджено.",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
       "points": {
         "children": 27,
-        "comfort": 14,
+        "comfort": 12,
         "distance": 12,
-        "uniqueness": 7
+        "uniqueness": 9
       },
-      "uncertaintyNotes": [
-        "Рік сезону звірено з місцевою публікацією Woodstock Post від 11.10.2026; на головній сторінці ферми вказані день і місяць без року.",
-        "Умови попередньої реєстрації та тарифи окремих активностей не підтверджено."
+      "sessions": [
+        {
+          "start": "2026-11-06T16:00",
+          "end": "2026-11-06T20:00"
+        },
+        {
+          "start": "2026-11-07T12:00",
+          "end": "2026-11-07T20:00"
+        },
+        {
+          "start": "2026-11-08T13:00",
+          "end": "2026-11-08T16:00"
+        }
       ],
       "registration": null,
-      "verification": "Reviewed official homepage schedule/address and /pumpkin-season admission/activities on October 15. Corroborated 2026 season with Woodstock Post October 11: https://www.woodstockpost.com/fall-festivals-and-pumpkin-patches/. No cancellation banner found on the two inspected official pages; later/weather changes remain possible.",
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
       "rating": 80
     },
     {
-      "category": "farm",
-      "icon": "🎃",
-      "venue": "Big Springs Farms",
-      "address": "2100 Sugar Pike Road, Woodstock, GA 30188",
+      "id": "woodstock-littles-gingerbread-2026",
+      "name": "Gingerbread Bash · різдвяна зустріч для малечі",
+      "description": "Ігри, різдвяні пісні та створення пряникової сцени Різдва. Програма для Woodstock Littles; брати й сестри до 5 класу також можуть зареєструватися. Дорослих просять реєструвати теж.",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "First Baptist Woodstock · Preschool Atrium",
+      "address": "11905 Highway 92, Woodstock, GA 30188",
       "city": "Woodstock",
-      "source": "https://exploregeorgia.org/woodstock/agritourism/farms-ranches/big-springs-farms",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=2100%20Sugar%20Pike%20Road%2C%20Woodstock%2C%20GA%2030188",
-      "distanceLabel": "≈ 8.3 милі по прямій",
+      "source": "https://fbcwoodstock.churchcenter.com/registrations/events/3904191",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=11905%20Highway%2092%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 10.2 миль по прямій · не довжина маршруту",
+      "admissionPrice": "Дорослі й діти — безкоштовно.",
+      "familyPrice": 0,
+      "priceNote": "Офіційні категорії Adult і Child позначені Free.",
+      "additionalCosts": "Просять принести консервований продукт для Food Pantry.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 29,
+        "comfort": 14,
+        "distance": 9,
+        "uniqueness": 8
+      },
       "sessions": [
         {
-          "start": "2026-10-16T12:00",
-          "end": "2026-10-16T18:00"
-        },
-        {
-          "start": "2026-10-17T10:00",
-          "end": "2026-10-17T18:00"
-        },
-        {
-          "start": "2026-10-18T10:00",
-          "end": "2026-10-18T18:00"
-        },
-        {
-          "start": "2026-10-23T12:00",
-          "end": "2026-10-23T18:00"
-        },
-        {
-          "start": "2026-10-24T10:00",
-          "end": "2026-10-24T18:00"
-        },
-        {
-          "start": "2026-10-25T10:00",
-          "end": "2026-10-25T18:00"
-        },
-        {
-          "start": "2026-10-30T12:00",
-          "end": "2026-10-30T18:00"
-        },
-        {
-          "start": "2026-10-31T10:00",
-          "end": "2026-10-31T18:00"
+          "start": "2026-11-21T10:00",
+          "end": "2026-11-21T11:30"
         }
       ],
-      "verifiedAt": "2026-10-15T14:39:37Z",
-      "origin": "codex",
-      "farm": {
-        "name": "Big Springs Farms",
-        "source": "https://exploregeorgia.org/woodstock/agritourism/farms-ranches/big-springs-farms"
+      "registration": {
+        "required": true,
+        "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3904191",
+        "note": "Потрібно зареєструвати дітей і дорослих; сторінка показує закриття реєстрації 8 листопада о 00:00."
       },
-      "ratingMethod": "editorial-four-components",
-      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
-      "id": "big-springs-fall-2026",
-      "name": "Осінні вихідні на Big Springs Farms",
-      "familyPrice": 0,
-      "admissionPrice": "Вхід і паркування безкоштовні.",
-      "priceNote": "Для сім’ї вхід $0. Платні розваги й гарбузи у цю суму не входять.",
-      "additionalCosts": "Тракторна прогулянка або кукурудзяний лабіринт — $5/людину; надувний будиночок і потяг — $3/дитину; стрибкова подушка — $7/дитину; мінерали — $9/пакет.",
-      "description": "Гарбузи, кукурудзяний лабіринт, тракторні поїздки й дитячі розваги. Публічні години лише в п’ятницю, суботу та неділю.",
-      "comfortNote": "Безкоштовне паркування; ферма приймає картки й допускає собак. Доступність доріжок для візочків не підтверджено.",
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 80
+    },
+    {
+      "id": "canton-shoebox-packing-2026",
+      "name": "Operation Shoebox · сімейне пакування подарунків",
+      "description": "Сімейний проєкт для Elementary/AWANA: після служби родини збираються на піцу та пакують подарункові коробки для дітей. Програма має християнський благодійний зміст.",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Canton First Baptist · Fellowship Hall",
+      "address": "1 Mission Point, Canton, GA 30114",
+      "city": "Canton",
+      "source": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904837",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=1%20Mission%20Point%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "Відстань не підтверджено · маршрут у Maps",
+      "admissionPrice": null,
+      "familyPrice": null,
+      "priceNote": "Вартість входу та сімейний тариф не підтверджено; уточніть в організатора.",
+      "additionalCosts": "Можна добровільно принести подарунки для коробок або пожертву на пересилання.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Точна відстань від центру Canton не підтверджена.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
       "points": {
-        "children": 28,
-        "comfort": 15,
-        "distance": 12,
+        "children": 24,
+        "comfort": 13,
+        "distance": 0,
         "uniqueness": 7
       },
-      "uncertaintyNotes": [
-        "HTTPS-сайт ферми недоступний; кнопка джерела веде на офіційний туристичний портал штату. Розклад 2026 і ціни прочитано на HTTP-сайті самої ферми.",
-        "Вартість гарбузів та можливі зміни через погоду уточнюйте перед поїздкою."
+      "sessions": [
+        {
+          "start": "2026-11-08T12:30",
+          "end": "2026-11-08T14:30"
+        }
       ],
       "registration": {
         "required": null,
-        "url": "https://app.waiverelectronic.com/render/templateByRefId/66da03c6669be5df2e761002",
-        "note": "Для загального входу попереднє бронювання не підтверджено. Для надувного будиночка та стрибкової подушки потрібна окрема підписана згода."
+        "url": "https://cantonfirstbaptist.churchcenter.com/registrations/events/3904837",
+        "note": "Реєстрація доступна; обов’язковість і вартість участі не підтверджені."
       },
-      "verification": "Fetched official http://www.bigspringsfarms.net/ on October 15: explicit October 2026 Friday/Saturday/Sunday hours, free entry/parking and individual activity prices. HTTPS refused connection, so source link uses the Georgia state tourism listing, which independently confirms address and regular hours. No closure banner in inspected farm page.",
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 59
+    },
+    {
+      "id": "woodstock-find-follow-kids-2026",
+      "name": "Find & Follow · заняття для дітей 7+ з батьками",
+      "description": "Одногодинне релігійне заняття про хрещення та християнське життя для дітей від 7 років, які цікавляться хрещенням або вже прийняли рішення про віру. Потрібна присутність щонайменше одного з батьків; це не загальна розважальна програма.",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "First Baptist Woodstock · A210",
+      "address": "11905 Highway 92, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://fbcwoodstock.churchcenter.com/registrations/events/3801496",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=11905%20Highway%2092%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 10.2 миль по прямій · не довжина маршруту",
+      "admissionPrice": "Батьки та діти — безкоштовно.",
+      "familyPrice": 0,
+      "priceNote": "Категорії Parent і Child мають тариф Free.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 15,
+        "comfort": 14,
+        "distance": 9,
+        "uniqueness": 5
+      },
+      "sessions": [
+        {
+          "start": "2026-11-08T11:00",
+          "end": "2026-11-08T12:00"
+        }
+      ],
+      "registration": {
+        "required": true,
+        "url": "https://fbcwoodstock.churchcenter.com/registrations/events/3801496",
+        "note": "Потрібна реєстрація; дедлайн 4 листопада, сторінка показує 17:00."
+      },
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 57
+    },
+    {
+      "id": "rt-jones-family-storytime-2026",
+      "name": "Сімейне читання в R.T. Jones Library",
+      "description": "Читаємо історії, співаємо й робимо поробки разом із бібліотекаркою Kimberly. Усі діти мають бути з дорослим, який бере участь у програмі.",
+      "category": "library",
+      "icon": "📚",
+      "venue": "R.T. Jones Memorial Library · Community Room",
+      "address": "116 Brown Industrial Parkway, Canton, GA 30114",
+      "city": "Canton",
+      "source": "https://seqlib.libcal.com/event/17345613",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=116%20Brown%20Industrial%20Parkway%2C%20Canton%2C%20GA%2030114",
+      "distanceLabel": "≈ 1.3 миль по прямій · не довжина маршруту",
+      "admissionPrice": null,
+      "familyPrice": null,
+      "priceNote": "Вартість входу та сімейний тариф не підтверджено; уточніть в організатора.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 26,
+        "comfort": 15,
+        "distance": 15,
+        "uniqueness": 6
+      },
+      "sessions": [
+        {
+          "start": "2026-11-03T10:30",
+          "end": "2026-11-03T11:30"
+        },
+        {
+          "start": "2026-11-10T10:30",
+          "end": "2026-11-10T11:30"
+        },
+        {
+          "start": "2026-11-17T10:30",
+          "end": "2026-11-17T11:30"
+        }
+      ],
+      "registration": null,
+      "verification": "Прочитано офіційні LibCal записи 17345613, 17345614, 17345615; кожен підтверджує відповідно 3, 10, 17 листопада 2026 о 10:30–11:30. Адресу звірено на https://www.sequoyahregionallibrary.org/rtjones; офіційний сайт посилається на seqlib.libcal.com.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
       "rating": 83
     },
     {
-      "category": "farm",
-      "icon": "🎃",
-      "venue": "Yahoo Farm",
-      "address": "4729 Waleska Hwy, Jasper, GA 30143",
-      "city": "Jasper",
-      "source": "https://yahoofarm.com/activities/",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=4729%20Waleska%20Hwy%2C%20Jasper%2C%20GA%2030143",
-      "distanceLabel": "≈ 10.9 милі по прямій",
+      "id": "woodstock-arts-holiday-family-day-2026",
+      "name": "Святковий сімейний творчий день · Woodstock Arts",
+      "description": "Святкові поробки: оздоблення печива й прикрас, пакування подарунків та створення листівок. Організатор запрошує родини до Reeves House з 14:00 до 16:00.",
+      "category": "culture",
+      "icon": "🎨",
+      "venue": "Reeves House Visual Arts Center",
+      "address": "734 Reeves Street, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://woodstockarts.org/events/holiday-family-fun-day/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=734%20Reeves%20Street%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 9.6 миль по прямій · не довжина маршруту",
+      "admissionPrice": "На сторінці вказано Admission $10.",
+      "familyPrice": null,
+      "priceNote": "Оголошено $10, але одиниця тарифу та правила для супроводжуючих не уточнені; сімейну суму не розраховано.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Сторінка одночасно згадує Green і Reeves House; основне місце та години вказані як Reeves House, 14:00–16:00.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 29,
+        "comfort": 14,
+        "distance": 12,
+        "uniqueness": 8
+      },
       "sessions": [
         {
-          "start": "2026-10-15T10:00",
-          "end": "2026-10-15T18:00"
-        },
-        {
-          "start": "2026-10-16T10:00",
-          "end": "2026-10-16T18:00"
-        },
-        {
-          "start": "2026-10-17T10:00",
-          "end": "2026-10-17T18:00"
-        },
-        {
-          "start": "2026-10-18T10:00",
-          "end": "2026-10-18T18:00"
-        },
-        {
-          "start": "2026-10-19T10:00",
-          "end": "2026-10-19T18:00"
-        },
-        {
-          "start": "2026-10-20T10:00",
-          "end": "2026-10-20T18:00"
-        },
-        {
-          "start": "2026-10-21T10:00",
-          "end": "2026-10-21T18:00"
-        },
-        {
-          "start": "2026-10-22T10:00",
-          "end": "2026-10-22T18:00"
-        },
-        {
-          "start": "2026-10-23T10:00",
-          "end": "2026-10-23T18:00"
-        },
-        {
-          "start": "2026-10-24T10:00",
-          "end": "2026-10-24T18:00"
-        },
-        {
-          "start": "2026-10-25T10:00",
-          "end": "2026-10-25T18:00"
-        },
-        {
-          "start": "2026-10-26T10:00",
-          "end": "2026-10-26T18:00"
-        },
-        {
-          "start": "2026-10-27T10:00",
-          "end": "2026-10-27T18:00"
-        },
-        {
-          "start": "2026-10-28T10:00",
-          "end": "2026-10-28T18:00"
-        },
-        {
-          "start": "2026-10-29T10:00",
-          "end": "2026-10-29T18:00"
-        },
-        {
-          "start": "2026-10-30T10:00",
-          "end": "2026-10-30T18:00"
-        },
-        {
-          "start": "2026-10-31T10:00",
-          "end": "2026-10-31T18:00"
+          "start": "2026-11-21T14:00",
+          "end": "2026-11-21T16:00"
         }
       ],
-      "verifiedAt": "2026-10-15T14:39:37Z",
-      "origin": "codex",
-      "farm": {
-        "name": "Yahoo Farm",
-        "source": "https://yahoofarm.com/"
+      "registration": {
+        "required": null,
+        "url": "https://woodstockarts.org/events/holiday-family-fun-day/",
+        "note": "Є кнопка купівлі квитків; актуальну наявність і правила тарифу перевіряйте в касі."
       },
-      "ratingMethod": "editorial-four-components",
-      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
-      "id": "yahoo-farm-daytime-2026",
-      "name": "Денна осіння програма Yahoo Farm",
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 84
+    },
+    {
+      "id": "woodstock-city-playhouse-2026",
+      "name": "Playhouse Family Show · шоу для дошкільнят",
+      "description": "Спільне шоу для дошкільнят і їхніх родин з тваринами, бульбашками, музикою та християнською темою. Після вистави заявлено безкоштовний контактний зоопарк; його час завершення не наведено. Двері відкривають о 10:15.",
+      "category": "church",
+      "icon": "⛪",
+      "venue": "Woodstock City Church · Auditorium",
+      "address": "150 Ridgewalk Pkwy, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://woodstockcity.org/events/playhouse-family-show-2026-11-07",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=150%20Ridgewalk%20Pkwy%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "Відстань не підтверджено · маршрут у Maps",
+      "admissionPrice": "Безкоштовне шоу для дошкільнят і їхніх сімей.",
       "familyPrice": 0,
-      "admissionPrice": "Вхід і паркування безкоштовні; активності оплачуються окремо.",
-      "priceNote": "Вхід для сім’ї $0. Набір із шести активностей — $24 за людину, для дітей до 2 років включно — $18. Це додатковий вибір, а не плата за вхід.",
-      "additionalCosts": "Тракторна прогулянка й кукурудзяний лабіринт — по $5/людину (до 2 років включно безкоштовно). Поні — $5, лише вихідними, до 60 фунтів; гарбузи та їжа окремо.",
-      "description": "Денні тракторні прогулянки, кукурудзяний лабіринт, тварини й гарбузи. Ця картка охоплює денні години до 18:00; вечірні страшні програми сюди не включені.",
-      "comfortNote": "Є безкоштовні столи для пікніка та банкомат. Активності залежать від погоди; собак не допускають, службові тварини дозволені. Доступність для візочків не підтверджено.",
+      "priceNote": "Шоу та оголошений контактний зоопарк безкоштовні.",
+      "additionalCosts": null,
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Календар організатора задає 10:30–11:15 для шоу; час закриття зоопарку не підтверджено.",
+        "Census повернув Ridgewalk Circle замість Pkwy; числову відстань не використано.",
+        "Точна відстань від центру Canton не підтверджена.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 30,
+        "comfort": 14,
+        "distance": 0,
+        "uniqueness": 8
+      },
+      "sessions": [
+        {
+          "start": "2026-11-07T10:30",
+          "end": "2026-11-07T11:15"
+        }
+      ],
+      "registration": {
+        "required": null,
+        "url": "https://woodstockcity.org/events/playhouse-family-show-2026-11-07",
+        "note": "На офіційній сторінці є Register the family; обов’язковість і наявність місць уточнюйте."
+      },
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 69
+    },
+    {
+      "id": "finding-nemo-jr-evening-2026",
+      "name": "Finding Nemo Jr. · вечірні покази",
+      "description": "Дитячий мюзикл за «У пошуках Немо» про родину, дружбу та підводну пригоду. Офіційний віковий рейтинг — для всіх; тривалість 60 хвилин, двері відкривають за 30 хвилин.",
+      "category": "culture",
+      "icon": "🎭",
+      "venue": "Woodstock Arts Theatre",
+      "address": "8534 Main St, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://woodstockarts.org/events/finding-nemo-jr/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=8534%20Main%20St%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 9.4 миль по прямій · не довжина маршруту",
+      "admissionPrice": "Онлайн $21–22; у дверях $24–25.",
+      "familyPrice": null,
+      "priceNote": "Для 4 квитків за опублікованими онлайн-тарифами: $84–88 до можливих інших зборів. Точні дитячі правила й підсумкова сімейна сума не підтверджені.",
+      "additionalCosts": "На сторінці вказано $2 за обмін квитка (крім абонентів); інші збори уточнюйте в касі.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Кінцевий час обчислено за підтвердженою організатором тривалістю 60 хвилин.",
+        "Денні та вечірні покази мають окремі ID через обмеження поточної схеми: одна сесія на дату в одному записі.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
       "points": {
         "children": 29,
         "comfort": 15,
         "distance": 12,
         "uniqueness": 8
       },
-      "uncertaintyNotes": [
-        "Попередня реєстрація для загального денного відвідування не підтверджена.",
-        "Точну вартість гарбузів і доступність усіх активностей у вибраний день уточнюйте у ферми."
-      ],
-      "registration": null,
-      "verification": "Official home explicitly states final 2026 opening day October 31 and current daily daytime hours. Official /activities/ confirms free entry/parking, daytime prices and weekend-only pony rides. Checked both pages October 15; no cancellation notice on inspected pages, weather changes possible.",
-      "rating": 85
-    },
-    {
-      "category": "farm",
-      "icon": "🎃",
-      "venue": "Scottsdale Farms",
-      "address": "15639 Birmingham Hwy, Milton, GA 30004",
-      "city": "Milton",
-      "source": "https://www.scottsdalefarms.com/pumpkin-patch/",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=15639%20Birmingham%20Hwy%2C%20Milton%2C%20GA%2030004",
-      "distanceLabel": "≈ 10.4 милі по прямій",
       "sessions": [
         {
-          "start": "2026-10-15T08:00",
-          "end": "2026-10-15T19:00"
+          "start": "2026-11-12T19:00",
+          "end": "2026-11-12T20:00"
         },
         {
-          "start": "2026-10-16T08:00",
-          "end": "2026-10-16T19:00"
+          "start": "2026-11-13T19:00",
+          "end": "2026-11-13T20:00"
         },
         {
-          "start": "2026-10-17T08:00",
-          "end": "2026-10-17T19:00"
-        },
-        {
-          "start": "2026-10-18T09:00",
-          "end": "2026-10-18T18:00"
-        },
-        {
-          "start": "2026-10-19T08:00",
-          "end": "2026-10-19T19:00"
-        },
-        {
-          "start": "2026-10-20T08:00",
-          "end": "2026-10-20T19:00"
-        },
-        {
-          "start": "2026-10-21T08:00",
-          "end": "2026-10-21T19:00"
-        },
-        {
-          "start": "2026-10-22T08:00",
-          "end": "2026-10-22T19:00"
-        },
-        {
-          "start": "2026-10-23T08:00",
-          "end": "2026-10-23T19:00"
-        },
-        {
-          "start": "2026-10-24T08:00",
-          "end": "2026-10-24T19:00"
-        },
-        {
-          "start": "2026-10-25T09:00",
-          "end": "2026-10-25T18:00"
-        },
-        {
-          "start": "2026-10-26T08:00",
-          "end": "2026-10-26T19:00"
-        },
-        {
-          "start": "2026-10-27T08:00",
-          "end": "2026-10-27T19:00"
-        },
-        {
-          "start": "2026-10-28T08:00",
-          "end": "2026-10-28T19:00"
-        },
-        {
-          "start": "2026-10-29T08:00",
-          "end": "2026-10-29T19:00"
-        },
-        {
-          "start": "2026-10-30T08:00",
-          "end": "2026-10-30T19:00"
-        },
-        {
-          "start": "2026-10-31T08:00",
-          "end": "2026-10-31T19:00"
+          "start": "2026-11-14T19:00",
+          "end": "2026-11-14T20:00"
         }
-      ],
-      "verifiedAt": "2026-10-15T14:39:37Z",
-      "origin": "codex",
-      "farm": {
-        "name": "Scottsdale Farms",
-        "source": "https://www.scottsdalefarms.com/pumpkin-patch/"
-      },
-      "ratingMethod": "editorial-four-components",
-      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
-      "id": "scottsdale-pumpkin-patch-2026",
-      "name": "Гарбузовий майданчик Scottsdale Farms",
-      "familyPrice": 0,
-      "admissionPrice": "Гарбузовий майданчик — безкоштовний, без квитка.",
-      "priceNote": "Прогулянка сім’єю $0. Family Fun Field — окрема платна зона: $19 + податок/людину; дітям до 3 років включно безкоштовно.",
-      "additionalCosts": "Гарбузи переважно продають на вагу. Їжа в кафе та квитки Family Fun Field оплачуються окремо; ціни гарбузів не наведено.",
-      "description": "Вибір гарбузів і місця для осінніх фотографій на фермі в Milton. Family Fun Field із лабіринтом, гірками й тваринами — окрема програма з власним графіком і квитком.",
-      "comfortNote": "На території є кафе. Для безкоштовного майданчика бронювання не потрібне. Доступність доріжок для візочків не підтверджено.",
-      "points": {
-        "children": 24,
-        "comfort": 14,
-        "distance": 12,
-        "uniqueness": 6
-      },
-      "uncertaintyNotes": [
-        "У картці наведено години безкоштовного гарбузового майданчика, а не платного Family Fun Field.",
-        "Ціни гарбузів та доступність платних активностей на конкретну дату не підтверджено."
-      ],
-      "registration": {
-        "required": false,
-        "url": null,
-        "note": "Для гарбузового майданчика квиток не потрібен. Окремий Family Fun Field вимагає квиток і підписану згоду."
-      },
-      "verification": "Official October 2026 blog confirms current pumpkin patch/fall field; /pumpkin-patch/ confirms free entry, no reservation, address and store-hour access; /family-fun/ separately states $19 plus tax and waiver for paid field. Reviewed October 15; no cancellation notice in inspected pages. Display window is the remainder of October, not an asserted season closing date.",
-      "rating": 75
-    },
-    {
-      "category": "farm",
-      "icon": "🎃",
-      "venue": "Pettit Creek Farms",
-      "address": "337 Cassville Road, Cartersville, GA 30120",
-      "city": "Cartersville",
-      "source": "https://pettitcreekfarms.com/pumpkin-fest/",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=337%20Cassville%20Road%2C%20Cartersville%2C%20GA%2030120",
-      "distanceLabel": "≈ 18.9 милі по прямій",
-      "sessions": [
-        {
-          "start": "2026-10-15T14:30",
-          "end": "2026-10-15T18:00"
-        },
-        {
-          "start": "2026-10-16T14:30",
-          "end": "2026-10-16T18:00"
-        },
-        {
-          "start": "2026-10-17T10:00",
-          "end": "2026-10-17T18:00"
-        },
-        {
-          "start": "2026-10-18T10:00",
-          "end": "2026-10-18T18:00"
-        },
-        {
-          "start": "2026-10-20T14:30",
-          "end": "2026-10-20T18:00"
-        },
-        {
-          "start": "2026-10-21T14:30",
-          "end": "2026-10-21T18:00"
-        },
-        {
-          "start": "2026-10-22T14:30",
-          "end": "2026-10-22T18:00"
-        },
-        {
-          "start": "2026-10-23T14:30",
-          "end": "2026-10-23T18:00"
-        },
-        {
-          "start": "2026-10-24T10:00",
-          "end": "2026-10-24T18:00"
-        },
-        {
-          "start": "2026-10-25T10:00",
-          "end": "2026-10-25T18:00"
-        },
-        {
-          "start": "2026-10-27T14:30",
-          "end": "2026-10-27T18:00"
-        },
-        {
-          "start": "2026-10-28T14:30",
-          "end": "2026-10-28T18:00"
-        },
-        {
-          "start": "2026-10-29T14:30",
-          "end": "2026-10-29T18:00"
-        },
-        {
-          "start": "2026-10-30T14:30",
-          "end": "2026-10-30T18:00"
-        },
-        {
-          "start": "2026-10-31T10:00",
-          "end": "2026-10-31T16:00"
-        }
-      ],
-      "verifiedAt": "2026-10-15T14:39:37Z",
-      "origin": "codex",
-      "farm": {
-        "name": "Pettit Creek Farms",
-        "source": "https://pettitcreekfarms.com/pumpkin-fest/"
-      },
-      "ratingMethod": "editorial-four-components",
-      "ratingNote": "Редакційна оцінка: підтверджені дитячі активності, відомі умови, відстань по прямій і особливості програми; ціна не враховується.",
-      "id": "pettit-creek-pumpkin-fest-2026",
-      "name": "Pumpkin Fest на Pettit Creek Farms",
-      "familyPrice": 59.8,
-      "admissionPrice": "$14.95 + податок із 3 років; дітям до 2 років включно безкоштовно.",
-      "priceNote": "$59.80 + податок для 2 дорослих і 2 дітей віком від 3 років, готівкою. При оплаті карткою додатково 3%; фактична сума залежить від віку дітей.",
-      "additionalCosts": "Їжа, гарбузи, корм і додаткові атракціони окремо, за готівку. Вартість атракціонів і вікові/вагові обмеження перевірте перед оплатою.",
-      "description": "Кукурудзяний і сінний лабіринти, тракторна прогулянка, контактна зона тварин та ігри. 31 жовтня скорочені години до 16:00; понеділки пропущено.",
-      "comfortNote": "Потрібна підписана згода для кожного гостя. Готівка потрібна для додаткових покупок; на території є банкомат. Собак не допускають. Безбар’єрність не підтверджено.",
-      "points": {
-        "children": 29,
-        "comfort": 13,
-        "distance": 6,
-        "uniqueness": 9
-      },
-      "uncertaintyNotes": [
-        "Відстань близька до межі: 18.9 милі по прямій; автомобільний маршрут довший.",
-        "Календар сезону 2026 звірено з поточною стрічкою офіційної ферми та датованою афішею; окремі атракціони можуть бути недоступні через погоду."
       ],
       "registration": {
         "required": true,
-        "url": "https://kiosk.singenuity.com/checkin/form/0/PETT/false/consent?unassigned=true",
-        "note": "Кожному гостю потрібна підписана згода. Попередня бронь не обов’язкова, квиток можна придбати на вході."
+        "url": "https://woodstockarts.org/events/finding-nemo-jr/",
+        "note": "Потрібні квитки на обраний показ; вільні місця не гарантовано."
       },
-      "verification": "Official /pumpkin-fest/ inspected October 15 for hours, Halloween exception, prices, waiver and booking policy; current official seasonal feed refers to 2026. Date range corroborated with https://mommypoppins.com/atlanta-kids/event/events/pumpkin-fest-at-pettit-creek-farms. No cancellation banner in inspected farm page; future weather changes possible.",
-      "rating": 76
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 85
+    },
+    {
+      "id": "finding-nemo-jr-matinee-2026",
+      "name": "Finding Nemo Jr. · денні покази",
+      "description": "Дитячий мюзикл за «У пошуках Немо» про родину, дружбу та підводну пригоду. Офіційний віковий рейтинг — для всіх; тривалість 60 хвилин, двері відкривають за 30 хвилин.",
+      "category": "culture",
+      "icon": "🎭",
+      "venue": "Woodstock Arts Theatre",
+      "address": "8534 Main St, Woodstock, GA 30188",
+      "city": "Woodstock",
+      "source": "https://woodstockarts.org/events/finding-nemo-jr/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=8534%20Main%20St%2C%20Woodstock%2C%20GA%2030188",
+      "distanceLabel": "≈ 9.4 миль по прямій · не довжина маршруту",
+      "admissionPrice": "Онлайн $21–22; у дверях $24–25.",
+      "familyPrice": null,
+      "priceNote": "Для 4 квитків за опублікованими онлайн-тарифами: $84–88 до можливих інших зборів. Точні дитячі правила й підсумкова сімейна сума не підтверджені.",
+      "additionalCosts": "На сторінці вказано $2 за обмін квитка (крім абонентів); інші збори уточнюйте в касі.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Кінцевий час обчислено за підтвердженою організатором тривалістю 60 хвилин.",
+        "Денні та вечірні покази мають окремі ID через обмеження поточної схеми: одна сесія на дату в одному записі.",
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 29,
+        "comfort": 15,
+        "distance": 12,
+        "uniqueness": 8
+      },
+      "sessions": [
+        {
+          "start": "2026-11-14T14:30",
+          "end": "2026-11-14T15:30"
+        },
+        {
+          "start": "2026-11-15T14:30",
+          "end": "2026-11-15T15:30"
+        }
+      ],
+      "registration": {
+        "required": true,
+        "url": "https://woodstockarts.org/events/finding-nemo-jr/",
+        "note": "Потрібні квитки на обраний показ; вільні місця не гарантовано."
+      },
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 85
+    },
+    {
+      "id": "holly-springs-fall-into-fun-2026",
+      "name": "Fall Into Fun · інклюзивний сімейний фестиваль",
+      "description": "Ігри, надувні атракціони, музика, виступи, продавці та інформація про ресурси для людей з особливими потребами. Громадська благодійна подія RestorABLE Community Pathways Foundation на парковці церкви.",
+      "category": "festival",
+      "icon": "🎪",
+      "venue": "First Baptist Church of Holly Springs · parking lot",
+      "address": "2632 Holly Springs Pkwy, Holly Springs, GA 30115",
+      "city": "Holly Springs",
+      "source": "https://exploregeorgia.org/holly-springs/events/fairs-festivals/fall-into-fun-festival",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=2632%20Holly%20Springs%20Pkwy%2C%20Holly%20Springs%2C%20GA%2030115",
+      "distanceLabel": "≈ 4.2 миль по прямій · не довжина маршруту",
+      "admissionPrice": "$10 за учасника; батьки та опікуни безкоштовно.",
+      "familyPrice": 20,
+      "priceNote": "Умовний приклад: 2 дітей-учасників × $10 + 2 дорослих-супроводжуючих безкоштовно = $20. Для іншого складу сім’ї сума відрізняється.",
+      "additionalCosts": "Їжа й покупки можуть оплачуватися окремо; тарифи не подані.",
+      "comfortNote": "Доступність для візочків, туалети та умови паркування не підтверджено; уточніть перед поїздкою.",
+      "uncertaintyNotes": [
+        "Неподані ціни, додаткові витрати, вікові умови та вимоги реєстрації залишаються непідтвердженими; перевірте джерело перед поїздкою."
+      ],
+      "origin": "codex",
+      "verifiedAt": "2026-11-01T09:05:19.314Z",
+      "points": {
+        "children": 29,
+        "comfort": 12,
+        "distance": 15,
+        "uniqueness": 8
+      },
+      "sessions": [
+        {
+          "start": "2026-11-14T12:00",
+          "end": "2026-11-14T16:00"
+        }
+      ],
+      "registration": {
+        "required": null,
+        "url": "https://exploregeorgia.org/holly-springs/events/fairs-festivals/fall-into-fun-festival",
+        "note": "Офіційна туристична сторінка повідомляє про попередню реєстрацію; чи вона обов’язкова — не уточнено."
+      },
+      "verification": "Редакційна перевірка Codex: прочитано актуальну офіційну сторінку, перевірено 2026 рік, сесії, місце та умови участі. Це перевірка на зазначений момент, а не гарантія від майбутнього скасування.",
+      "ratingNote": "Редакційні бали за дитячу цікавість, комфорт, перевірену відстань і незвичність; ціна не впливає. Невідома відстань — 0 балів; зручності не припускаються.",
+      "rating": 85
     }
   ]
 }
